@@ -54,7 +54,9 @@ The look is minimal, single-column, editorial. Follow these unless asked otherwi
   The current page link gets `aria-current="page"`. Under 440px the text links
   hide and a square menu button (`#menuBtn`) opens an accordion (`#mnav`) with
   Home, Live Feed, Research. Update the menu on every page when adding pages.
-- **Footer:** "© 2026 Port 502" left; Research, News, LinkedIn right.
+- **Footer:** "© 2026 Port 502" left; Research, News, LinkedIn and a small
+  outlined **Contact** button right. Contact opens a modal form (`#contactModal`)
+  that composes an email via `mailto:` to `contact@port502.com` (constant `TO`).
 - Keep things simple: Kamden prefers fewer elements, plain copy, no busy meta lines.
 
 ## Home page (top to bottom)
@@ -74,7 +76,8 @@ Read the news) → footer.
   `https://raw.githubusercontent.com/flyingmonkey789/ot-news-wire/main/docs/feed.json`.
 - Item fields: `url, published, category, source, sector, title, summary`.
   Categories come from the data (currently Incidents, Policy, Technology,
-  Research, Advisory). Filter chips are built from the data, one scrollable row.
+  Research, Advisory). Filter chips are built from the data and wrap onto
+  multiple lines (no horizontal scrolling).
 - Story meta line: category · source (· sector unless "Cross-sector"); CVSS, if
   present, right-aligned. No times.
 - "Take it with you" uses the RSS feed `https://otnewswire.com/feed.xml`.
@@ -110,6 +113,8 @@ Read the news) → footer.
 ## Open items
 
 - Subscribe forms are not connected yet (planned: Beehiiv).
+- Contact form uses `mailto:`; the `contact@port502.com` inbox must exist, or
+  switch the form to a form service (e.g. Formspree) later.
 - Report "Download PDF" button was removed until a PDF exists.
 - Readiness assessment page exists outside this repo; not yet added.
 

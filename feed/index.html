@@ -214,12 +214,12 @@ h1.nw-h1{margin-top:10px}
 .sq-btn:hover{background:#000;border-color:#000;color:#FFFFFF}
 .nf{margin-top:40px;display:flex;flex-direction:column;gap:12px}
 .nf-scroll{position:relative}
-.nf-scroll::after{content:"";position:absolute;top:0;right:0;bottom:0;width:40px;background:linear-gradient(90deg,rgba(255,255,255,0),#FFFFFF);pointer-events:none;transition:opacity .2s}
+.nf-scroll::after{display:none;content:"";position:absolute;top:0;right:0;bottom:0;width:40px;background:linear-gradient(90deg,rgba(255,255,255,0),#FFFFFF);pointer-events:none;transition:opacity .2s}
 .nf-scroll.end::after{opacity:0}
-.nf-chips{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.nf-chips{display:flex;flex-wrap:wrap;gap:8px}
 .nf-chips::-webkit-scrollbar{display:none}
 .nf-chip{flex:none}
-.nf-scroll::before{content:"";position:absolute;z-index:1;top:0;left:0;bottom:0;width:32px;background:linear-gradient(270deg,rgba(255,255,255,0),#FFFFFF);pointer-events:none;opacity:0;transition:opacity .2s}
+.nf-scroll::before{display:none;content:"";position:absolute;z-index:1;top:0;left:0;bottom:0;width:32px;background:linear-gradient(270deg,rgba(255,255,255,0),#FFFFFF);pointer-events:none;opacity:0;transition:opacity .2s}
 .nf-scroll.scrolled::before{opacity:1}
 .nf-scroll::after{z-index:1}
 .nf-chip{height:34px;padding:0 12px;border:1px solid var(--line);background:#FFFFFF;color:var(--muted);font-size:14px;font-weight:500}
@@ -287,6 +287,22 @@ h1.nw-h1{margin-top:10px}
   .mnav a[aria-current="page"]{color:var(--text)}
   .mnav a[aria-current="page"]::after{content:"•"}
 }
+
+/* contact */
+.f-contact{height:28px;padding:0 10px;border:1px solid var(--line) !important;background:#FFFFFF !important;color:var(--ink) !important;font-size:13px;font-weight:500;cursor:pointer;width:auto !important}
+.f-contact:hover{background:#000 !important;border-color:#000 !important;color:#FFFFFF !important}
+footer{align-items:center}
+.f-links{align-items:center}
+.cf{margin-top:20px;display:flex;flex-direction:column;gap:14px}
+.cf label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:var(--muted)}
+.cf input,.cf textarea{width:100%;padding:10px 12px;border:1px solid var(--line);background:#FFFFFF;font:inherit;font-size:16px;color:var(--text)}
+.cf input{height:44px}
+.cf textarea{resize:vertical;min-height:110px;line-height:1.5}
+.cf input:focus,.cf textarea:focus{outline:none;border-color:#A3A3A3}
+.cf button{align-self:flex-start;height:44px;padding:0 20px;border:0;background:#000;color:#FFFFFF;font-size:15px;font-weight:500;cursor:pointer;width:auto !important}
+.cf button:hover{background:var(--ink)}
+.cf-note{margin:12px 0 0;font-size:13px;color:var(--subtle)}
+@media (max-width:440px){ footer{align-items:flex-start} .cf button{width:100% !important;align-self:stretch} }
 </style>
 </head>
 <body>
@@ -327,7 +343,7 @@ h1.nw-h1{margin-top:10px}
 
   <footer>
     <span>© 2026 Port 502</span>
-    <nav class="f-links"><a href="../research/">Research</a><a href="../feed/">News</a><a href="https://www.linkedin.com/in/kschewitz/">LinkedIn</a></nav>
+    <nav class="f-links"><a href="../research/">Research</a><a href="../feed/">News</a><a href="https://www.linkedin.com/in/kschewitz/">LinkedIn</a><button type="button" class="f-contact" id="openContact" aria-haspopup="dialog">Contact</button></nav>
   </footer>
 </main>
 
@@ -824,6 +840,32 @@ $('copyFeed').onclick=function(){ var b=this; (navigator.clipboard?navigator.cli
   var b=document.getElementById('menuBtn'), m=document.getElementById('mnav'); if(!b||!m) return;
   b.addEventListener('click',function(){ var o=b.getAttribute('aria-expanded')!=='true'; b.setAttribute('aria-expanded',o); m.classList.toggle('open',o); m.setAttribute('aria-hidden',!o); });
   m.addEventListener('click',function(e){ if(e.target.closest('a')){ b.setAttribute('aria-expanded','false'); m.classList.remove('open'); } });
+})();
+</script>
+<dialog id="contactModal" aria-labelledby="contactTitle">
+  <div class="dl-head"><h3 id="contactTitle">Contact</h3><button type="button" class="x" id="closeContact" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <p class="dl-sub">Questions, research ideas, or corrections. We read everything.</p>
+  <form class="cf" id="contactForm">
+    <label>Name<input type="text" name="name" required autocomplete="name"></label>
+    <label>Email<input type="email" name="email" required autocomplete="email"></label>
+    <label>Message<textarea name="message" rows="5" required></textarea></label>
+    <button type="submit">Send message</button>
+  </form>
+  <p class="cf-note" id="contactNote">Opens your email app with your message ready to send.</p>
+</dialog>
+<script>
+(function(){
+  var TO='contact@port502.com';
+  var d=document.getElementById('contactModal'), o=document.getElementById('openContact'), f=document.getElementById('contactForm');
+  if(!d||!o) return;
+  o.addEventListener('click',function(){ d.showModal(); setTimeout(function(){ f.querySelector('input').focus(); },30); });
+  document.getElementById('closeContact').onclick=function(){ d.close(); };
+  d.addEventListener('click',function(e){ if(e.target===d) d.close(); });
+  f.addEventListener('submit',function(e){ e.preventDefault();
+    var n=f.name.value.trim(), em=f.email.value.trim(), m=f.message.value.trim();
+    location.href='mailto:'+TO+'?subject='+encodeURIComponent('Port 502 inquiry from '+n)+'&body='+encodeURIComponent(m+'\n\n'+n+'\n'+em);
+    document.getElementById('contactNote').textContent='Your email app should open now. If it does not, write to '+TO+'.';
+  });
 })();
 </script>
 </body>
