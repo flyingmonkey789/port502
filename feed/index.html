@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OT Security News — Port 502</title>
+<meta name="description" content="A daily feed of OT security advisories, incidents, regulation, and market moves.">
+<style>
+:root{--text:#000;--ink:#262626;--muted:#525252;--subtle:#737373;--line:#E5E5E5;--fill:#F2F2F2;--surface:#FAFAFA;--r-md:12px;--r-full:999px;
+  --display:"SF Pro Rounded",ui-rounded,system-ui,-apple-system,sans-serif;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#FFFFFF;color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:640px;margin:0 auto;padding:72px 24px 64px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.top-links{display:flex;gap:4px}
+.top-links a{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:var(--r-full);font-size:14px;font-weight:500;color:var(--muted);text-decoration:none}
+.top-links a:hover{background:var(--fill);color:var(--text)}
+.brand,.top-links a{white-space:nowrap}
+.top-links a.cta{margin-left:6px;background:#000;color:#FFFFFF}
+.top-links a.cta:hover{background:var(--ink);color:#FFFFFF}
+html{scroll-behavior:smooth}
+section{scroll-margin-top:24px}
+.brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:18px;font-weight:500;text-decoration:none}
+.badge{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:var(--r-full);padding:1px 8px}
+h1{margin:56px 0 0;font-family:var(--display);font-size:clamp(30px,5vw,40px);line-height:1.12;font-weight:500;letter-spacing:-.01em}
+.dek{margin:18px 0 0;font-size:18px;line-height:1.6;color:var(--muted)}
+.dek a{text-underline-offset:3px;text-decoration-color:#D4D4D4}
+.dek a:hover{text-decoration-color:currentColor}
+.byline{margin:14px 0 0;font-size:15px;color:var(--subtle)}
+.byline a{color:var(--ink);text-underline-offset:3px;text-decoration-color:#D4D4D4}
+.byline a:hover{text-decoration-color:currentColor}
+.hero-btns{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.hb{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 22px;border-radius:var(--r-full);font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap}
+.hb-1{background:#000;color:#FFFFFF}
+.hb-1:hover{background:var(--ink)}
+.hb-2{background:var(--fill);color:var(--text)}
+.hb-2:hover{background:#E5E5E5}
+section{margin-top:64px}
+h2{margin:0 0 16px;font-size:14px;font-weight:500;color:var(--subtle)}
+.feat{display:block;text-decoration:none;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+.feat:hover{border-color:#D4D4D4}
+.feat-img{display:block;aspect-ratio:16/9;background:#7BA7D4 center 60%/cover no-repeat;background-image:url("../assets/open-weight-ai-cover.jpg");border-bottom:1px solid var(--line)}
+.feat-body{display:block;padding:20px 22px 22px}
+.meta{font-size:13px;color:var(--subtle)}
+.feat-t{display:block;margin-top:6px;font-family:var(--display);font-size:22px;line-height:1.25;font-weight:500}
+.feat-d{display:block;margin-top:8px;color:var(--muted);font-size:15px}
+.feat-cta{display:inline-block;margin-top:14px;font-size:15px;font-weight:500}
+.feat:hover .feat-cta{text-decoration:underline;text-underline-offset:3px}
+.rcs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.rc{display:flex;flex-direction:column}
+.rc-art{position:relative;display:block;aspect-ratio:4/5;border-radius:var(--r-md);overflow:hidden;isolation:isolate}
+.rc-art::before{content:"";position:absolute;inset:-25%;z-index:0;filter:blur(30px);transform:rotate(-8deg)}
+.rc-art::after{content:"";position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;opacity:.18;mix-blend-mode:overlay}
+.rc-tag,.rc-st{position:absolute;z-index:2;display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--r-full);font-size:12px;font-weight:500}
+.rc-tag{left:12px;top:12px;background:rgba(255,255,255,.9);color:var(--ink)}
+.rc-st{left:12px;bottom:12px;background:rgba(0,0,0,.72);color:#FFFFFF}
+.rc-t{margin-top:12px;font-size:15px;font-weight:500;line-height:1.4;color:var(--ink)}
+.g-dusk{background:#B9C3EE}
+.g-dusk::before{background:radial-gradient(50% 50% at 80% 25%, #F6F1FB 0%, rgba(246,241,251,0) 70%), radial-gradient(60% 60% at 20% 80%, #8FB9EE 0%, rgba(143,185,238,0) 70%), conic-gradient(from 120deg at 50% 50%, #CFC6F3, #9FC4F2, #B5E3D8, #CFC6F3)}
+.g-lav{background:#C7D2F6}
+.g-lav::before{background:radial-gradient(60% 55% at 18% 18%, #EEE6FA 0%, rgba(238,230,250,0) 70%), radial-gradient(70% 60% at 85% 75%, #9CCBF5 0%, rgba(156,203,245,0) 70%), linear-gradient(135deg, #DCD6F7 0%, #BBC8F5 50%, #A6CDF4 100%)}
+.g-green{background:#7FB8C8}
+.g-green::before{background:conic-gradient(from 210deg at 55% 45%, #8FCB6A 0deg, #A7D07A 60deg, #7EC4B4 130deg, #5FA8D8 200deg, #3E73D8 260deg, #6C9FE6 320deg, #8FCB6A 360deg)}
+.g-cyan{background:#4F8FD0}
+.g-cyan::before{background:radial-gradient(28% 70% at 80% 55%, #F4FBFB 0%, rgba(244,251,251,0) 70%), radial-gradient(35% 45% at 10% 45%, #9CEBEB 0%, rgba(156,235,235,0) 70%), linear-gradient(120deg, #6FD3E3 0%, #4E8FD3 45%, #3D6DBF 65%, #7FD6E6 100%)}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.list li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.list .t{color:var(--ink)}
+.list .s{flex:none;font-size:13px;color:var(--subtle)}
+.tools{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.tools a{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:15px}
+.tools a span:last-child{color:var(--subtle)}
+.tools a:hover span:first-child{text-decoration:underline;text-underline-offset:3px}
+form{display:flex;gap:8px}
+input[type=email]{flex:1;min-width:0;height:44px;padding:0 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:15px;background:#FFFFFF}
+input[type=email]:focus{outline:2px solid #4E8FD3;outline-offset:1px;border-color:transparent}
+button{height:44px;padding:0 20px;border:0;border-radius:10px;background:#000;color:#FFFFFF;font:inherit;font-size:15px;font-weight:500;cursor:pointer}
+button:hover{background:var(--ink)}
+.sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.sec-head h2{margin:0}
+.ghost{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;border:1px solid var(--line);border-radius:var(--r-full);background:#FFFFFF;color:var(--ink);font-size:13px;font-weight:500}
+.ghost:hover{background:var(--surface);border-color:#D4D4D4}
+.news{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.nw{display:block;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.nw-meta{display:block;font-size:13px;color:var(--subtle)}
+.cat,.cvss{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:var(--r-full);font-size:12px;font-weight:500}
+.cvss{background:#000;color:#FFFFFF}
+.nw-t{display:block;margin-top:4px;font-size:16px;font-weight:500;line-height:1.45;color:var(--text)}
+.nw:hover .nw-t{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.more{display:inline-block;margin-top:16px;font-size:15px;font-weight:500;text-decoration:none}
+.more:hover{text-decoration:underline;text-underline-offset:3px}
+dialog{width:min(520px,calc(100% - 32px));padding:28px;border:1px solid var(--line);border-radius:var(--r-md);color:var(--text)}
+dialog::backdrop{background:rgba(0,0,0,.35)}
+dialog{margin:auto}
+dialog .sub-f{margin-top:20px}
+.dl-head h3{margin:0;font-family:var(--display);font-size:22px;line-height:1.25;font-weight:500}
+.x{border-radius:var(--r-full)}
+.dl-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.dl-head h3{margin:0;font-family:var(--display);font-size:22px;line-height:1.25;font-weight:500}
+.x{width:36px;height:36px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:var(--fill);color:var(--ink)}
+.x:hover{background:#E5E5E5}
+.dl-sub{margin:6px 0 0;color:var(--subtle);font-size:15px}
+.opt{margin-top:20px;padding:18px;border:1px solid var(--line);border-radius:var(--r-md)}
+.opt h4{margin:0;display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500}
+.opt p{margin:8px 0 0;font-size:14px;color:var(--muted)}
+.feed{margin-top:12px;display:flex;align-items:center;gap:8px;padding:6px 6px 6px 14px;border:1px solid var(--line);border-radius:var(--r-full);background:var(--surface)}
+.feed code{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--mono);font-size:12px;color:var(--ink)}
+.feed button{height:30px;padding:0 14px;font-size:13px}
+.paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.path{display:flex;flex-direction:column;padding:22px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface);text-decoration:none}
+.path:hover{border-color:#D4D4D4;background:#FFFFFF}
+.path-t{font-family:var(--display);font-size:20px;font-weight:500;line-height:1.25}
+.path-d{margin-top:8px;font-size:15px;line-height:1.55;color:var(--muted)}
+.path-go{margin-top:auto;padding-top:18px;font-size:14px;font-weight:500;color:var(--text)}
+.path:hover .path-go{text-decoration:underline;text-underline-offset:3px}
+.sub-t{margin:0;font-family:var(--display);font-size:20px;line-height:1.25;font-weight:500;color:var(--text)}
+.sub-n{margin:12px 0 0;font-size:14px;line-height:1.5;color:var(--subtle)}
+.sub-f{margin-top:16px;display:flex;align-items:center;gap:8px}
+.sub-f input[type=email]{flex:1;min-width:0;height:44px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:#FFFFFF;font-size:15px}
+.sub-f input[type=email]:focus{outline:none;border-color:#A3A3A3}
+.sub-f button{flex:none;height:44px;padding:0 20px;border-radius:10px}
+.note{color:#A3A3A3;margin:16px 0 0;line-height:1.2}
+.note{margin:10px 0 0;font-size:13px;color:var(--subtle)}
+.about p{margin:0 0 14px;color:var(--muted);font-size:15px}
+.about p:last-child{margin-bottom:0}
+footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--subtle)}
+footer a{text-decoration:none}
+.f-links{display:flex;gap:20px}
+footer > span{white-space:nowrap}
+footer a:hover{text-decoration:underline}
+@media (max-width:520px){
+  .paths{grid-template-columns:1fr}
+  .rcs{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:62%;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 4px;scrollbar-width:none}
+  .rcs::-webkit-scrollbar{display:none}
+  .rc{scroll-snap-align:start}
+}
+@media (max-width:370px){
+  .rp{grid-template-columns:80px minmax(0,1fr)}
+  .rp-t{font-size:15px}
+}
+@media (max-width:440px){
+  footer{flex-direction:column;gap:10px}
+  .hb{flex:1 1 0;padding:0 12px}
+  .top-links a:not(.cta){display:none}
+}
+@media (max-width:520px){
+  .top-links a{padding:0 10px}
+  .top-links a.cta{margin-left:2px}
+  .wrap{padding:48px 20px 48px}
+  h1{margin-top:40px}
+  .dek{font-size:17px}
+  section{margin-top:52px}
+  form{flex-direction:column}
+  button{width:100%}
+  .sub-f{flex-direction:row}
+  .sub-f button{width:auto;padding:0 14px}
+  .sub-f input[type=email]{padding:0 12px;font-size:14px}
+  .list li{flex-direction:column;gap:2px}
+  .feed button{width:auto}
+  .x{width:36px}
+}
+
+/* research page */
+.top-links a[aria-current="page"]{color:var(--text)}
+.fl{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.fl-c{height:36px;padding:0 16px;border:1px solid var(--line);border-radius:var(--r-full);background:#FFFFFF;color:var(--muted);font-size:14px;font-weight:500}
+.fl-c:hover{border-color:#D4D4D4;color:var(--text)}
+.fl-c[aria-pressed="true"]{background:#000;border-color:#000;color:#FFFFFF}
+.rps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+.rp{display:flex;flex-direction:column}
+.rp[hidden]{display:none}
+.rp-art{position:relative;display:block;aspect-ratio:4/3;border-radius:var(--r-md);overflow:hidden;isolation:isolate}
+.rp-art::before{content:"";position:absolute;inset:-25%;z-index:0;filter:blur(30px);transform:rotate(-8deg)}
+.rp-art::after{content:"";position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;opacity:.18;mix-blend-mode:overlay}
+.rp-tag{position:absolute;left:12px;top:12px;z-index:2;display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--r-full);background:rgba(255,255,255,.9);color:var(--ink);font-size:12px;font-weight:500}
+.rp-body{display:flex;flex-direction:column}
+.rp .meta{margin-top:14px}
+.rp-t{margin-top:6px;font-family:var(--display);font-size:18px;line-height:1.3;font-weight:500}
+.rp-d{margin-top:6px;font-size:14px;line-height:1.55;color:var(--muted)}
+.empty{margin:0;font-size:15px;color:var(--subtle)}
+.grp[hidden]{display:none}
+.g-lav{background:#C7D2F6}
+.g-lav::before{background:radial-gradient(60% 55% at 18% 18%, #EEE6FA 0%, rgba(238,230,250,0) 70%), radial-gradient(70% 60% at 85% 75%, #9CCBF5 0%, rgba(156,203,245,0) 70%), linear-gradient(135deg, #DCD6F7 0%, #BBC8F5 50%, #A6CDF4 100%)}
+.g-green{background:#7FB8C8}
+.g-green::before{background:conic-gradient(from 210deg at 55% 45%, #8FCB6A 0deg, #A7D07A 60deg, #7EC4B4 130deg, #5FA8D8 200deg, #3E73D8 260deg, #6C9FE6 320deg, #8FCB6A 360deg)}
+.g-cyan{background:#4F8FD0}
+.g-cyan::before{background:radial-gradient(28% 70% at 80% 55%, #F4FBFB 0%, rgba(244,251,251,0) 70%), radial-gradient(35% 45% at 10% 45%, #9CEBEB 0%, rgba(156,235,235,0) 70%), linear-gradient(120deg, #6FD3E3 0%, #4E8FD3 45%, #3D6DBF 65%, #7FD6E6 100%)}
+.g-mint{background:#A9DDD0}
+.g-mint::before{background:radial-gradient(55% 60% at 80% 20%, #E9FBF3 0%, rgba(233,251,243,0) 70%), radial-gradient(60% 55% at 15% 85%, #7FC9C0 0%, rgba(127,201,192,0) 70%), linear-gradient(150deg, #CFEFE2 0%, #9ED8CC 55%, #7BB8E0 100%)}
+.g-cobalt{background:#3E5FB8}
+.g-cobalt::before{background:radial-gradient(40% 50% at 25% 30%, #8FB4F5 0%, rgba(143,180,245,0) 70%), radial-gradient(45% 55% at 80% 80%, #6FD0C8 0%, rgba(111,208,200,0) 70%), linear-gradient(140deg, #2F4FA6 0%, #4C72D6 55%, #5FB7D4 100%)}
+@media (max-width:520px){
+  .rps{grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .rp{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .rp-art{aspect-ratio:1/1;border-radius:10px}
+  .rp-tag{display:none}
+  .rp .meta{margin-top:0}
+  .rp-t{font-size:16px}
+  .rp-d{display:none}
+}
+
+/* square variant */
+*,*::before,*::after{border-radius:0 !important}
+
+/* news page */
+.dateline{margin:56px 0 0;font-size:14px;color:var(--subtle)}
+h1.nw-h1{margin-top:10px}
+.nw-btns{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.sq-btn{height:36px;padding:0 16px;border:1px solid var(--line);background:#FFFFFF;color:var(--ink);font-size:14px;font-weight:500}
+.sq-btn:hover{background:#000;border-color:#000;color:#FFFFFF}
+.nf{margin-top:40px;display:flex;flex-direction:column;gap:12px}
+.nf-scroll{position:relative}
+.nf-scroll::after{content:"";position:absolute;top:0;right:0;bottom:0;width:40px;background:linear-gradient(90deg,rgba(255,255,255,0),#FFFFFF);pointer-events:none;transition:opacity .2s}
+.nf-scroll.end::after{opacity:0}
+.nf-chips{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.nf-chips::-webkit-scrollbar{display:none}
+.nf-chip{flex:none;scroll-snap-align:start}
+.nf-chip{height:34px;padding:0 12px;border:1px solid var(--line);background:#FFFFFF;color:var(--muted);font-size:14px;font-weight:500}
+.nf-chip span{margin-left:6px;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--subtle)}
+.nf-chip:hover{background:#FFFFFF;border-color:#A3A3A3;color:var(--text)}
+.nf-chip[aria-pressed="true"]:hover{background:#000;color:#FFFFFF}
+.nf-chip[aria-pressed="true"]{background:#000;border-color:#000;color:#FFFFFF}
+.nf-chip[aria-pressed="true"] span{color:#FFFFFF;opacity:1}
+.nf-q{height:42px;padding:0 14px;border:1px solid var(--line);background:#FFFFFF;font:inherit;font-size:15px}
+.nf-q:focus{outline:none;border-color:#A3A3A3}
+.feed-list{margin-top:8px}
+.day{margin:40px 0 0;padding-bottom:10px;color:var(--text);line-height:1.3;border-bottom:1px solid var(--text);font-family:var(--display);font-size:18px;font-weight:500}
+.it{display:block;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.it-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:13px;color:var(--subtle)}
+.it-cat{font-weight:500;color:var(--ink)}
+.it-cvss{margin-left:auto;display:inline-flex;align-items:center;height:20px;padding:0 6px;border:1px solid var(--text);font-family:var(--mono);font-size:11px;color:var(--text)}
+.it-t{display:block;margin-top:6px;font-size:17px;font-weight:500;line-height:1.4;color:var(--text)}
+.it:hover .it-t{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.it-s{display:block;margin-top:6px;font-size:15px;line-height:1.6;color:var(--muted)}
+.empty{margin:28px 0 0;font-size:15px;color:var(--subtle)}
+.how{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--line)}
+.how li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:8px;padding:16px 0;border-bottom:1px solid var(--line)}
+.how li > span{font-family:var(--mono);font-size:12px;color:var(--subtle);padding-top:3px}
+.how strong{font-size:15px;font-weight:600}
+.how p{margin:6px 0 0;font-size:14px;line-height:1.6;color:var(--muted)}
+.feed-url{margin-top:12px;display:flex;border:1px solid var(--line)}
+.feed-url code{flex:1;min-width:0;padding:9px 12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--mono);font-size:12px;color:var(--ink)}
+.feed-url button{height:auto;padding:0 14px;border:0;border-left:1px solid var(--line);background:var(--surface);color:var(--text);font-size:13px}
+.feed-url button:hover{background:var(--fill)}
+.main-main{}
+@media (max-width:520px){
+  .dateline{margin-top:40px}
+  .nf-scroll{margin:0 -20px}
+  .nf-chips{padding:0 20px}
+  .nf-chip{flex:none;width:auto}
+  .sq-btn{width:auto}
+  .it-t{font-size:16px}
+  .it-s{font-size:14px}
+  .feed-url button{width:auto}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top">
+    <a class="brand" href="../">Port 502 Research</a>
+    <div class="top-links"><a href="../feed/" aria-current="page">Live Feed</a><a href="../research/">Research</a><a class="cta" href="#subscribe" id="openSub" aria-haspopup="dialog">Subscribe</a></div>
+  </nav>
+
+  <p class="dateline" id="dateline"></p>
+  <h1 class="nw-h1">OT Security News</h1>
+  <div class="nw-btns">
+    <button type="button" class="sq-btn" id="openHow" aria-haspopup="dialog">How it works</button>
+    <button type="button" class="sq-btn" id="openFollow" aria-haspopup="dialog">Take it with you</button>
+  </div>
+
+  <div class="nf">
+    <div class="nf-scroll" id="nfScroll"><div class="nf-chips" id="chips" role="group" aria-label="Filter by category"></div></div>
+    <input class="nf-q" id="q" type="search" placeholder="Search stories" aria-label="Search stories">
+  </div>
+
+  <div id="feed" class="feed-list"></div>
+  <p class="empty" id="empty" hidden>No stories match. Try another filter or search.</p>
+
+  <section id="subscribe" class="sub">
+    <h2 class="sub-t">Get new research by email</h2>
+    <form class="sub-f" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed';">
+      <input type="email" required placeholder="you@company.com" aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="sub-n">One email when new research is published. Unsubscribe anytime.</p>
+  </section>
+
+  <footer>
+    <span>© 2026 Port 502</span>
+    <nav class="f-links"><a href="../research/">Research</a><a href="../feed/">News</a><a href="https://www.linkedin.com/in/kschewitz/">LinkedIn</a></nav>
+  </footer>
+</main>
+
+<dialog id="howModal" aria-labelledby="howTitle">
+  <div class="dl-head"><h3 id="howTitle">How it works</h3><button type="button" class="x" data-close aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <p class="dl-sub">Here’s how stories make it into the feed.</p>
+  <ol class="how">
+    <li><span>01</span><div><strong>Aggregate Agent</strong><p>Checks government advisories, OT research teams, trade press, and targeted news searches every hour for new stories.</p></div></li>
+    <li><span>02</span><div><strong>Correlation Agent</strong><p>Deduplicates coverage and ranks each story against a defined set of relevance criteria to filter out vendor fluff, low-severity alerts, and noise.</p></div></li>
+    <li><span>03</span><div><strong>Publishing Agent</strong><p>Publishes the highest-ranked stories to this feed, each linked to its original source.</p></div></li>
+  </ol>
+</dialog>
+
+<dialog id="followModal" aria-labelledby="followTitle">
+  <div class="dl-head"><h3 id="followTitle">Take it with you</h3><button type="button" class="x" data-close aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <p class="dl-sub">Read the news wherever you work.</p>
+  <ol class="how">
+    <li><span>01</span><div><strong>On your iPhone</strong><p>Open this page in Safari, tap the Share button, then choose Add to Home Screen. Keep Open as Web App switched on and tap Add.</p></div></li>
+    <li><span>02</span><div><strong>In Slack</strong><p>Open the RSS app in Slack, paste the feed URL below into Feed URL, and choose the channel new stories should post to.</p>
+      <div class="feed-url"><code id="feedUrl">https://otnewswire.com/feed.xml</code><button type="button" id="copyFeed">Copy</button></div></div></li>
+  </ol>
+</dialog>
+<dialog id="subModal" aria-labelledby="subTitle">
+  <div class="dl-head"><h3 id="subTitle">Get new research by email</h3><button type="button" class="x" id="closeSub" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <form class="sub-f" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed';">
+    <input type="email" required placeholder="you@company.com" aria-label="Email address">
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="sub-n">One email when new research is published. Unsubscribe anytime.</p>
+</dialog>
+<script>
+(function(){
+var DATA = [
+  {
+    "url": "https://therecord.media/france-blames-iran-for-fridge-cyberattacks",
+    "published": "2026-11-09T18:45:00Z",
+    "category": "Incidents",
+    "source": "The Record",
+    "sector": "Cross-sector",
+    "title": "France blames Iran for fridge cyberattacks, says some caused fires",
+    "summary": "France attributes an October cyberattack that caused fridges to malfunction, some causing fires, to Iranian IRGC-linked unit Shahid Kaveh, which has previously targeted US water industrial controllers."
+  },
+  {
+    "url": "https://aa.com.tr/en/middle-east/east-west-oil-pipeline-targeted-in-saudi-arabia-s-medina-region-sparking-fire-ministry-official/4117773",
+    "published": "2026-11-09T16:53:02Z",
+    "category": "Incidents",
+    "source": "Anadolu Ajansı",
+    "sector": "Oil & Gas",
+    "title": "East-West oil pipeline targeted in Saudi Arabia’s Medina region, sparking fire: Ministry official",
+    "summary": "A drone or missile strike reportedly targeted the East-West oil pipeline in Saudi Arabia's Medina region, causing a fire, according to a ministry official."
+  },
+  {
+    "url": "https://www.trtworld.com/article/69bd4b974185",
+    "published": "2026-11-09T16:26:30Z",
+    "category": "Incidents",
+    "source": "TRT World",
+    "sector": "Electric",
+    "title": "IAEA condemns deadly drone strikes near Ukraine nuclear plant",
+    "summary": "The IAEA condemned deadly drone strikes near a Ukrainian nuclear plant, raising physical and cyber-adjacent safety concerns for operators at nuclear facilities."
+  },
+  {
+    "url": "https://www.cpomagazine.com/cyber-security/uk-government-warning-critical-infrastructure-organizations-must-be-fully-ready-for-ai-powered-malware-by-2028/",
+    "published": "2026-11-09T11:00:00Z",
+    "category": "Policy",
+    "source": "CPO Magazine",
+    "sector": "Cross-sector",
+    "title": "UK Government Warning: Critical Infrastructure Organizations Must Be Fully Ready for AI-Powered Malware by 2028",
+    "summary": "UK government warns critical infrastructure operators must be prepared for AI-powered malware by 2028, signaling expectations for defensive readiness across essential services."
+  },
+  {
+    "url": "https://industrialcyber.co/cisa/cisa-nsa-australian-cyber-agencies-urge-early-vendor-readiness-for-pqc-transition-across-critical-systems/",
+    "published": "2026-11-09T08:39:02Z",
+    "category": "Policy",
+    "source": "Industrial Cyber",
+    "sector": "Cross-sector",
+    "title": "CISA, NSA, Australian cyber agencies urge early vendor readiness for PQC transition across critical systems",
+    "summary": "CISA, NSA and Australian agencies urge vendors to prepare now for post-quantum cryptography migration in critical systems, including industrial products."
+  },
+  {
+    "url": "https://www.pravda.com.ua/eng/news/2026/11/09/8061866/index.amp",
+    "published": "2026-11-09T00:15:00Z",
+    "category": "Incidents",
+    "source": "Українська правда",
+    "sector": "Electric",
+    "title": "Zaporizhzhia Nuclear Power Plant restores external power supply after blackout",
+    "summary": "Ukraine's Zaporizhzhia Nuclear Power Plant restored its external power supply after a blackout, a recurring disruption that affects reactor safety systems."
+  },
+  {
+    "url": "https://securityaffairs.com/202528/security/enisa-warns-of-cyberattacks-targeting-refrigeration-systems-across-europe.html",
+    "published": "2026-11-06T09:46:44Z",
+    "category": "Incidents",
+    "source": "Security Affairs",
+    "sector": "Cross-sector",
+    "title": "ENISA Warns of Cyberattacks Targeting Refrigeration Systems Across Europe",
+    "summary": "ENISA warns of a coordinated series of cyberattacks on commercial refrigeration systems across several EU Member States, with new waves reported in early November affecting supermarkets and food supply chains."
+  },
+  {
+    "url": "https://www.cisa.gov/news-events/news/cisa-fbi-hhs-usda-and-dot-urge-critical-infrastructure-strengthen-industrial-refrigeration-and-cold",
+    "published": "2026-11-05T19:15:00Z",
+    "category": "Policy",
+    "source": "CISA",
+    "sector": "Cross-sector",
+    "title": "CISA, FBI, HHS, USDA, and DOT Urge Critical Infrastructure To Strengthen Industrial Refrigeration and Cold Chain Monitoring Systems Cybersecurity",
+    "summary": "U.S. government urges critical infrastructure operators to harden cooling systems after attacks disrupted European supermarkets, raising risk for OT-connected refrigeration and HVAC."
+  },
+  {
+    "url": "https://www.prnewswire.com/news-releases/industrial-defender-adds-network-security-monitoring-and-risk-signal-to-strengthen-ot-cybersecurity-posture-across-europe-africa-and-the-middle-east-302931184.html",
+    "published": "2026-11-05T18:26:00Z",
+    "category": "Technology",
+    "source": "PR Newswire",
+    "sector": "Cross-sector",
+    "title": "Industrial Defender Adds Network Security Monitoring and Risk Signal™ to Strengthen OT Cybersecurity Posture Across Europe, Africa and the Middle East",
+    "summary": "Industrial Defender adds network security monitoring and a Risk Signal capability to its OT security platform for Europe, Africa and the Middle East, giving asset owners new visibility options in those regions."
+  },
+  {
+    "url": "https://engineerlive.com/rockwell-automation-introduce-new-secureot-capabilities/",
+    "published": "2026-11-05T11:42:00Z",
+    "category": "Technology",
+    "source": "Engineer Live",
+    "sector": "Manufacturing",
+    "title": "Rockwell Automation introduce new SecureOT capabilities",
+    "summary": "Rockwell Automation has added new SecureOT capabilities to its industrial security offering, extending options for OT defenders."
+  },
+  {
+    "url": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/",
+    "published": "2026-11-04T15:24:26Z",
+    "category": "Policy",
+    "source": "Utility Dive",
+    "sector": "Electric",
+    "title": "Electric utilities join industries urging renewal of cybersecurity information-sharing law",
+    "summary": "Electric utilities and other industries are urging Congress to renew the expiring CISA 2015 law that provides liability protections for cyber threat information sharing."
+  },
+  {
+    "url": "https://industrialcyber.co/critical-infrastructure/australias-cisc-sharpens-critical-infrastructure-risk-guidance-urges-stronger-cyber-and-supply-chain-controls/",
+    "published": "2026-11-04T09:12:12Z",
+    "category": "Policy",
+    "source": "Industrial Cyber",
+    "sector": "Cross-sector",
+    "title": "Australia’s CISC sharpens critical infrastructure risk guidance, urges stronger cyber and supply chain controls",
+    "summary": "Australia's Critical Infrastructure Security Centre has published updated Critical Infrastructure Risk Management Program guidance calling for stronger cyber and supply chain controls by operators."
+  },
+  {
+    "url": "https://industrialcyber.co/ransomware/eset-uncovers-gorbag-cyberespionage-campaign-targeting-ukraines-administrations-defense-sector-transportation-hub/",
+    "published": "2026-11-04T09:04:05Z",
+    "category": "Research",
+    "source": "Industrial Cyber",
+    "sector": "Government",
+    "title": "ESET uncovers Gorbag cyberespionage campaign targeting Ukraine’s administrations, defense sector, transportation hub",
+    "summary": "ESET research describes Gorbag, a previously underreported Russia-aligned cyberespionage actor targeting Ukrainian administrations, defense, and a transportation hub."
+  },
+  {
+    "url": "https://industrialcyber.co/cisa/cisa-urges-critical-infrastructure-owners-to-prioritize-ot-security-operational-continuity-recovery-planning-in-2026-campaign/",
+    "published": "2026-11-03T13:09:58Z",
+    "category": "Policy",
+    "source": "Industrial Cyber",
+    "sector": "Government",
+    "title": "CISA urges critical infrastructure owners to prioritize OT security, operational continuity, recovery planning in 2026 campaign",
+    "summary": "CISA launched its 2026 Critical Infrastructure Security and Resilience campaign, urging owners to prioritize OT security, operational continuity and recovery planning."
+  },
+  {
+    "url": "https://www.helpnetsecurity.com/2026/11/03/node-red-cve-2026-58115-exploitation/",
+    "published": "2026-11-03T12:59:51Z",
+    "category": "Advisory",
+    "source": "Help Net Security",
+    "sector": "Manufacturing",
+    "title": "Attackers exploit critical Node-RED flaw to deploy Linux bot and backdoors (CVE-2026-58115)",
+    "summary": "Attackers are actively exploiting critical authentication flaw CVE-2026-58115 in Node-RED, a tool built into some industrial control products, to deploy Linux bots and backdoors."
+  },
+  {
+    "url": "https://www.infosecurity-magazine.com/news/ncsc-ai-ransomware-threat-uk-cni/",
+    "published": "2026-11-03T11:45:00Z",
+    "category": "Policy",
+    "source": "Infosecurity Magazine",
+    "sector": "Cross-sector",
+    "title": "NCSC Chief Warns of Imminent AI Ransomware Threat to UK Critical Infrastructure",
+    "summary": "UK NCSC chief warns that AI-enabled ransomware could imminently threaten UK critical infrastructure, urging operators to prepare for accelerated attacks."
+  },
+  {
+    "url": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html",
+    "published": "2026-11-03T05:34:41Z",
+    "category": "Advisory",
+    "source": "The Hacker News",
+    "sector": "Manufacturing",
+    "title": "Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors",
+    "summary": "A CVSS 10.0 missing-authentication flaw in Siemens SIMATIC IoT2050 Advanced devices is being actively exploited to run remote code, according to VulnCheck."
+  },
+  {
+    "url": "https://www.accessnewswire.com/newsroom/en/clean-technology/industrial-defender-introduces-a-unified-approach-to-nis2-compliance-and-cyber-res-1245399",
+    "published": "2026-11-02T21:42:00Z",
+    "category": "Technology",
+    "source": "ACCESS Newswire",
+    "sector": "Cross-sector",
+    "title": "Industrial Defender Introduces a Unified Approach to NIS2 Compliance and Cyber Resilience Across Industrial Environments",
+    "summary": "Industrial Defender introduces a unified approach to NIS2 compliance and cyber resilience for industrial environments, combining OT security and regulatory readiness capabilities."
+  },
+  {
+    "url": "https://www.forescout.com/blog/from-supermarkets-to-military-bases-the-cold-chain-cyber-risk-is-heating-up/",
+    "published": "2026-11-02T17:36:36Z",
+    "category": "Incidents",
+    "source": "Forescout Vedere Labs",
+    "sector": "Manufacturing",
+    "title": "From Supermarkets to Military Bases: the Cold Chain Cyber Risk Is Heating Up",
+    "summary": "Attackers repeatedly manipulated connected refrigeration controls at European supermarket chains, altering freezer temperatures and exposing weaknesses in networked OT systems."
+  },
+  {
+    "url": "https://securityaffairs.com/202248/security/hackers-send-fake-nuclear-threat-alerts-to-ukrainian-and-russian-citizens.html",
+    "published": "2026-11-02T10:20:46Z",
+    "category": "Incidents",
+    "source": "Security Affairs",
+    "sector": "Government",
+    "title": "Hackers Send Fake Nuclear Threat Alerts to Ukrainian and Russian Citizens",
+    "summary": "Hackers reportedly compromised Ukrainian and Russian emergency alert apps to push fake air raid and nuclear warnings to citizens, a public safety disruption affecting government warning systems."
+  },
+  {
+    "url": "https://www.rapid7.com/blog/post/etr-additional-ivanti-connect-secure-zero-days-exploited-in-the-wild-cve-2026-111357-cve-2026-118527",
+    "published": "2026-11-02T09:33:26Z",
+    "category": "Advisory",
+    "source": "Rapid7",
+    "sector": "Cross-sector",
+    "title": "Additional Ivanti Connect Secure zero-days exploited in the wild (CVE-2026-111357, CVE-2026-118527)",
+    "summary": "Ivanti released patches for two more Connect Secure remote access gateway zero-days chained in attacks since October 1, expanding exposure for widely deployed edge devices used by industrial and critical infrastructure networks."
+  },
+  {
+    "url": "https://industrialcyber.co/critical-infrastructure/lumen-details-volt-typhoons-silent-train-framework-exploiting-zero-days-to-target-us-critical-infrastructure-sites/",
+    "published": "2026-11-02T09:02:37Z",
+    "category": "Research",
+    "source": "Industrial Cyber",
+    "sector": "Cross-sector",
+    "title": "Lumen details Volt Typhoon’s Silent Train framework exploiting zero-days to target US critical infrastructure sites",
+    "summary": "Lumen Black Lotus Labs published research on Volt Typhoon's Silent Train framework, which exploits zero-days to target US critical infrastructure sites."
+  },
+  {
+    "url": "https://industrialcyber.co/news/axonius-expands-asset-intelligence-platform-to-iot-and-ot-devices-addressing-cyber-physical-security-visibility-gaps/",
+    "published": "2026-11-02T08:51:56Z",
+    "category": "Technology",
+    "source": "Industrial Cyber",
+    "sector": "Cross-sector",
+    "title": "Axonius expands asset intelligence platform to IoT and OT devices, addressing cyber-physical security visibility gaps",
+    "summary": "Axonius made general availability of its Cyber-Physical platform extending asset visibility to IoT and OT devices."
+  },
+  {
+    "url": "https://industrialcyber.co/news/rockwell-automation-expands-secureot-capabilities-to-help-oems-address-emerging-cybersecurity-regulations/",
+    "published": "2026-11-02T08:48:09Z",
+    "category": "Technology",
+    "source": "Industrial Cyber",
+    "sector": "Manufacturing",
+    "title": "Rockwell Automation expands SecureOT capabilities to help OEMs address emerging cybersecurity regulations",
+    "summary": "Rockwell Automation added SecureOT capabilities aimed at helping OEMs meet emerging cybersecurity regulations for industrial equipment."
+  },
+  {
+    "url": "https://english.nv.ua/business/pro-russian-saboteurs-hack-western-plants-50655390.html",
+    "published": "2026-11-02T07:50:00Z",
+    "category": "Incidents",
+    "source": "The New Voice of Ukraine",
+    "sector": "Cross-sector",
+    "title": "Low-skill pro-Russian hackers sabotage Western plants, water utilities — Bloomberg",
+    "summary": "Bloomberg reports low-skill pro-Russian hacktivists have sabotaged Western industrial plants and water utilities, raising operational disruption risk for OT defenders."
+  },
+  {
+    "url": "https://en.sedaily.com/technology/2026/11/01/korea-ranks-5th-globally-in-internet-exposed-industrial",
+    "published": "2026-11-01T09:07:07Z",
+    "category": "Research",
+    "source": "Seoul Economic Daily",
+    "sector": "Cross-sector",
+    "title": "Korea Ranks 5th Globally in Exposed Industrial Control Systems",
+    "summary": "A report ranks South Korea fifth globally for internet-exposed industrial control systems, highlighting real-world exposure of national OT assets to remote attack."
+  },
+  {
+    "url": "https://www.privateequityinternational.com/partners-group-acquires-minority-stake-in-software-provider-nozomi-networks/",
+    "published": "2026-10-31T04:23:32Z",
+    "category": "Technology",
+    "source": "PEI Private Equity",
+    "sector": "Cross-sector",
+    "title": "Partners Group acquires minority stake in software provider Nozomi Networks",
+    "summary": "Private equity firm Partners Group has acquired a minority stake in Nozomi Networks, a leading OT and IoT security vendor, signaling continued investor interest in industrial cybersecurity."
+  },
+  {
+    "url": "https://www.securityinformed.com/amp/news/odva-cip-security-achieves-iec-62443-co-1742534372-ga.1793361210.html",
+    "published": "2026-10-30T13:01:01Z",
+    "category": "Technology",
+    "source": "Security Informed",
+    "sector": "Cross-sector",
+    "title": "CIP Security Gains TÜV Certification For EtherNet/IP | Security News",
+    "summary": "ODVA's CIP Security extension for EtherNet/IP received TÜV certification, providing independent validation of security capabilities for a widely used industrial protocol."
+  },
+  {
+    "url": "https://etedge-insights.com/technology/cyber-security/cisas-new-cyber-strategy-puts-americas-critical-infrastructure-in-the-spotlight/",
+    "published": "2026-10-30T07:25:30Z",
+    "category": "Policy",
+    "source": "ET Edge Insights",
+    "sector": "Government",
+    "title": "CISA’s new cyber strategy puts America’s critical infrastructure in the spotlight",
+    "summary": "CISA's new cybersecurity strategy places critical infrastructure at the center of federal priorities, signaling likely shifts in operator expectations and government support."
+  },
+  {
+    "url": "https://www.greenbuildingafrica.co.za/chilean-cyberattack-keeps-103-mw-solar-plant-and-battery-system-offline-raising-alarm-for-south-african-operators/",
+    "published": "2026-10-30T02:26:17Z",
+    "category": "Incidents",
+    "source": "Green Building Africa",
+    "sector": "Electric",
+    "title": "Chilean cyberattack keeps 103 MW solar plant and battery system offline, raising alarm for South African operators",
+    "summary": "A cyberattack in Chile has kept a 103 MW solar plant and battery storage system offline, prompting warnings for South African renewable energy operators."
+  },
+  {
+    "url": "https://dig.watch/updates/south-korea-inspection-critical-infrastructure",
+    "published": "2026-10-29T17:13:34Z",
+    "category": "Policy",
+    "source": "Digital Watch Observatory",
+    "sector": "Cross-sector",
+    "title": "South Korea begins cybersecurity inspections of 172 critical infrastructure facilities, including telecom networks",
+    "summary": "South Korea has begun cybersecurity inspections of 172 critical infrastructure facilities, including telecom networks, under government oversight."
+  },
+  {
+    "url": "https://pressreleasehub.pa.media/article/rockwell-automation-introduces-secureot-capabilities-to-help-oems-address-emerging-cybersecurity-regulations-87563.html",
+    "published": "2026-10-29T14:04:46Z",
+    "category": "Technology",
+    "source": "Press Release Hub",
+    "sector": "Manufacturing",
+    "title": "Rockwell Automation Introduces SecureOT Capabilities to Help OEMs Address Emerging Cybersecurity Regulations",
+    "summary": "Rockwell Automation has introduced SecureOT capabilities aimed at helping equipment makers meet emerging OT cybersecurity regulations."
+  },
+  {
+    "url": "https://industrialcyber.co/news/omnitrust-launches-gridauth-to-strengthen-device-identity-and-trust-management-across-connected-energy-grids/",
+    "published": "2026-10-29T11:40:35Z",
+    "category": "Technology",
+    "source": "Industrial Cyber",
+    "sector": "Electric",
+    "title": "OmniTrust launches GridAuth to strengthen device identity and trust management across connected energy grids",
+    "summary": "OmniTrust launched GridAuth, a device identity and trust management platform aimed at energy utilities and grid equipment."
+  },
+  {
+    "url": "https://thehackernews.com/2026/10/hackers-exploited-cisco-sd-wan-flaw-to.html",
+    "published": "2026-10-29T08:24:22Z",
+    "category": "Incidents",
+    "source": "The Hacker News",
+    "sector": "Cross-sector",
+    "title": "Hackers Exploited Cisco SD-WAN Flaw to Plant Malware Built to Steal Encryption Keys",
+    "summary": "Attackers exploited a critical Cisco Catalyst SD-WAN flaw to deploy KeyDrift malware that steals traffic encryption keys, according to Cisco Talos."
+  },
+  {
+    "url": "https://www.globalsources.com/sourcing-digest/ssenstone-wins-3-billion-won-in-government-r-d-funding-for-ot-security/?source=GSOLHP_SKC_2",
+    "published": "2026-10-29T05:17:49Z",
+    "category": "Technology",
+    "source": "Global Sources",
+    "sector": "Manufacturing",
+    "title": "SSenStone wins 3 billion won in government R&D funding for OT security",
+    "summary": "SSenStone won 3 billion won in government R&D funding to develop OT security technology."
+  },
+  {
+    "url": "https://meduza.io/en/feature/2026/10/28/russia-linked-hackers-are-exploiting-poorly-secured-industrial-systems-to-sabotage-factories-utilities-and-food-production-across-the-west-bloomberg-reports",
+    "published": "2026-10-28T17:06:00Z",
+    "category": "Incidents",
+    "source": "Meduza",
+    "sector": "Cross-sector",
+    "title": "Russia-linked hackers are exploiting poorly secured industrial systems to sabotage factories, utilities, and food production across the West, Bloomberg reports",
+    "summary": "Bloomberg reports Russia-linked hackers are exploiting poorly secured industrial control systems to disrupt factories, utilities and food production across Western countries."
+  },
+  {
+    "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+    "published": "2026-10-28T16:04:08Z",
+    "category": "Research",
+    "source": "Lumen Technologies",
+    "sector": "Cross-sector",
+    "title": "Silent Train: uncovering Volt Typhoon's operational framework for zero-day exploitation and strategic access",
+    "summary": "Researchers describe a covert, ephemeral network built by the Volt Typhoon China-linked group after US law enforcement disruption, targeting critical infrastructure operators."
+  },
+  {
+    "url": "https://www.cpomagazine.com/cyber-security/safepay-ransomware-breached-over-600-critical-infrastructure-organizations-cisa-warns/",
+    "published": "2026-10-28T16:00:00Z",
+    "category": "Incidents",
+    "source": "CPO Magazine",
+    "sector": "Cross-sector",
+    "title": "SafePay Ransomware Breached Over 600 Critical Infrastructure Organizations, CISA Warns",
+    "summary": "CISA warns that the SafePay ransomware group has breached over 600 critical infrastructure organizations, raising risk of operational disruption for OT-dependent sectors."
+  },
+  {
+    "url": "https://www.securityweek.com/long-hidden-flaws-patched-in-epics-research-facility-control-software/",
+    "published": "2026-10-28T10:48:00Z",
+    "category": "Advisory",
+    "source": "SecurityWeek",
+    "sector": "Government",
+    "title": "Long-Hidden Flaws Patched in EPICS Research Facility Control Software",
+    "summary": "Four EPICS Base control software flaws, found by an autonomous system, were patched; they could let attackers crash processes at particle accelerators and fusion labs."
+  },
+  {
+    "url": "https://www.cisa.gov/news-events/news/cisa-unveils-new-strategy-strengthen-national-cyber-defense-and-critical-infrastructure-security",
+    "published": "2026-10-26T12:00:00Z",
+    "category": "Policy",
+    "source": "CISA",
+    "sector": "Government",
+    "title": "CISA Unveils New Strategy to Strengthen National Cyber Defense and Critical Infrastructure Security",
+    "summary": "CISA released a new national strategy aimed at strengthening cyber defense and critical infrastructure security, setting direction for operators and federal partners."
+  },
+  {
+    "url": "https://industrialcyber.co/transport/us-coast-guard-releases-nvic-02-26-to-guide-maritime-operators-on-cybersecurity-plans-it-and-ot-risk-assessments/",
+    "published": "2026-10-23T12:15:21Z",
+    "category": "Policy",
+    "source": "Industrial Cyber",
+    "sector": "Transportation",
+    "title": "US Coast Guard releases NVIC 02-26 to guide maritime operators on cybersecurity plans, IT and OT risk assessments",
+    "summary": "The US Coast Guard issued NVIC 02-26, guidance for maritime operators on cybersecurity plans and IT/OT risk assessments, relevant to compliance planning for regulated vessels and facilities."
+  },
+  {
+    "url": "https://www.welivesecurity.com/en/eset-research/mythicratatoskr-yggdrasil-enabled-backdoor-deployed-uac0099-sandworm-collaboration/",
+    "published": "2026-10-23T11:11:23Z",
+    "category": "Incidents",
+    "source": "ESET WeLiveSecurity",
+    "sector": "Cross-sector",
+    "title": "MythicRatatoskr: An Yggdrasil-enabled backdoor deployed in a UAC-0099-Sandworm collaboration",
+    "summary": "Sandworm and UAC-0099 carried out a destructive wiper attack on a Ukrainian logistics company in 2025, using a new mesh network backdoor, per ESET research. Shows state actors using OT-adjacent destructive tooling against critical infrastructure supply chains."
+  },
+  {
+    "url": "https://www.forescout.com/blog/cold-chain-open-control-exposed-refrigeration-systems-reveal-global-risk/",
+    "published": "2026-10-22T12:00:15Z",
+    "category": "Research",
+    "source": "Forescout Vedere Labs",
+    "sector": "Healthcare",
+    "title": "Cold Chain, Open Control: Exposed Refrigeration Systems Reveal Global Risk",
+    "summary": "Forescout Vedere Labs analyzes recent physical and financial disruptions at French refrigeration control systems caused without malware, and flags exposed refrigeration controls as a global risk."
+  },
+  {
+    "url": "https://industrialcyber.co/threats-attacks/safepay-ransomware-compromised-600-critical-organizations-worldwide-urge-patching-and-network-defenses/",
+    "published": "2026-10-22T09:03:54Z",
+    "category": "Incidents",
+    "source": "Industrial Cyber",
+    "sector": "Cross-sector",
+    "title": "SafePay ransomware compromised 600 critical organizations worldwide; urge patching and network defenses",
+    "summary": "CISA, FBI and partners warn that SafePay ransomware has compromised about 600 critical infrastructure organizations worldwide, urging patching and stronger network defenses."
+  },
+  {
+    "url": "https://industrialcyber.co/news/accenture-dragos-and-sans-institute-launch-10-million-initiative-to-strengthen-cybersecurity-at-us-utilities/",
+    "published": "2026-10-21T15:54:18Z",
+    "category": "Technology",
+    "source": "Industrial Cyber",
+    "sector": "Electric",
+    "title": "Accenture, Dragos and SANS Institute launch $10 million initiative to strengthen cybersecurity at US utilities",
+    "summary": "Accenture, Dragos and SANS launched a $10M initiative to help under-resourced US utilities strengthen cyber defenses, with free tools, equipment, deployment help and training."
+  },
+  {
+    "url": "https://www.cisa.gov/news-events/news/cisa-fbi-and-partners-warn-organizations-safepay-ransomware-actors-targeting-multiple-critical",
+    "published": "2026-10-21T12:00:00Z",
+    "category": "Advisory",
+    "source": "CISA",
+    "sector": "Cross-sector",
+    "title": "CISA, FBI and Partners Warn Organizations of SafePay Ransomware Actors Targeting Multiple Critical Infrastructure Sectors",
+    "summary": "CISA, FBI and partners issued a joint advisory on SafePay ransomware targeting multiple critical infrastructure sectors, with indicators and mitigations for defenders."
+  }
+];
+var LIVE=['https://otnewswire.com/feed.json','https://raw.githubusercontent.com/flyingmonkey789/ot-news-wire/main/docs/feed.json'];
+var $=function(id){return document.getElementById(id);};
+$('dateline').textContent=new Intl.DateTimeFormat('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}).format(new Date());
+var cur='All', q='', cats, counts;
+function setData(list){
+  DATA=list.slice().sort(function(a,b){return new Date(b.published)-new Date(a.published);});
+  cats=['All']; counts={All:DATA.length};
+  DATA.forEach(function(d){ if(cats.indexOf(d.category)<0) cats.push(d.category); counts[d.category]=(counts[d.category]||0)+1; });
+  if(cats.indexOf(cur)<0) cur='All';
+  $('chips').innerHTML=cats.map(function(c){return '<button type="button" class="nf-chip" data-c="'+c+'" aria-pressed="'+(c===cur)+'">'+c+'<span>'+counts[c]+'</span></button>';}).join('');
+  render(); if(window._edge) window._edge();
+}
+function esc(s){var e=document.createElement('span');e.textContent=s;return e.innerHTML;}
+var dayFmt=new Intl.DateTimeFormat('en-US',{weekday:'long',month:'long',day:'numeric'});
+var timeFmt=new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit'});
+function render(){
+  var items=DATA.filter(function(d){ return (cur==='All'||d.category===cur) && (!q || (d.title+' '+d.summary+' '+d.source+' '+(d.sector||'')).toLowerCase().indexOf(q)>=0); });
+  var h='', last='';
+  items.forEach(function(d){
+    var dt=new Date(d.published), day=dayFmt.format(dt);
+    if(day!==last){ h+='<h2 class="day">'+day+'</h2>'; last=day; }
+    h+='<a class="it" href="'+esc(d.url)+'" target="_blank" rel="noopener"><span class="it-meta"><span class="it-cat">'+esc(d.category)+'</span><span>'+esc(d.source)+'</span>'+(d.cvss?'<span class="it-cvss">CVSS '+esc(d.cvss)+'</span>':'')+'</span><span class="it-t">'+esc(d.title)+'</span><span class="it-s">'+esc(d.summary)+'</span></a>';
+  });
+  $('feed').innerHTML=h; $('empty').hidden=items.length>0;
+}
+$('chips').addEventListener('click',function(e){ var b=e.target.closest('.nf-chip'); if(!b) return; cur=b.getAttribute('data-c'); [].forEach.call(document.querySelectorAll('.nf-chip'),function(x){x.setAttribute('aria-pressed',x===b);}); render(); });
+$('q').addEventListener('input',function(){ q=this.value.trim().toLowerCase(); render(); });
+setData(DATA);
+(function live(i){ if(i>=LIVE.length||!window.fetch) return; fetch(LIVE[i],{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(j){ if(Array.isArray(j)&&j.length) setData(j); else throw 0; }).catch(function(){ live(i+1); }); })(0);
+var sc=$('nfScroll'), ch=$('chips'); function edge(){ sc.classList.toggle('end', ch.scrollLeft+ch.clientWidth>=ch.scrollWidth-2); } window._edge=edge; ch.addEventListener('scroll',edge); ch.addEventListener('wheel',function(e){ if(Math.abs(e.deltaY)>Math.abs(e.deltaX) && ch.scrollWidth>ch.clientWidth){ var before=ch.scrollLeft; ch.scrollLeft+=e.deltaY; if(ch.scrollLeft!==before) e.preventDefault(); } },{passive:false}); window.addEventListener('resize',edge); edge();
+[['openHow','howModal'],['openFollow','followModal']].forEach(function(p){ var d=$(p[1]); $(p[0]).onclick=function(){ d.showModal(); };
+  d.querySelector('[data-close]').onclick=function(){ d.close(); }; d.addEventListener('click',function(e){ if(e.target===d) d.close(); }); });
+$('copyFeed').onclick=function(){ var b=this; (navigator.clipboard?navigator.clipboard.writeText($('feedUrl').textContent):Promise.reject()).then(function(){b.textContent='Copied';},function(){b.textContent='Copy failed';}); setTimeout(function(){b.textContent='Copy';},2000); };
+})();
+</script>
+<script>
+(function(){
+  var d=document.getElementById('subModal');
+  document.getElementById('openSub').addEventListener('click',function(e){ if(!d.showModal) return; e.preventDefault(); d.showModal(); setTimeout(function(){ d.querySelector('input').focus(); },30); });
+  document.getElementById('closeSub').onclick=function(){ d.close(); };
+  d.addEventListener('click',function(e){ if(e.target===d) d.close(); });
+})();
+</script>
+</body>
+</html>

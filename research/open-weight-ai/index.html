@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open-Weight AI Models in Critical Infrastructure — Port 502</title>
+<meta name="description" content="An assessment of the practical opportunities, risks, and sentiment around deploying locally hosted open-weight models within critical industries.">
+<style>
+:root{--text:#000;--ink:#262626;--muted:#525252;--subtle:#737373;--line:#E5E5E5;--fill:#F2F2F2;--surface:#FAFAFA;--r-md:12px;--r-full:999px;
+  --display:"SF Pro Rounded",ui-rounded,system-ui,-apple-system,sans-serif;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#FFFFFF;color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:640px;margin:0 auto;padding:72px 24px 64px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.top-links{display:flex;gap:4px}
+.top-links a{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:var(--r-full);font-size:14px;font-weight:500;color:var(--muted);text-decoration:none}
+.top-links a:hover{background:var(--fill);color:var(--text)}
+.brand,.top-links a{white-space:nowrap}
+.top-links a.cta{margin-left:6px;background:#000;color:#FFFFFF}
+.top-links a.cta:hover{background:var(--ink);color:#FFFFFF}
+html{scroll-behavior:smooth}
+section{scroll-margin-top:24px}
+.brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:18px;font-weight:500;text-decoration:none}
+.badge{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:var(--r-full);padding:1px 8px}
+h1{margin:56px 0 0;font-family:var(--display);font-size:clamp(30px,5vw,40px);line-height:1.12;font-weight:500;letter-spacing:-.01em}
+.dek{margin:18px 0 0;font-size:18px;line-height:1.6;color:var(--muted)}
+.dek a{text-underline-offset:3px;text-decoration-color:#D4D4D4}
+.dek a:hover{text-decoration-color:currentColor}
+.byline{margin:14px 0 0;font-size:15px;color:var(--subtle)}
+.byline a{color:var(--ink);text-underline-offset:3px;text-decoration-color:#D4D4D4}
+.byline a:hover{text-decoration-color:currentColor}
+.hero-btns{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.hb{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 22px;border-radius:var(--r-full);font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap}
+.hb-1{background:#000;color:#FFFFFF}
+.hb-1:hover{background:var(--ink)}
+.hb-2{background:var(--fill);color:var(--text)}
+.hb-2:hover{background:#E5E5E5}
+section{margin-top:64px}
+h2{margin:0 0 16px;font-size:14px;font-weight:500;color:var(--subtle)}
+.feat{display:block;text-decoration:none;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+.feat:hover{border-color:#D4D4D4}
+.feat-img{display:block;aspect-ratio:16/9;background:#7BA7D4 center 60%/cover no-repeat;background-image:url("../../assets/open-weight-ai-cover.jpg");border-bottom:1px solid var(--line)}
+.feat-body{display:block;padding:20px 22px 22px}
+.meta{font-size:13px;color:var(--subtle)}
+.feat-t{display:block;margin-top:6px;font-family:var(--display);font-size:22px;line-height:1.25;font-weight:500}
+.feat-d{display:block;margin-top:8px;color:var(--muted);font-size:15px}
+.feat-cta{display:inline-block;margin-top:14px;font-size:15px;font-weight:500}
+.feat:hover .feat-cta{text-decoration:underline;text-underline-offset:3px}
+.rcs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.rc{display:flex;flex-direction:column}
+.rc-art{position:relative;display:block;aspect-ratio:4/5;border-radius:var(--r-md);overflow:hidden;isolation:isolate}
+.rc-art::before{content:"";position:absolute;inset:-25%;z-index:0;filter:blur(30px);transform:rotate(-8deg)}
+.rc-art::after{content:"";position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;opacity:.18;mix-blend-mode:overlay}
+.rc-tag,.rc-st{position:absolute;z-index:2;display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--r-full);font-size:12px;font-weight:500}
+.rc-tag{left:12px;top:12px;background:rgba(255,255,255,.9);color:var(--ink)}
+.rc-st{left:12px;bottom:12px;background:rgba(0,0,0,.72);color:#FFFFFF}
+.rc-t{margin-top:12px;font-size:15px;font-weight:500;line-height:1.4;color:var(--ink)}
+.g-dusk{background:#B9C3EE}
+.g-dusk::before{background:radial-gradient(50% 50% at 80% 25%, #F6F1FB 0%, rgba(246,241,251,0) 70%), radial-gradient(60% 60% at 20% 80%, #8FB9EE 0%, rgba(143,185,238,0) 70%), conic-gradient(from 120deg at 50% 50%, #CFC6F3, #9FC4F2, #B5E3D8, #CFC6F3)}
+.g-lav{background:#C7D2F6}
+.g-lav::before{background:radial-gradient(60% 55% at 18% 18%, #EEE6FA 0%, rgba(238,230,250,0) 70%), radial-gradient(70% 60% at 85% 75%, #9CCBF5 0%, rgba(156,203,245,0) 70%), linear-gradient(135deg, #DCD6F7 0%, #BBC8F5 50%, #A6CDF4 100%)}
+.g-green{background:#7FB8C8}
+.g-green::before{background:conic-gradient(from 210deg at 55% 45%, #8FCB6A 0deg, #A7D07A 60deg, #7EC4B4 130deg, #5FA8D8 200deg, #3E73D8 260deg, #6C9FE6 320deg, #8FCB6A 360deg)}
+.g-cyan{background:#4F8FD0}
+.g-cyan::before{background:radial-gradient(28% 70% at 80% 55%, #F4FBFB 0%, rgba(244,251,251,0) 70%), radial-gradient(35% 45% at 10% 45%, #9CEBEB 0%, rgba(156,235,235,0) 70%), linear-gradient(120deg, #6FD3E3 0%, #4E8FD3 45%, #3D6DBF 65%, #7FD6E6 100%)}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.list li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.list .t{color:var(--ink)}
+.list .s{flex:none;font-size:13px;color:var(--subtle)}
+.tools{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.tools a{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:15px}
+.tools a span:last-child{color:var(--subtle)}
+.tools a:hover span:first-child{text-decoration:underline;text-underline-offset:3px}
+form{display:flex;gap:8px}
+input[type=email]{flex:1;min-width:0;height:44px;padding:0 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:15px;background:#FFFFFF}
+input[type=email]:focus{outline:2px solid #4E8FD3;outline-offset:1px;border-color:transparent}
+button{height:44px;padding:0 20px;border:0;border-radius:10px;background:#000;color:#FFFFFF;font:inherit;font-size:15px;font-weight:500;cursor:pointer}
+button:hover{background:var(--ink)}
+.sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.sec-head h2{margin:0}
+.ghost{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;border:1px solid var(--line);border-radius:var(--r-full);background:#FFFFFF;color:var(--ink);font-size:13px;font-weight:500}
+.ghost:hover{background:var(--surface);border-color:#D4D4D4}
+.news{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.nw{display:block;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.nw-meta{display:block;font-size:13px;color:var(--subtle)}
+.cat,.cvss{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:var(--r-full);font-size:12px;font-weight:500}
+.cvss{background:#000;color:#FFFFFF}
+.nw-t{display:block;margin-top:4px;font-size:16px;font-weight:500;line-height:1.45;color:var(--text)}
+.nw:hover .nw-t{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.more{display:inline-block;margin-top:16px;font-size:15px;font-weight:500;text-decoration:none}
+.more:hover{text-decoration:underline;text-underline-offset:3px}
+dialog{width:min(520px,calc(100% - 32px));padding:28px;border:1px solid var(--line);border-radius:var(--r-md);color:var(--text)}
+dialog::backdrop{background:rgba(0,0,0,.35)}
+dialog{margin:auto}
+dialog .sub-f{margin-top:20px}
+.dl-head h3{margin:0;font-family:var(--display);font-size:22px;line-height:1.25;font-weight:500}
+.x{border-radius:var(--r-full)}
+.dl-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.dl-head h3{margin:0;font-family:var(--display);font-size:22px;line-height:1.25;font-weight:500}
+.x{width:36px;height:36px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:var(--fill);color:var(--ink)}
+.x:hover{background:#E5E5E5}
+.dl-sub{margin:6px 0 0;color:var(--subtle);font-size:15px}
+.opt{margin-top:20px;padding:18px;border:1px solid var(--line);border-radius:var(--r-md)}
+.opt h4{margin:0;display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500}
+.opt p{margin:8px 0 0;font-size:14px;color:var(--muted)}
+.feed{margin-top:12px;display:flex;align-items:center;gap:8px;padding:6px 6px 6px 14px;border:1px solid var(--line);border-radius:var(--r-full);background:var(--surface)}
+.feed code{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--mono);font-size:12px;color:var(--ink)}
+.feed button{height:30px;padding:0 14px;font-size:13px}
+.paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.path{display:flex;flex-direction:column;padding:22px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface);text-decoration:none}
+.path:hover{border-color:#D4D4D4;background:#FFFFFF}
+.path-t{font-family:var(--display);font-size:20px;font-weight:500;line-height:1.25}
+.path-d{margin-top:8px;font-size:15px;line-height:1.55;color:var(--muted)}
+.path-go{margin-top:auto;padding-top:18px;font-size:14px;font-weight:500;color:var(--text)}
+.path:hover .path-go{text-decoration:underline;text-underline-offset:3px}
+.sub-t{margin:0;font-family:var(--display);font-size:20px;line-height:1.25;font-weight:500;color:var(--text)}
+.sub-n{margin:12px 0 0;font-size:14px;line-height:1.5;color:var(--subtle)}
+.sub-f{margin-top:16px;display:flex;align-items:center;gap:8px}
+.sub-f input[type=email]{flex:1;min-width:0;height:44px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:#FFFFFF;font-size:15px}
+.sub-f input[type=email]:focus{outline:none;border-color:#A3A3A3}
+.sub-f button{flex:none;height:44px;padding:0 20px;border-radius:10px}
+.note{color:#A3A3A3;margin:16px 0 0;line-height:1.2}
+.note{margin:10px 0 0;font-size:13px;color:var(--subtle)}
+.about p{margin:0 0 14px;color:var(--muted);font-size:15px}
+.about p:last-child{margin-bottom:0}
+footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--subtle)}
+footer a{text-decoration:none}
+.f-links{display:flex;gap:20px}
+footer > span{white-space:nowrap}
+footer a:hover{text-decoration:underline}
+@media (max-width:520px){
+  .paths{grid-template-columns:1fr}
+  .rcs{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:62%;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 4px;scrollbar-width:none}
+  .rcs::-webkit-scrollbar{display:none}
+  .rc{scroll-snap-align:start}
+}
+@media (max-width:370px){
+  .rp{grid-template-columns:80px minmax(0,1fr)}
+  .rp-t{font-size:15px}
+}
+@media (max-width:440px){
+  footer{flex-direction:column;gap:10px}
+  .hb{flex:1 1 0;padding:0 12px}
+  .top-links a:not(.cta){display:none}
+}
+@media (max-width:520px){
+  .top-links a{padding:0 10px}
+  .top-links a.cta{margin-left:2px}
+  .wrap{padding:48px 20px 48px}
+  h1{margin-top:40px}
+  .dek{font-size:17px}
+  section{margin-top:52px}
+  form{flex-direction:column}
+  button{width:100%}
+  .sub-f{flex-direction:row}
+  .sub-f button{width:auto;padding:0 14px}
+  .sub-f input[type=email]{padding:0 12px;font-size:14px}
+  .list li{flex-direction:column;gap:2px}
+  .feed button{width:auto}
+  .x{width:36px}
+}
+
+/* research page */
+.top-links a[aria-current="page"]{color:var(--text)}
+.fl{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.fl-c{height:36px;padding:0 16px;border:1px solid var(--line);border-radius:var(--r-full);background:#FFFFFF;color:var(--muted);font-size:14px;font-weight:500}
+.fl-c:hover{border-color:#D4D4D4;color:var(--text)}
+.fl-c[aria-pressed="true"]{background:#000;border-color:#000;color:#FFFFFF}
+.rps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+.rp{display:flex;flex-direction:column}
+.rp[hidden]{display:none}
+.rp-art{position:relative;display:block;aspect-ratio:4/3;border-radius:var(--r-md);overflow:hidden;isolation:isolate}
+.rp-art::before{content:"";position:absolute;inset:-25%;z-index:0;filter:blur(30px);transform:rotate(-8deg)}
+.rp-art::after{content:"";position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;opacity:.18;mix-blend-mode:overlay}
+.rp-tag{position:absolute;left:12px;top:12px;z-index:2;display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--r-full);background:rgba(255,255,255,.9);color:var(--ink);font-size:12px;font-weight:500}
+.rp-body{display:flex;flex-direction:column}
+.rp .meta{margin-top:14px}
+.rp-t{margin-top:6px;font-family:var(--display);font-size:18px;line-height:1.3;font-weight:500}
+.rp-d{margin-top:6px;font-size:14px;line-height:1.55;color:var(--muted)}
+.empty{margin:0;font-size:15px;color:var(--subtle)}
+.grp[hidden]{display:none}
+.g-lav{background:#C7D2F6}
+.g-lav::before{background:radial-gradient(60% 55% at 18% 18%, #EEE6FA 0%, rgba(238,230,250,0) 70%), radial-gradient(70% 60% at 85% 75%, #9CCBF5 0%, rgba(156,203,245,0) 70%), linear-gradient(135deg, #DCD6F7 0%, #BBC8F5 50%, #A6CDF4 100%)}
+.g-green{background:#7FB8C8}
+.g-green::before{background:conic-gradient(from 210deg at 55% 45%, #8FCB6A 0deg, #A7D07A 60deg, #7EC4B4 130deg, #5FA8D8 200deg, #3E73D8 260deg, #6C9FE6 320deg, #8FCB6A 360deg)}
+.g-cyan{background:#4F8FD0}
+.g-cyan::before{background:radial-gradient(28% 70% at 80% 55%, #F4FBFB 0%, rgba(244,251,251,0) 70%), radial-gradient(35% 45% at 10% 45%, #9CEBEB 0%, rgba(156,235,235,0) 70%), linear-gradient(120deg, #6FD3E3 0%, #4E8FD3 45%, #3D6DBF 65%, #7FD6E6 100%)}
+.g-mint{background:#A9DDD0}
+.g-mint::before{background:radial-gradient(55% 60% at 80% 20%, #E9FBF3 0%, rgba(233,251,243,0) 70%), radial-gradient(60% 55% at 15% 85%, #7FC9C0 0%, rgba(127,201,192,0) 70%), linear-gradient(150deg, #CFEFE2 0%, #9ED8CC 55%, #7BB8E0 100%)}
+.g-cobalt{background:#3E5FB8}
+.g-cobalt::before{background:radial-gradient(40% 50% at 25% 30%, #8FB4F5 0%, rgba(143,180,245,0) 70%), radial-gradient(45% 55% at 80% 80%, #6FD0C8 0%, rgba(111,208,200,0) 70%), linear-gradient(140deg, #2F4FA6 0%, #4C72D6 55%, #5FB7D4 100%)}
+@media (max-width:520px){
+  .rps{grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .rp{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .rp-art{aspect-ratio:1/1;border-radius:10px}
+  .rp-tag{display:none}
+  .rp .meta{margin-top:0}
+  .rp-t{font-size:16px}
+  .rp-d{display:none}
+}
+
+/* square variant */
+*,*::before,*::after{border-radius:0 !important}
+
+/* report page */
+.crumbs{margin:56px 0 0;display:flex;gap:8px;font-size:14px;color:var(--subtle)}
+.crumbs a{text-decoration:none}
+.crumbs a:hover{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+h1.r-title{margin-top:14px}
+.r-sub{margin:10px 0 0;font-family:var(--display);font-size:22px;line-height:1.3;font-weight:500;color:var(--muted)}
+.r-meta{margin:16px 0 0;font-size:14px;color:var(--subtle)}
+.ai-bar{margin-top:28px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.ai-label{font-size:14px;font-weight:500;color:var(--ink)}
+.ai-btns{display:flex;flex-wrap:wrap;gap:8px}
+.ai-btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border:1px solid var(--line);font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;background:#FFFFFF}
+.ai-btn:hover{border-color:#A3A3A3;color:var(--text)}
+.r-cover{margin-top:32px;border:0 !important}
+.toc{margin-top:40px;border:1px solid var(--line);background:var(--surface)}
+.toc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-size:14px;font-weight:500}
+.toc summary::-webkit-details-marker{display:none}
+.toc summary::after{content:"+";font-size:18px;color:var(--subtle)}
+.toc[open] summary::after{content:"–"}
+.toc ol{list-style:none;margin:0;padding:0 18px 10px}
+.toc li a{display:flex;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:15px;color:var(--ink);text-decoration:none}
+.toc li a span{font-family:var(--mono);font-size:12px;color:var(--subtle);padding-top:2px}
+.toc li a:hover{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+.r-body{margin-top:8px}
+.r-sec{margin-top:64px;scroll-margin-top:24px}
+.r-sec .r-num{margin:0;font-family:var(--mono);font-size:12px;line-height:1.4;color:var(--subtle)}
+.r-sec h2{margin:6px 0 20px;font-family:var(--display);font-size:28px;line-height:1.2;font-weight:500;color:var(--text)}
+.r-sec p{margin:0 0 18px;font-size:17px;line-height:1.75;color:var(--ink)}
+.r-sec strong{font-weight:600;color:var(--text)}
+.r-define{padding:16px 20px;border-left:2px solid var(--text);background:var(--surface);font-size:16px !important}
+.cite{display:inline-flex;align-items:center;height:20px;padding:0 7px;margin:0 2px;border:1px solid var(--line);background:var(--surface);font-family:var(--mono);font-size:11px;line-height:1;color:var(--muted);vertical-align:2px;white-space:nowrap}
+.takeaways{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--line)}
+.takeaways li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:8px;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;color:var(--ink)}
+.tk-num,.ctl-num{font-family:var(--mono);font-size:12px;color:var(--subtle);padding-top:4px}
+.r-stats{margin:8px 0 26px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.r-stat{display:flex;flex-direction:column;padding:18px;border:1px solid var(--line);background:var(--surface)}
+.r-stat-n{font-family:var(--display);font-size:32px;line-height:1;font-weight:500;color:var(--text)}
+.r-stat-l{margin-top:10px;font-size:14px;line-height:1.45;color:var(--ink)}
+.r-stat-s{margin-top:auto;padding-top:12px;font-family:var(--mono);font-size:11px;color:var(--subtle)}
+.controls{list-style:none;margin:8px 0 0;padding:0;border-top:1px solid var(--line)}
+.controls li{display:grid;grid-template-columns:40px 150px minmax(0,1fr);gap:8px 12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.ctl-name{font-size:16px;font-weight:600;color:var(--text)}
+.ctl-desc{font-size:15px;line-height:1.6;color:var(--ink)}
+.r-src-label{margin:28px 0 10px !important;font-size:14px !important;font-weight:500;color:var(--subtle) !important}
+.r-sources{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.r-sources li{display:inline-flex;align-items:center;height:28px;padding:0 10px;border:1px solid var(--line);font-size:13px;color:var(--muted)}
+.r-body + .sub, main > .sub{margin-top:72px;padding-top:40px;border-top:1px solid var(--line)}
+@media (max-width:520px){
+  .crumbs{margin-top:40px}
+  .r-sub{font-size:19px}
+  .ai-bar{flex-direction:column;align-items:flex-start}
+  .r-sec{margin-top:52px}
+  .r-sec h2{font-size:24px}
+  .r-sec p{font-size:16px}
+  .r-stats{grid-template-columns:1fr}
+  .controls li{grid-template-columns:32px minmax(0,1fr)}
+  .ctl-desc{grid-column:2}
+  .takeaways li{grid-template-columns:32px minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top">
+    <a class="brand" href="../../">Port 502 Research</a>
+    <div class="top-links"><a href="../../feed/">Live Feed</a><a href="../../research/" aria-current="page">Research</a><a class="cta" href="#subscribe" id="openSub" aria-haspopup="dialog">Subscribe</a></div>
+  </nav>
+
+  <p class="crumbs"><a href="../../research/">Research</a><span>/</span><span>Report</span></p>
+  <h1 class="r-title">Open-Weight AI Models in Critical Infrastructure</h1>
+  <p class="r-sub">Trends, opportunities, risks, and security implications</p>
+  <p class="dek">An assessment of the practical opportunities, risks, and sentiment around deploying locally hosted open-weight models within critical industries.</p>
+  <p class="r-meta">Risk · November 2026 · 7 min read</p>
+
+  <div class="ai-bar" role="group" aria-label="Summarize this report with an AI assistant">
+    <span class="ai-label">Summarize with AI</span>
+    <div class="ai-btns">
+      <a class="ai-btn" data-ai="claude" href="https://claude.ai/new" target="_blank" rel="noopener">Claude<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+      <a class="ai-btn" data-ai="chatgpt" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+      <a class="ai-btn" data-ai="copilot" href="https://copilot.microsoft.com/" target="_blank" rel="noopener">Copilot<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+    </div>
+  </div>
+
+  <span class="feat-img r-cover" role="img" aria-label="A transmission tower and power lines on a green hillside under a blue sky"></span>
+
+  <details class="toc" open>
+    <summary>Contents</summary>
+    <ol><li><a href="#summary"><span>01</span>Executive summary</a></li><li><a href="#trends"><span>02</span>Trends</a></li><li><a href="#opportunities"><span>03</span>Opportunities</a></li><li><a href="#risks"><span>04</span>Risks</a></li><li><a href="#security"><span>05</span>Security implications</a></li><li><a href="#sentiment"><span>06</span>Practitioner sentiment</a></li><li><a href="#methodology"><span>07</span>Methodology</a></li></ol>
+  </details>
+
+  <article class="r-body">
+        <section id="summary" class="r-sec">
+          <p class="r-num">01</p>
+          <h2>Executive summary</h2>
+          <p>As critical industries undergo continued modernization efforts, the evaluation of secure artificial intelligence adoption is a growing concern. One of the leading routes for bringing AI securely into critical infrastructure is through the use of open-weight, locally hosted models.</p>
+          <p class="r-define"><strong>Open-weight models</strong> are AI models whose trained parameters are published for anyone to download, so operators can run, inspect, and fine-tune them on their own hardware instead of relying on a vendor’s cloud.</p>
+          <p>Through the implementation of these models, teams unable or unwilling to send operational data to a public cloud can now run capable models on hardware they own, inside networks they control.</p>
+          <p>In 2026, deployments across electric power, nuclear, and manufacturing moved from trials and proofs of concept into daily use; however, nearly all of them stopped short of enabling autonomous action. The primary cited use case to date has been decision support: reading documents, explaining alarms, and assisting analysts rather than acting on physical processes.</p>
+          <p>Operators say the largest opportunity for open-weight models lies in work that cloud AI is not permitted to reach, such as air-gapped sites, regulated records, and security telemetry that cannot leave the plant. The biggest concern from end users is not misoperation or hallucination, since use cases are limited to advisory tasks, but rather that local AI introduces an asset type that teams do not yet know how to govern.</p>
+          <p>Security teams evaluating open-weight models should treat every locally hosted deployment as an OT-adjacent asset that is inventoried, sourced from a trusted publisher, segmented, monitored, and limited to advisory roles until controls mature.</p>
+          <ol class="takeaways">
+            <li><span class="tk-num">01</span><span><strong>Local is the default, not the exception.</strong> Compliance rules and disconnected networks push critical infrastructure toward on-premises AI by design rather than preference.</span></li>
+            <li><span class="tk-num">02</span><span><strong>Value sits beside the control loop.</strong> Production use cases are read-only or advisory, with federal guidance steering operators to keep it that way.</span></li>
+            <li><span class="tk-num">03</span><span><strong>On-premises is not a security control.</strong> Self-hosting shifts risk from the vendor to the operator, who now owns a model supply chain and an inference stack few OT teams have defended before.</span></li>
+          </ol>
+        </section>
+        <section id="trends" class="r-sec">
+          <p class="r-num">02</p>
+          <h2>Trends</h2>
+          <p>Across the broader market, open-weight adoption accelerated sharply in 2026: 42% of enterprises ran these models in production by September, up from 31% in July <span class="cite">Futurum</span>. Critical infrastructure follows a narrower, more cautious version of that curve, and adoption varies widely by sector.</p>
+          <div class="r-stats">
+            <div class="r-stat"><span class="r-stat-n">42%</span><span class="r-stat-l">of enterprises running open-weight models in production, Sept 2026</span><span class="r-stat-s">Futurum</span></div>
+            <div class="r-stat"><span class="r-stat-n">5%</span><span class="r-stat-l">of OT security teams with agentic AI in production</span><span class="r-stat-s">Nozomi / Takepoint</span></div>
+            <div class="r-stat"><span class="r-stat-n">47%</span><span class="r-stat-l">of production users call country of origin a major or deciding factor</span><span class="r-stat-s">Futurum</span></div>
+          </div>
+          <p><strong>Energy leads.</strong> EPRI’s Power Chat runs OpenAI’s open-weight gpt-oss-120b on a single deskside system and works on fully air-gapped networks <span class="cite">NVIDIA</span>. At Diablo Canyon, on-site generative AI searches a library of more than 9,000 operating procedures <span class="cite">Utility Dive</span>. For electric utilities, NERC CIP monitoring requirements make cloud AI connections an audit liability, which reinforces the on-premises path.</p>
+          <p><strong>Manufacturing adopts through vendors.</strong> OT suppliers are packaging models into their products. Siemens’ Industrial Copilot for Operations runs at the edge on an industrial PC with no internet connection.</p>
+          <p><strong>Water and transportation lag.</strong> Few public deployments exist in either sector. Where AI appears, it tends to arrive inside security tools rather than operator-built systems.</p>
+          <p>The use cases moving into production are document search, compliance evidence gathering, and operator assistance. Autonomous agents remain early: only 5% of OT security teams report agentic AI in production. Model origin is also tightening as a filter, with 47% of production users now calling country of origin a major or deciding factor.</p>
+        </section>
+        <section id="opportunities" class="r-sec">
+          <p class="r-num">03</p>
+          <h2>Opportunities</h2>
+          <p>Locally hosted models create the most value where data cannot leave, networks cannot reach, and a human stays in the loop.</p>
+          <p><strong>Air-gapped analysis.</strong> Nuclear plants, substations, and pipeline control centers often have no outbound internet path. A local model brings search, summarization, and question answering to these sites for the first time, without opening a new connection to the outside world.</p>
+          <p><strong>Maintenance and operator support.</strong> Models that explain error codes, surface the right procedure, and draft shift handovers shorten downtime and help close the gap left by retiring engineers. Running at the edge also removes latency and cloud dependency from the plant floor.</p>
+          <p><strong>On-premises data handling.</strong> Compliance evidence, asset inventories, and OT security telemetry are among an operator’s most sensitive records. Local models can process them without third-party exposure, and defenders can tune them to answer the security questions that frontier cloud models sometimes refuse. Dragos reports that pairing AI with OT context cut assessments from two to three weeks to two to three days <span class="cite">Dragos</span>.</p>
+          <p>The economics also favor local deployment for routine, high-volume work, with no per-token bill and no vendor deprecations forcing a safety case to be re-validated.</p>
+        </section>
+        <section id="risks" class="r-sec">
+          <p class="r-num">04</p>
+          <h2>Risks</h2>
+          <p>The best-documented failures today are ordinary configuration and supply-chain problems, not sophisticated model sabotage.</p>
+          <div class="r-stats">
+            <div class="r-stat"><span class="r-stat-n">~175K</span><span class="r-stat-l">publicly reachable Ollama servers, Jan 2026</span><span class="r-stat-s">SentinelOne / Censys</span></div>
+            <div class="r-stat"><span class="r-stat-n">~45%</span><span class="r-stat-l">of popular Hugging Face models still use pickle</span><span class="r-stat-s">arXiv</span></div>
+            <div class="r-stat"><span class="r-stat-n">12x</span><span class="r-stat-l">more likely to follow hijacking instructions (DeepSeek-based agents)</span><span class="r-stat-s">NIST</span></div>
+          </div>
+          <p><strong>Exposed infrastructure.</strong> Researchers counted roughly 175,000 publicly reachable Ollama servers in January 2026, and nearly half had tool-calling enabled <span class="cite">SentinelOne / Censys</span>. A model built to run privately becomes an open API with a single misconfigured setting.</p>
+          <p><strong>Model integrity and supply chain.</strong> About 45% of popular Hugging Face models still use pickle, a file format that can execute code when loaded <span class="cite">arXiv</span>. More subtle are hidden backdoors: research shows triggered behaviors can survive standard safety training <span class="cite">Anthropic et al.</span>, and no available method can yet prove a model is clean.</p>
+          <p><strong>Data leakage, real and perceived.</strong> Running a model locally does not send data back to its developer, so the leakage fear attached to foreign models is partly misplaced. The policy risk is real, though. In October 2026, DHS ordered federal civilian agencies to remove DeepSeek, including third-party products built on it.</p>
+          <p><strong>Unsafe automation.</strong> Risk rises sharply once models can take actions. NIST testing found DeepSeek-based agents 12 times more likely than leading U.S. models to follow hijacking instructions <span class="cite">HPCwire</span>, and it describes hijacking resistance as unsolved across all frontier models.</p>
+          <p>Adversaries benefit as well. Guardrail-stripped variants of new open models appear within hours of release, and in a Mexican water utility intrusion, an AI model pointed an IT-only attacker toward the SCADA interface without being asked.</p>
+        </section>
+        <section id="security" class="r-sec">
+          <p class="r-num">05</p>
+          <h2>Security implications</h2>
+          <p>The controls that protect OT today, including visibility, segmentation, and secure remote access, apply directly to local AI. What changes is that the model itself must now be managed as an asset. Dragos estimates that fewer than 10% of OT environments worldwide have visibility and monitoring in place, so a model inside an unmonitored network adds one more unmonitored system with an API.</p>
+          <p>Before deployment, operators should put five controls in place:</p>
+          <ol class="controls">
+            <li><span class="ctl-num">01</span><span class="ctl-name">Governance</span><span class="ctl-desc">Assign an owner and a written purpose to every model, and record each one in the asset inventory.</span></li>
+            <li><span class="ctl-num">02</span><span class="ctl-name">Provenance</span><span class="ctl-desc">Accept only models from known publishers, in safe formats such as safetensors, with verified hashes. Record the publisher’s jurisdiction and treat it as a procurement criterion.</span></li>
+            <li><span class="ctl-num">03</span><span class="ctl-name">Segmentation</span><span class="ctl-desc">Keep inference servers off routable paths to the internet and outside control-system zones, with authentication in front of every endpoint.</span></li>
+            <li><span class="ctl-num">04</span><span class="ctl-name">Bounded autonomy</span><span class="ctl-desc">Follow CISA’s May 2026 guidance to begin with low-risk, non-sensitive use cases and avoid broad access to critical systems <span class="cite">CDO Magazine</span>.</span></li>
+            <li><span class="ctl-num">05</span><span class="ctl-name">Monitoring</span><span class="ctl-desc">Log prompts, tool calls, and model updates. Because no model can yet be proven clean, the defensible boundary is what it is permitted to do and what it actually did.</span></li>
+          </ol>
+        </section>
+        <section id="sentiment" class="r-sec">
+          <p class="r-num">06</p>
+          <h2>Practitioner sentiment</h2>
+          <p>Across practitioners, vendors, and investors, the mood is a cautious yes. Each group wants AI in critical infrastructure, and each wants a human between the model and the physical process.</p>
+          <div class="r-stats">
+            <div class="r-stat"><span class="r-stat-n">87.7%</span><span class="r-stat-l">of OT security respondents using, evaluating, or planning AI</span><span class="r-stat-s">Nozomi / Takepoint</span></div>
+            <div class="r-stat"><span class="r-stat-n">7.9%</span><span class="r-stat-l">have deployed AI across multiple functions</span><span class="r-stat-s">Nozomi / Takepoint</span></div>
+            <div class="r-stat"><span class="r-stat-n">10%</span><span class="r-stat-l">of in-house open-weight builds report sustained ROI at scale</span><span class="r-stat-s">Futurum</span></div>
+          </div>
+          <p><strong>Practitioners are experimenting, but few have scaled.</strong> In the 2026 Nozomi/Takepoint survey, 87.7% of OT security respondents were using, evaluating, or planning AI, but only 7.9% had deployed it across multiple functions <span class="cite">Nozomi Networks</span>. Among utilities, 41% cite cybersecurity as a top obstacle to AI adoption, yet 87% expect AI to strengthen their security posture <span class="cite">Cisco</span>. Nuclear operators draw the line explicitly: Atomic Canyon’s CEO has said he does not want AI running a nuclear plant “right now” <span class="cite">CalMatters</span>.</p>
+          <p><strong>Vendors are concerned but measured.</strong> Dragos sees no evidence that AI will independently take down infrastructure. It does expect AI to draw more IT attackers into OT and to shrink exploit development from days toward minutes.</p>
+          <p><strong>Investors are betting on infrastructure.</strong> Futurum’s data suggests most of the value is flowing to the vendors that sell compute and platforms, while in-house open-weight builds report sustained ROI at scale in only 10% of cases.</p>
+        </section>
+        <section id="methodology" class="r-sec">
+          <p class="r-num">07</p>
+          <h2>Methodology</h2>
+          <p>This edition was built with the 502 Engine from 37 public sources published between January 2024 and October 2026. They fall into five groups: threat research from Dragos, ReversingLabs, SentinelOne, Censys, and Cisco; government guidance and evaluations from CISA, NSA, NIST CAISI, DHS, and the EU; analyst and market surveys from Futurum (N=200 enterprises), Nozomi Networks with Takepoint Research, Cisco (175+ utilities), and IBM; peer-reviewed and preprint research; and published deployment case studies.</p>
+          <p><strong>Known limitations.</strong> Most survey data skews North American and is vendor-sponsored. Public deployment case studies favor announced successes, so failed pilots are underrepresented. Model capabilities and policy are both changing month to month, and all figures reflect conditions as of November 2026.</p>
+          <p class="r-src-label">KEY SOURCES</p>
+          <ul class="r-sources"><li>Futurum</li><li>Nozomi / Takepoint</li><li>Dragos</li><li>NIST CAISI</li><li>CISA AI-in-OT principles</li><li>CISA agentic AI guidance</li><li>DHS DeepSeek order</li><li>EPRI Power Chat</li><li>Diablo Canyon</li><li>Siemens Industrial Copilot</li><li>Exposed Ollama servers</li><li>Pickle on Hugging Face</li><li>Sleeper Agents</li><li>Cisco State of Industrial AI</li><li>CalMatters</li></ul>
+        </section>
+    </article>
+
+  <section id="subscribe" class="sub">
+    <h2 class="sub-t">Get new research by email</h2>
+    <form class="sub-f" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed';">
+      <input type="email" required placeholder="you@company.com" aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="sub-n">One email when new research is published. Unsubscribe anytime.</p>
+  </section>
+
+  <footer>
+    <span>© 2026 Port 502</span>
+    <nav class="f-links"><a href="../../research/">Research</a><a href="../../feed/">News</a><a href="https://www.linkedin.com/in/kschewitz/">LinkedIn</a></nav>
+  </footer>
+</main>
+<dialog id="subModal" aria-labelledby="subTitle">
+  <div class="dl-head"><h3 id="subTitle">Get new research by email</h3><button type="button" class="x" id="closeSub" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <form class="sub-f" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed';">
+    <input type="email" required placeholder="you@company.com" aria-label="Email address">
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="sub-n">One email when new research is published. Unsubscribe anytime.</p>
+</dialog>
+<script>
+(function(){
+  var d=document.getElementById('subModal');
+  document.getElementById('openSub').addEventListener('click',function(e){ if(!d.showModal) return; e.preventDefault(); d.showModal(); setTimeout(function(){ d.querySelector('input').focus(); },30); });
+  document.getElementById('closeSub').onclick=function(){ d.close(); };
+  d.addEventListener('click',function(e){ if(e.target===d) d.close(); });
+})();
+</script>
+<script>
+(function(){
+  var CANONICAL = 'https://port502.com/research/open-weight-ai/';
+  var url = /^https?:/.test(location.protocol) ? location.href.split('#')[0] : CANONICAL;
+  var prompt = 'Summarize the Port 502 report "Open-Weight AI Models in Critical Infrastructure: Trends, Opportunities, Risks, and Security Implications" at ' + url +
+    '. Give me a short executive summary, the 5 most important findings, and the key security recommendations for organizations running operational technology. Keep it concise and cite sections from the report where possible.';
+  var q = encodeURIComponent(prompt);
+  var targets = {
+    claude: 'https://claude.ai/new?q=' + q,
+    chatgpt: 'https://chatgpt.com/?q=' + q,
+    copilot: 'https://copilot.microsoft.com/?q=' + q
+  };
+  document.querySelectorAll('.ai-btn[data-ai]').forEach(function(a){
+    var t = targets[a.getAttribute('data-ai')]; if (t) a.href = t;
+  });
+})();
+</script>
+</body>
+</html>
