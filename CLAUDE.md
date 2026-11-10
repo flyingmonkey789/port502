@@ -51,8 +51,9 @@ The look is minimal, single-column, editorial. Follow these unless asked otherwi
   gaps (e.g. heading → field → note at 16px). Left edges align exactly.
 - **Nav (top bar, every page):** "Port 502 Research" left; right: Live Feed,
   Research, and a black **Subscribe** button that opens a centered modal.
-  The current page link gets `aria-current="page"`. Under 440px only the brand
-  and Subscribe show.
+  The current page link gets `aria-current="page"`. Under 440px the text links
+  hide and a square menu button (`#menuBtn`) opens an accordion (`#mnav`) with
+  Home, Live Feed, Research. Update the menu on every page when adding pages.
 - **Footer:** "© 2026 Port 502" left; Research, News, LinkedIn right.
 - Keep things simple: Kamden prefers fewer elements, plain copy, no busy meta lines.
 
