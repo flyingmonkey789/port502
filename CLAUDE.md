@@ -54,8 +54,8 @@ The look is minimal, single-column, editorial. Follow these unless asked otherwi
   The current page link gets `aria-current="page"`. Under 440px the text links
   hide and a square menu button (`#menuBtn`) opens an accordion (`#mnav`) with
   Home, Live Feed, Research. Update the menu on every page when adding pages.
-- **Footer:** "© 2026 Port 502" left; Research, News, LinkedIn and a small
-  outlined **Contact** button right. Contact opens a modal form (`#contactModal`).
+- **Footer:** "© 2026 Port 502" left; Research, News, LinkedIn, Contact right
+  (Contact is a `<button>` styled exactly like the footer links). Contact opens a modal form (`#contactModal`).
 - Keep things simple: Kamden prefers fewer elements, plain copy, no busy meta lines.
 
 ## Home page (top to bottom)
