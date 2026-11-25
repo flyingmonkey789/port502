@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OT Security Skill Trends 2026 — Port 502</title>
+<meta name="description" content="An analysis of 500 U.S. OT and ICS security job postings: who is hiring, which skills employers ask for, and what they pay.">
+<style>
+:root{--text:#000;--ink:#262626;--muted:#525252;--subtle:#737373;--line:#E5E5E5;--fill:#F2F2F2;--surface:#FAFAFA;--r-md:12px;--r-full:999px;
+  --display:"SF Pro Rounded",ui-rounded,system-ui,-apple-system,sans-serif;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#FFFFFF;color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:640px;margin:0 auto;padding:72px 24px 64px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.top-links{display:flex;gap:4px}
+.top-links a{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:var(--r-full);font-size:14px;font-weight:500;color:var(--muted);text-decoration:none}
+.top-links a:hover{background:var(--fill);color:var(--text)}
+.brand,.top-links a{white-space:nowrap}
+.top-links a.cta{margin-left:6px;background:#000;color:#FFFFFF}
+.top-links a.cta:hover{background:var(--ink);color:#FFFFFF}
+html{scroll-behavior:smooth}
+section{scroll-margin-top:24px}
+.brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:18px;font-weight:500;text-decoration:none}
+.badge{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:var(--r-full);padding:1px 8px}
+h1{margin:56px 0 0;font-family:var(--display);font-size:clamp(30px,5vw,40px);line-height:1.12;font-weight:500;letter-spacing:-.01em}
+.dek{margin:18px 0 0;font-size:18px;line-height:1.6;color:var(--muted)}
+.dek a{text-underline-offset:3px;text-decoration-color:#D4D4D4}
+.dek a:hover{text-decoration-color:currentColor}
+.byline{margin:14px 0 0;font-size:15px;color:var(--subtle)}
+.byline a{color:var(--ink);text-underline-offset:3px;text-decoration-color:#D4D4D4}
+.byline a:hover{text-decoration-color:currentColor}
+.hero-btns{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.hb{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 22px;border-radius:var(--r-full);font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap}
+.hb-1{background:#000;color:#FFFFFF}
+.hb-1:hover{background:var(--ink)}
+.hb-2{background:var(--fill);color:var(--text)}
+.hb-2:hover{background:#E5E5E5}
+section{margin-top:64px}
+h2{margin:0 0 16px;font-size:14px;font-weight:500;color:var(--subtle)}
+.feat{display:block;text-decoration:none;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+.feat:hover{border-color:#D4D4D4}
+.feat-img{display:block;aspect-ratio:16/9;background:#7BA7D4 center 60%/cover no-repeat;background-image:url("../../assets/open-weight-ai-cover.jpg");border-bottom:1px solid var(--line)}
+.feat-body{display:block;padding:20px 22px 22px}
+.meta{font-size:13px;color:var(--subtle)}
+.feat-t{display:block;margin-top:6px;font-family:var(--display);font-size:22px;line-height:1.25;font-weight:500}
+.feat-d{display:block;margin-top:8px;color:var(--muted);font-size:15px}
+.feat-cta{display:inline-block;margin-top:14px;font-size:15px;font-weight:500}
+.feat:hover .feat-cta{text-decoration:underline;text-underline-offset:3px}
+.rcs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.rc{display:flex;flex-direction:column}
+.rc-art{position:relative;display:block;aspect-ratio:4/5;border-radius:var(--r-md);overflow:hidden;isolation:isolate}
+.rc-art::before{content:"";position:absolute;inset:-25%;z-index:0;filter:blur(30px);transform:rotate(-8deg)}
+.rc-art::after{content:"";position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;opacity:.18;mix-blend-mode:overlay}
+.rc-tag,.rc-st{position:absolute;z-index:2;display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--r-full);font-size:12px;font-weight:500}
+.rc-tag{left:12px;top:12px;background:rgba(255,255,255,.9);color:var(--ink)}
+.rc-st{left:12px;bottom:12px;background:rgba(0,0,0,.72);color:#FFFFFF}
+.rc-t{margin-top:12px;font-size:15px;font-weight:500;line-height:1.4;color:var(--ink)}
+.g-dusk{background:#B9C3EE}
+.g-dusk::before{background:radial-gradient(50% 50% at 80% 25%, #F6F1FB 0%, rgba(246,241,251,0) 70%), radial-gradient(60% 60% at 20% 80%, #8FB9EE 0%, rgba(143,185,238,0) 70%), conic-gradient(from 120deg at 50% 50%, #CFC6F3, #9FC4F2, #B5E3D8, #CFC6F3)}
+.g-lav{background:#C7D2F6}
+.g-lav::before{background:radial-gradient(60% 55% at 18% 18%, #EEE6FA 0%, rgba(238,230,250,0) 70%), radial-gradient(70% 60% at 85% 75%, #9CCBF5 0%, rgba(156,203,245,0) 70%), linear-gradient(135deg, #DCD6F7 0%, #BBC8F5 50%, #A6CDF4 100%)}
+.g-green{background:#7FB8C8}
+.g-green::before{background:conic-gradient(from 210deg at 55% 45%, #8FCB6A 0deg, #A7D07A 60deg, #7EC4B4 130deg, #5FA8D8 200deg, #3E73D8 260deg, #6C9FE6 320deg, #8FCB6A 360deg)}
+.g-cyan{background:#4F8FD0}
+.g-cyan::before{background:radial-gradient(28% 70% at 80% 55%, #F4FBFB 0%, rgba(244,251,251,0) 70%), radial-gradient(35% 45% at 10% 45%, #9CEBEB 0%, rgba(156,235,235,0) 70%), linear-gradient(120deg, #6FD3E3 0%, #4E8FD3 45%, #3D6DBF 65%, #7FD6E6 100%)}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.list li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.list .t{color:var(--ink)}
+.list .s{flex:none;font-size:13px;color:var(--subtle)}
+.tools{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.tools a{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:15px}
+.tools a span:last-child{color:var(--subtle)}
+.tools a:hover span:first-child{text-decoration:underline;text-underline-offset:3px}
+form{display:flex;gap:8px}
+input[type=email]{flex:1;min-width:0;height:44px;padding:0 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:15px;background:#FFFFFF}
+input[type=email]:focus{outline:2px solid #4E8FD3;outline-offset:1px;border-color:transparent}
+button{height:44px;padding:0 20px;border:0;border-radius:10px;background:#000;color:#FFFFFF;font:inherit;font-size:15px;font-weight:500;cursor:pointer}
+button:hover{background:var(--ink)}
+.sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.sec-head h2{margin:0}
+.ghost{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;border:1px solid var(--line);border-radius:var(--r-full);background:#FFFFFF;color:var(--ink);font-size:13px;font-weight:500}
+.ghost:hover{background:var(--surface);border-color:#D4D4D4}
+.news{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.nw{display:block;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.nw-meta{display:block;font-size:13px;color:var(--subtle)}
+.cat,.cvss{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:var(--r-full);font-size:12px;font-weight:500}
+.cvss{background:#000;color:#FFFFFF}
+.nw-t{display:block;margin-top:4px;font-size:16px;font-weight:500;line-height:1.45;color:var(--text)}
+.nw:hover .nw-t{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.more{display:inline-block;margin-top:16px;font-size:15px;font-weight:500;text-decoration:none}
+.more:hover{text-decoration:underline;text-underline-offset:3px}
+dialog{width:min(520px,calc(100% - 32px));padding:28px;border:1px solid var(--line);border-radius:var(--r-md);color:var(--text)}
+dialog::backdrop{background:rgba(0,0,0,.35)}
+dialog{margin:auto}
+dialog .sub-f{margin-top:20px}
+.dl-head h3{margin:0;font-family:var(--display);font-size:22px;line-height:1.25;font-weight:500}
+.x{border-radius:var(--r-full)}
+.dl-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.dl-head h3{margin:0;font-family:var(--display);font-size:22px;line-height:1.25;font-weight:500}
+.x{width:36px;height:36px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:var(--fill);color:var(--ink)}
+.x:hover{background:#E5E5E5}
+.dl-sub{margin:6px 0 0;color:var(--subtle);font-size:15px}
+.opt{margin-top:20px;padding:18px;border:1px solid var(--line);border-radius:var(--r-md)}
+.opt h4{margin:0;display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500}
+.opt p{margin:8px 0 0;font-size:14px;color:var(--muted)}
+.feed{margin-top:12px;display:flex;align-items:center;gap:8px;padding:6px 6px 6px 14px;border:1px solid var(--line);border-radius:var(--r-full);background:var(--surface)}
+.feed code{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--mono);font-size:12px;color:var(--ink)}
+.feed button{height:30px;padding:0 14px;font-size:13px}
+.paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.path{display:flex;flex-direction:column;padding:22px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface);text-decoration:none}
+.path:hover{border-color:#D4D4D4;background:#FFFFFF}
+.path-t{font-family:var(--display);font-size:20px;font-weight:500;line-height:1.25}
+.path-d{margin-top:8px;font-size:15px;line-height:1.55;color:var(--muted)}
+.path-go{margin-top:auto;padding-top:18px;font-size:14px;font-weight:500;color:var(--text)}
+.path:hover .path-go{text-decoration:underline;text-underline-offset:3px}
+.sub-t{margin:0;font-family:var(--display);font-size:20px;line-height:1.25;font-weight:500;color:var(--text)}
+.sub-n{margin:12px 0 0;font-size:14px;line-height:1.5;color:var(--subtle)}
+.sub-f{margin-top:16px;display:flex;align-items:center;gap:8px}
+.sub-f input[type=email]{flex:1;min-width:0;height:44px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:#FFFFFF;font-size:15px}
+.sub-f input[type=email]:focus{outline:none;border-color:#A3A3A3}
+.sub-f button{flex:none;height:44px;padding:0 20px;border-radius:10px}
+.note{color:#A3A3A3;margin:16px 0 0;line-height:1.2}
+.note{margin:10px 0 0;font-size:13px;color:var(--subtle)}
+.about p{margin:0 0 14px;color:var(--muted);font-size:15px}
+.about p:last-child{margin-bottom:0}
+footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--subtle)}
+footer a{text-decoration:none}
+.f-links{display:flex;gap:20px}
+footer > span{white-space:nowrap}
+footer a:hover{text-decoration:underline}
+@media (max-width:520px){
+  .paths{grid-template-columns:1fr}
+  .rcs{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:62%;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 4px;scrollbar-width:none}
+  .rcs::-webkit-scrollbar{display:none}
+  .rc{scroll-snap-align:start}
+}
+@media (max-width:370px){
+  .rp{grid-template-columns:80px minmax(0,1fr)}
+  .rp-t{font-size:15px}
+}
+@media (max-width:440px){
+  footer{flex-direction:column;gap:10px}
+  .hb{flex:1 1 0;padding:0 12px}
+  .top-links a:not(.cta){display:none}
+}
+@media (max-width:520px){
+  .top-links a{padding:0 10px}
+  .top-links a.cta{margin-left:2px}
+  .wrap{padding:48px 20px 48px}
+  h1{margin-top:40px}
+  .dek{font-size:17px}
+  section{margin-top:52px}
+  form{flex-direction:column}
+  button{width:100%}
+  .sub-f{flex-direction:row}
+  .sub-f button{width:auto;padding:0 14px}
+  .sub-f input[type=email]{padding:0 12px;font-size:14px}
+  .list li{flex-direction:column;gap:2px}
+  .feed button{width:auto}
+  .x{width:36px}
+}
+
+/* research page */
+.top-links a[aria-current="page"]{color:var(--text)}
+.fl{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.fl-c{height:36px;padding:0 16px;border:1px solid var(--line);border-radius:var(--r-full);background:#FFFFFF;color:var(--muted);font-size:14px;font-weight:500}
+.fl-c:hover{border-color:#D4D4D4;color:var(--text)}
+.fl-c[aria-pressed="true"]{background:#000;border-color:#000;color:#FFFFFF}
+.rps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+.rp{display:flex;flex-direction:column}
+.rp[hidden]{display:none}
+.rp-art{position:relative;display:block;aspect-ratio:4/3;border-radius:var(--r-md);overflow:hidden;isolation:isolate}
+.rp-art::before{content:"";position:absolute;inset:-25%;z-index:0;filter:blur(30px);transform:rotate(-8deg)}
+.rp-art::after{content:"";position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;opacity:.18;mix-blend-mode:overlay}
+.rp-tag{position:absolute;left:12px;top:12px;z-index:2;display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--r-full);background:rgba(255,255,255,.9);color:var(--ink);font-size:12px;font-weight:500}
+.rp-body{display:flex;flex-direction:column}
+.rp .meta{margin-top:14px}
+.rp-t{margin-top:6px;font-family:var(--display);font-size:18px;line-height:1.3;font-weight:500}
+.rp-d{margin-top:6px;font-size:14px;line-height:1.55;color:var(--muted)}
+.empty{margin:0;font-size:15px;color:var(--subtle)}
+.grp[hidden]{display:none}
+.g-lav{background:#C7D2F6}
+.g-lav::before{background:radial-gradient(60% 55% at 18% 18%, #EEE6FA 0%, rgba(238,230,250,0) 70%), radial-gradient(70% 60% at 85% 75%, #9CCBF5 0%, rgba(156,203,245,0) 70%), linear-gradient(135deg, #DCD6F7 0%, #BBC8F5 50%, #A6CDF4 100%)}
+.g-green{background:#7FB8C8}
+.g-green::before{background:conic-gradient(from 210deg at 55% 45%, #8FCB6A 0deg, #A7D07A 60deg, #7EC4B4 130deg, #5FA8D8 200deg, #3E73D8 260deg, #6C9FE6 320deg, #8FCB6A 360deg)}
+.g-cyan{background:#4F8FD0}
+.g-cyan::before{background:radial-gradient(28% 70% at 80% 55%, #F4FBFB 0%, rgba(244,251,251,0) 70%), radial-gradient(35% 45% at 10% 45%, #9CEBEB 0%, rgba(156,235,235,0) 70%), linear-gradient(120deg, #6FD3E3 0%, #4E8FD3 45%, #3D6DBF 65%, #7FD6E6 100%)}
+.g-mint{background:#A9DDD0}
+.g-mint::before{background:radial-gradient(55% 60% at 80% 20%, #E9FBF3 0%, rgba(233,251,243,0) 70%), radial-gradient(60% 55% at 15% 85%, #7FC9C0 0%, rgba(127,201,192,0) 70%), linear-gradient(150deg, #CFEFE2 0%, #9ED8CC 55%, #7BB8E0 100%)}
+.g-cobalt{background:#3E5FB8}
+.g-cobalt::before{background:radial-gradient(40% 50% at 25% 30%, #8FB4F5 0%, rgba(143,180,245,0) 70%), radial-gradient(45% 55% at 80% 80%, #6FD0C8 0%, rgba(111,208,200,0) 70%), linear-gradient(140deg, #2F4FA6 0%, #4C72D6 55%, #5FB7D4 100%)}
+@media (max-width:520px){
+  .rps{grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .rp{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .rp-art{aspect-ratio:1/1;border-radius:10px}
+  .rp-tag{display:none}
+  .rp .meta{margin-top:0}
+  .rp-t{font-size:16px}
+  .rp-d{display:none}
+}
+
+/* square variant */
+*,*::before,*::after{border-radius:0 !important}
+
+/* report page */
+.crumbs{margin:56px 0 0;display:flex;gap:8px;font-size:14px;color:var(--subtle)}
+.crumbs a{text-decoration:none}
+.crumbs a:hover{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+h1.r-title{margin-top:14px}
+.r-sub{margin:10px 0 0;font-family:var(--display);font-size:22px;line-height:1.3;font-weight:500;color:var(--muted)}
+.r-meta{margin:16px 0 0;font-size:14px;color:var(--subtle)}
+.ai-bar{margin-top:28px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.ai-label{font-size:14px;font-weight:500;color:var(--ink)}
+.ai-btns{display:flex;flex-wrap:wrap;gap:8px}
+.ai-btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border:1px solid var(--line);font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;background:#FFFFFF}
+.ai-btn:hover{border-color:#A3A3A3;color:var(--text)}
+.r-cover{margin-top:32px;border:0 !important}
+.toc{margin-top:40px;border:1px solid var(--line);background:var(--surface)}
+.toc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-size:14px;font-weight:500}
+.toc summary::-webkit-details-marker{display:none}
+.toc summary::after{content:"+";font-size:18px;color:var(--subtle)}
+.toc[open] summary::after{content:"–"}
+.toc ol{list-style:none;margin:0;padding:0 18px 10px}
+.toc li a{display:flex;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:15px;color:var(--ink);text-decoration:none}
+.toc li a span{font-family:var(--mono);font-size:12px;color:var(--subtle);padding-top:2px}
+.toc li a:hover{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+.r-body{margin-top:8px}
+.r-sec{margin-top:64px;scroll-margin-top:24px}
+.r-sec .r-num{margin:0;font-family:var(--mono);font-size:12px;line-height:1.4;color:var(--subtle)}
+.r-sec h2{margin:6px 0 20px;font-family:var(--display);font-size:28px;line-height:1.2;font-weight:500;color:var(--text)}
+.r-sec p{margin:0 0 18px;font-size:17px;line-height:1.75;color:var(--ink)}
+.r-sec strong{font-weight:600;color:var(--text)}
+.r-define{padding:16px 20px;border-left:2px solid var(--text);background:var(--surface);font-size:16px !important}
+.cite{display:inline-flex;align-items:center;height:20px;padding:0 7px;margin:0 2px;border:1px solid var(--line);background:var(--surface);font-family:var(--mono);font-size:11px;line-height:1;color:var(--muted);vertical-align:2px;white-space:nowrap}
+.takeaways{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--line)}
+.takeaways li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:8px;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;color:var(--ink)}
+.tk-num,.ctl-num{font-family:var(--mono);font-size:12px;color:var(--subtle);padding-top:4px}
+.r-stats{margin:8px 0 26px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.r-stat{display:flex;flex-direction:column;padding:18px;border:1px solid var(--line);background:var(--surface)}
+.r-stat-n{font-family:var(--display);font-size:32px;line-height:1;font-weight:500;color:var(--text)}
+.r-stat-l{margin-top:10px;font-size:14px;line-height:1.45;color:var(--ink)}
+.r-stat-s{margin-top:auto;padding-top:12px;font-family:var(--mono);font-size:11px;color:var(--subtle)}
+.controls{list-style:none;margin:8px 0 0;padding:0;border-top:1px solid var(--line)}
+.controls li{display:grid;grid-template-columns:40px 150px minmax(0,1fr);gap:8px 12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.ctl-name{font-size:16px;font-weight:600;color:var(--text)}
+.ctl-desc{font-size:15px;line-height:1.6;color:var(--ink)}
+.r-src-label{margin:28px 0 10px !important;font-size:14px !important;font-weight:500;color:var(--subtle) !important}
+.r-sources{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.r-sources li{display:inline-flex;align-items:center;height:28px;padding:0 10px;border:1px solid var(--line);font-size:13px;color:var(--muted)}
+.r-body + .sub, main > .sub{margin-top:72px;padding-top:40px;border-top:1px solid var(--line)}
+@media (max-width:520px){
+  .crumbs{margin-top:40px}
+  .r-sub{font-size:19px}
+  .ai-bar{flex-direction:column;align-items:flex-start}
+  .r-sec{margin-top:52px}
+  .r-sec h2{font-size:24px}
+  .r-sec p{font-size:16px}
+  .r-stats{grid-template-columns:1fr}
+  .controls li{grid-template-columns:32px minmax(0,1fr)}
+  .ctl-desc{grid-column:2}
+  .takeaways li{grid-template-columns:32px minmax(0,1fr)}
+}
+
+@media (max-width:360px){
+  .brand{font-size:15px}
+  .top-links a.cta{padding:0 10px;margin-left:0}
+  .top-links{gap:5px}
+}
+/* mobile menu */
+.menu-btn{display:none}
+.mnav{display:none}
+@media (max-width:440px){
+  .top-links{gap:6px;align-items:center}
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:34px !important;height:34px;padding:0;border:1px solid var(--line);background:#FFFFFF;color:var(--text);cursor:pointer}
+  .menu-btn:hover{background:#FFFFFF;border-color:#A3A3A3}
+  .menu-btn[aria-expanded="true"]{background:#000;border-color:#000;color:#FFFFFF}
+  .menu-btn[aria-expanded="true"] .m-l2{opacity:0}
+  .menu-btn[aria-expanded="true"] .m-l1{transform:translateY(5px) rotate(45deg);transform-origin:12px 7px}
+  .menu-btn[aria-expanded="true"] .m-l3{transform:translateY(-5px) rotate(-45deg);transform-origin:12px 17px}
+  .menu-btn path{transition:transform .2s,opacity .2s}
+  .mnav{display:block;overflow:hidden;max-height:0;transition:max-height .25s ease}
+  .mnav.open{max-height:240px}
+  .mnav ul{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--line)}
+  .mnav a{display:flex;justify-content:space-between;align-items:center;height:48px;border-bottom:1px solid var(--line);font-size:16px;font-weight:500;color:var(--ink);text-decoration:none}
+  .mnav a::after{content:"→";color:var(--subtle)}
+  .mnav a[aria-current="page"]{color:var(--text)}
+  .mnav a[aria-current="page"]::after{content:"•"}
+}
+
+/* contact */
+.f-contact{height:auto !important;padding:0 !important;border:0 !important;background:none !important;color:inherit !important;font:inherit;font-size:13px;font-weight:400;line-height:inherit;cursor:pointer;width:auto !important}
+.f-contact:hover{background:none !important;color:inherit !important;text-decoration:underline}
+footer{align-items:center}
+.f-links{align-items:center}
+.cf{margin-top:20px;display:flex;flex-direction:column;gap:14px}
+.cf label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:var(--muted)}
+.cf input,.cf textarea{width:100%;padding:10px 12px;border:1px solid var(--line);background:#FFFFFF;font:inherit;font-size:16px;color:var(--text)}
+.cf input{height:44px}
+.cf textarea{resize:vertical;min-height:110px;line-height:1.5}
+.cf input:focus,.cf textarea:focus{outline:none;border-color:#A3A3A3}
+.cf button{align-self:flex-start;height:44px;padding:0 20px;border:0;background:#000;color:#FFFFFF;font-size:15px;font-weight:500;cursor:pointer;width:auto !important}
+.cf button:hover{background:var(--ink)}
+.cf-done{margin:0;font-size:15px;color:var(--ink)}
+@media (max-width:440px){ footer{align-items:flex-start} .cf button{width:100% !important;align-self:stretch} }
+
+/* skills report */
+.sk-cover{position:relative;display:block;margin-top:32px;aspect-ratio:16/9;overflow:hidden;isolation:isolate;background:#A9DDD0}
+.sk-cover::before{content:"";position:absolute;inset:-25%;z-index:0;filter:blur(36px);transform:rotate(-8deg);background:radial-gradient(55% 60% at 80% 20%, #E9FBF3 0%, rgba(233,251,243,0) 70%), radial-gradient(60% 55% at 15% 85%, #7FC9C0 0%, rgba(127,201,192,0) 70%), linear-gradient(150deg, #CFEFE2 0%, #9ED8CC 55%, #7BB8E0 100%)}
+.sk-cover::after{content:"";position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;opacity:.18;mix-blend-mode:overlay}
+.r-method{margin:40px 0 0 !important;padding:16px 20px;border-left:2px solid var(--text);background:var(--surface);font-size:16px !important}
+.r-sec h3{margin:36px 0 12px;font-family:var(--display);font-size:20px;font-weight:500;color:var(--text)}
+:root{--acc:#2563EB;--pos:#15803D;--neg:#B91C1C;--bar:#262626;--mutbar:#C4C4C4}
+.ch{margin:28px 0 32px;padding:22px 22px 16px;border:1px solid var(--line)}
+.ch-t{margin:0 0 18px;font-family:var(--display);font-size:17px;font-weight:500;line-height:1.3;color:var(--text)}
+.ch-src{margin:16px 0 0 !important;font-size:12px !important;line-height:1.5 !important;color:var(--subtle) !important}
+.ch-foot,.ch-ann{margin:10px 0 0 !important;font-size:13px !important;line-height:1.5 !important;color:var(--muted) !important}
+.ch-ann{color:var(--acc) !important;font-weight:500}
+/* horizontal bars */
+.hz{position:relative;display:flex;flex-direction:column;gap:8px}
+.hz-row{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:12px;align-items:center;font-size:14px}
+.hz-l{color:var(--ink);line-height:1.3}
+.hz-track{position:relative;display:flex;align-items:center;gap:8px;height:22px}
+.hz-bar{display:block;height:100%;background:var(--bar);flex:none}
+.hz-v{font-family:var(--mono);font-size:12px;color:var(--ink);white-space:nowrap}
+.hz-row.acc .hz-bar{background:var(--acc)}
+.hz-row.acc .hz-l,.hz-row.acc .hz-v{color:var(--acc);font-weight:600}
+.hz-row.mut .hz-bar{background:var(--mutbar)}
+.hz-ann{margin:-4px 0 2px calc(min(200px,40%) + 12px);font-size:12px;color:var(--acc);font-weight:500}
+.hz-ref{position:absolute;top:-6px;bottom:-6px;left:calc(min(200px,40%) + 12px + (100% - min(200px,40%) - 12px) * var(--x) / 100%);border-left:1.5px dashed var(--subtle);z-index:1;pointer-events:none}
+.hz-ref{left:calc(min(200px,40%) + 12px + (100% - min(200px,40%) - 12px) * var(--f))}
+.hz.has-ref{padding-top:22px}
+.hz-ref{top:0 !important}
+.hz-ref span{position:absolute;top:0;left:6px;font-size:11px;color:var(--muted);white-space:nowrap}
+/* vertical bars */
+.vb-key{display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:10px;font-size:12px;color:var(--subtle)}
+.vb{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:end}
+.vb-col{display:flex;flex-direction:column;align-items:stretch;text-align:center}
+.vb-pay{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px}
+.vb-area{position:relative;display:flex;align-items:flex-end;height:180px;border-bottom:1px solid var(--text)}
+.vb-bar{position:relative;display:block;width:100%;background:var(--bar)}
+.vb-v{position:absolute;left:0;right:0;top:-18px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.vb-col.acc .vb-bar{background:var(--acc)}
+.vb-col.acc .vb-v{color:var(--acc);font-weight:600}
+.vb-l{margin-top:8px;font-size:12px;line-height:1.3;color:var(--ink)}
+.vb-area{padding-top:20px}
+/* heatmap */
+.hm-wrap{overflow-x:auto}
+.hm{width:100%;border-collapse:collapse;font-size:14px}
+.hm thead th{padding:0 6px 10px;font-size:12px;font-weight:500;color:var(--muted);text-align:center;vertical-align:bottom}
+.hm tbody th{padding:8px 12px 8px 0;font-weight:500;color:var(--ink);text-align:left;white-space:nowrap}
+.hm td{width:22%;padding:8px 0;text-align:center;font-family:var(--mono);font-size:13px;border:2px solid #FFFFFF}
+.hm .hm-g th{padding:16px 0 6px;font-size:12px;font-weight:600;color:var(--subtle);text-transform:none}
+.hm tbody .hm-g:first-child th{padding-top:4px}
+/* stacked */
+.st{display:flex;height:44px}
+.st span{display:flex;align-items:center;padding:0 12px;font-family:var(--mono);font-size:14px;font-weight:600}
+.st-a{background:var(--bar);color:#FFFFFF}
+.st-b{background:var(--mutbar);color:var(--text)}
+.st-k{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink)}
+.st-k i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+.st-k .ka{background:var(--bar)} .st-k .kb{background:var(--mutbar)}
+/* range */
+.rg{position:relative;display:flex;flex-direction:column;gap:14px;padding-top:22px}
+.rg-row,.rg-axis{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:12px;align-items:center;font-size:14px}
+.rg-l{color:var(--ink);line-height:1.3}
+.rg-track{position:relative;height:30px;background:linear-gradient(var(--line),var(--line)) 0 50%/100% 1px no-repeat}
+.rg-bar{position:absolute;top:8px;height:14px;background:var(--mutbar)}
+.rg-med{position:absolute;top:3px;width:3px;height:24px;margin-left:-1.5px;background:var(--text)}
+.rg-l{display:flex;flex-direction:column;gap:2px}
+.rg-v{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text);white-space:nowrap}
+.rg-v em{font-style:normal;font-weight:400;color:var(--subtle);margin-left:6px}
+.rg-ticks{position:relative;height:16px;border-top:1px solid var(--line)}
+.rg-ticks i{position:absolute;top:4px;transform:translateX(-50%);font-style:normal;font-family:var(--mono);font-size:11px;color:var(--subtle)}
+.rg-ticks i:first-child{transform:none}
+.rg-ref{position:absolute;top:0;bottom:22px;left:calc(min(170px,40%) + 12px + (100% - min(170px,40%) - 12px) * var(--f));border-left:1.5px dashed var(--subtle);pointer-events:none}
+.rg-ref span{position:absolute;top:0;left:6px;font-size:11px;color:var(--muted);white-space:nowrap}
+/* diverging */
+.dv{display:flex;flex-direction:column;gap:8px}
+.dv-row{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:12px;align-items:center;font-size:14px}
+.dv-l{color:var(--ink);line-height:1.3}
+.dv-track{display:grid;grid-template-columns:1fr 1fr;height:22px}
+.dv-half{position:relative;display:flex;align-items:center;gap:6px}
+.dv-left{flex-direction:row-reverse;border-right:1px solid var(--text)}
+.dv-bar{display:block;height:100%;flex:none}
+.dv-v{font-family:var(--mono);font-size:12px;font-weight:600;white-space:nowrap}
+.dv-row.pos .dv-bar{background:var(--pos)} .dv-row.pos .dv-v{color:var(--pos)}
+.dv-row.neg .dv-bar{background:var(--neg)} .dv-row.neg .dv-v{color:var(--neg)}
+/* pay table */
+.pt{width:100%;border-collapse:collapse;font-size:15px}
+.pt th,.pt td{padding:12px 8px;border-bottom:1px solid var(--line);text-align:right}
+.pt th:first-child,.pt td:first-child{text-align:left;padding-left:0}
+.pt thead th{font-size:12px;font-weight:500;color:var(--muted);border-bottom:1px solid var(--text)}
+.pt tbody th{font-weight:500;color:var(--ink)}
+.pt td{font-family:var(--mono);font-size:14px;color:var(--ink)}
+.pt td.neg{color:var(--neg);font-weight:600}
+@media (max-width:520px){
+  .ch{padding:16px 14px 12px;margin-left:-4px;margin-right:-4px}
+  .hz-row,.dv-row{grid-template-columns:minmax(0,1fr);gap:4px}
+  .hz-l,.dv-l{font-size:13px}
+  .hz-ann{margin-left:0}
+  .hz-ref{left:calc(100% * var(--f))}
+  .rg-row,.rg-axis{grid-template-columns:minmax(0,1fr);gap:2px}
+  .rg-axis > span:first-child{display:none}
+  .rg-ref{left:calc(100% * var(--f))}
+  .vb{gap:6px}
+  .vb-l{font-size:11px}
+  .vb-pay{font-size:10px}
+  .vb-area{height:150px}
+  .hm tbody th{white-space:normal;font-size:13px}
+  .hm thead th{font-size:11px}
+  .pt th,.pt td{padding:10px 4px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top">
+    <a class="brand" href="../../">Port 502 Research</a>
+    <div class="top-links"><a href="../../feed/">Live Feed</a><a href="../../research/" aria-current="page">Research</a><a class="cta" href="#subscribe" id="openSub" aria-haspopup="dialog">Subscribe</a><button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mnav" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="m-l1" d="M4 7h16"/><path class="m-l2" d="M4 12h16"/><path class="m-l3" d="M4 17h16"/></svg></button></div>
+  </nav>
+  <div class="mnav" id="mnav" aria-hidden="true"><ul>
+    <li><a href="../../">Home</a></li>
+    <li><a href="../../feed/">Live Feed</a></li>
+    <li><a href="../../research/" aria-current="page">Research</a></li>
+  </ul></div>
+
+  <p class="crumbs"><a href="../../research/">Research</a><span>/</span><span>Report</span></p>
+  <h1 class="r-title">OT Security Skill Trends 2026</h1>
+  <p class="dek">An analysis of 500 U.S. OT and ICS security job postings: who is hiring, which skills employers ask for, and what they pay.</p>
+  <p class="r-meta">Investment · November 2026 · 6 min read</p>
+
+  <div class="ai-bar" role="group" aria-label="Summarize this report with an AI assistant">
+    <span class="ai-label">Summarize with AI</span>
+    <div class="ai-btns">
+      <a class="ai-btn" data-ai="claude" href="https://claude.ai/new" target="_blank" rel="noopener">Claude<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+      <a class="ai-btn" data-ai="chatgpt" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+      <a class="ai-btn" data-ai="copilot" href="https://copilot.microsoft.com/" target="_blank" rel="noopener">Copilot<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+    </div>
+  </div>
+
+  <span class="r-cover sk-cover" role="img" aria-label="Abstract gradient cover"></span>
+
+  <details class="toc" open>
+    <summary>Contents</summary>
+    <ol><li><a href="#industry"><span>01</span>Industry breakdown</a></li><li><a href="#seniority"><span>02</span>Seniority breakdown</a></li><li><a href="#titles"><span>03</span>Job titles and IT/OT breakdown</a></li><li><a href="#pay"><span>04</span>Salary and pay</a></li><li><a href="#raises"><span>05</span>What raises pay</a></li><li><a href="#conclusion"><span>06</span>Conclusion</a></li></ol>
+  </details>
+
+  <article class="r-body">
+        <p class="r-method">Port 502 Research analyzed 500 unique U.S. job postings for operational technology and industrial control systems security roles published between September 1 and December 1, 2026. The postings were collected from 120 unique company career pages and 30 job boards, including staffing firms and social sites.</p>
+        <section id="industry" class="r-sec">
+          <p class="r-num">01</p>
+          <h2>Industry breakdown</h2>
+          <p>Defense contractors, government and research organizations post the most OT security roles, ahead of utilities and manufacturers. AI data centers and crypto miners are a small but new group of employers, and they post the highest pay.</p><figure class="ch"><figcaption class="ch-t">Share of OT security job postings by industry</figcaption><div class="hz"><div class="hz-row "><span class="hz-l">Defense, government &amp; research</span><span class="hz-track"><span class="hz-bar" style="width:82.00%"></span><span class="hz-v">21%</span></span></div><div class="hz-row "><span class="hz-l">Power &amp; utilities</span><span class="hz-track"><span class="hz-bar" style="width:70.29%"></span><span class="hz-v">18%</span></span></div><div class="hz-row "><span class="hz-l">Manufacturing &amp; pharma</span><span class="hz-track"><span class="hz-bar" style="width:66.38%"></span><span class="hz-v">17%</span></span></div><div class="hz-row "><span class="hz-l">Consulting &amp; engineering</span><span class="hz-track"><span class="hz-bar" style="width:46.86%"></span><span class="hz-v">12%</span></span></div><div class="hz-row "><span class="hz-l">Staffing &amp; recruiters</span><span class="hz-track"><span class="hz-bar" style="width:39.05%"></span><span class="hz-v">10%</span></span></div><div class="hz-row "><span class="hz-l">Oil, gas &amp; chemicals</span><span class="hz-track"><span class="hz-bar" style="width:23.43%"></span><span class="hz-v">6%</span></span></div><div class="hz-row "><span class="hz-l">OT/industrial vendors</span><span class="hz-track"><span class="hz-bar" style="width:23.43%"></span><span class="hz-v">6%</span></span></div><div class="hz-row acc"><span class="hz-l">Data centers, AI &amp; crypto</span><span class="hz-track"><span class="hz-bar" style="width:19.52%"></span><span class="hz-v">5%</span></span></div><div class="hz-ann">Highest median pay ($201K)</div><div class="hz-row "><span class="hz-l">Nuclear &amp; advanced energy</span><span class="hz-track"><span class="hz-bar" style="width:19.52%"></span><span class="hz-v">5%</span></span></div><div class="hz-row "><span class="hz-l">Water &amp; public sector</span><span class="hz-track"><span class="hz-bar" style="width:11.71%"></span><span class="hz-v">3%</span></span></div></div><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+        </section>
+        <section id="seniority" class="r-sec">
+          <p class="r-num">02</p>
+          <h2>Seniority breakdown</h2>
+          <p>OT security hiring favors experienced people. Just 4% of roles are entry level, and most of those are internships. Two-thirds of postings are at the mid, lead or principal level.</p><figure class="ch"><figcaption class="ch-t">OT security roles by seniority level</figcaption><div class="vb-key"><span>Bar: share of postings</span><span>Label: median posted pay</span></div><div class="vb"><div class="vb-col acc" title="Entry / associate"><span class="vb-pay">$125K*</span><span class="vb-area"><span class="vb-bar" style="height:11.8%"><span class="vb-v">4%</span></span></span><span class="vb-l">Entry</span></div><div class="vb-col " title="Mid"><span class="vb-pay">$125K*</span><span class="vb-area"><span class="vb-bar" style="height:100.0%"><span class="vb-v">34%</span></span></span><span class="vb-l">Mid</span></div><div class="vb-col " title="Senior"><span class="vb-pay">$138K</span><span class="vb-area"><span class="vb-bar" style="height:50.0%"><span class="vb-v">17%</span></span></span><span class="vb-l">Senior</span></div><div class="vb-col " title="Lead / principal / architect"><span class="vb-pay">$168K</span><span class="vb-area"><span class="vb-bar" style="height:91.2%"><span class="vb-v">31%</span></span></span><span class="vb-l">Lead</span></div><div class="vb-col " title="Manager"><span class="vb-pay">$186K</span><span class="vb-area"><span class="vb-bar" style="height:26.5%"><span class="vb-v">9%</span></span></span><span class="vb-l">Manager</span></div><div class="vb-col " title="Director+"><span class="vb-pay">$194K</span><span class="vb-area"><span class="vb-bar" style="height:17.6%"><span class="vb-v">6%</span></span></span><span class="vb-l">Director+</span></div></div><p class="ch-ann">Most entry roles are internships.</p><p class="ch-foot">*Entry and mid-level pay combined because of small sample size.</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+<p>Individual contributors are expected to know the systems. At the entry through principal levels, roles ask for hands-on control system and protocol knowledge, plus scripting.</p>
+<p>Leaders are expected to know governance. Manager and director postings shift toward policy, compliance and standards, and hands-on skills drop sharply.</p><figure class="ch"><figcaption class="ch-t">How often each skill appears, by seniority</figcaption><div class="hm-wrap"><table class="hm"><thead><tr><th></th><th>Entry / mid</th><th>Senior / lead</th><th>Manager / director+</th></tr></thead><tbody><tr class="hm-g"><th colspan="4">Rises with seniority</th></tr><tr><th scope="row">Leadership / mentoring</th><td style="background:rgba(0,0,0,0.54);color:#FFFFFF">51%</td><td style="background:rgba(0,0,0,0.77);color:#FFFFFF">76%</td><td style="background:rgba(0,0,0,0.87);color:#FFFFFF">87%</td></tr><tr><th scope="row">Compliance / audit</th><td style="background:rgba(0,0,0,0.68);color:#FFFFFF">66%</td><td style="background:rgba(0,0,0,0.63);color:#FFFFFF">61%</td><td style="background:rgba(0,0,0,0.83);color:#FFFFFF">83%</td></tr><tr><th scope="row">CISSP</th><td style="background:rgba(0,0,0,0.46);color:var(--ink)">43%</td><td style="background:rgba(0,0,0,0.47);color:var(--ink)">44%</td><td style="background:rgba(0,0,0,0.62);color:#FFFFFF">60%</td></tr><tr><th scope="row">IEC 62443</th><td style="background:rgba(0,0,0,0.44);color:var(--ink)">41%</td><td style="background:rgba(0,0,0,0.40);color:var(--ink)">36%</td><td style="background:rgba(0,0,0,0.53);color:#FFFFFF">50%</td></tr><tr class="hm-g"><th colspan="4">Drops at leadership level</th></tr><tr><th scope="row">PLC</th><td style="background:rgba(0,0,0,0.32);color:var(--ink)">28%</td><td style="background:rgba(0,0,0,0.39);color:var(--ink)">35%</td><td style="background:rgba(0,0,0,0.18);color:var(--ink)">13%</td></tr><tr><th scope="row">Modbus</th><td style="background:rgba(0,0,0,0.28);color:var(--ink)">24%</td><td style="background:rgba(0,0,0,0.31);color:var(--ink)">27%</td><td style="background:rgba(0,0,0,0.18);color:var(--ink)">13%</td></tr><tr><th scope="row">Scripting</th><td style="background:rgba(0,0,0,0.26);color:var(--ink)">21%</td><td style="background:rgba(0,0,0,0.32);color:var(--ink)">28%</td><td style="background:rgba(0,0,0,0.18);color:var(--ink)">13%</td></tr><tr><th scope="row">Security clearance</th><td style="background:rgba(0,0,0,0.23);color:var(--ink)">18%</td><td style="background:rgba(0,0,0,0.28);color:var(--ink)">24%</td><td style="background:rgba(0,0,0,0.09);color:var(--ink)">3%</td></tr></tbody></table></div><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+        </section>
+        <section id="titles" class="r-sec">
+          <p class="r-num">03</p>
+          <h2>Job titles and IT/OT breakdown</h2>
+          <p>Of the 500 job postings we analyzed in full, 63% explicitly included “OT” in the job title. “OT” was the preferred label, appearing about four times more often than “ICS.”</p>
+<p>The remaining 37% had no “OT” or “ICS” in the title, but still included OT responsibilities. These were hybrid IT/OT security roles, often advertised under generic security titles. Their descriptions included responsibilities such as securing control systems, segmenting plant networks, and supporting IEC 62443 programs.</p>
+<p>Job seekers who search only for “OT security” may miss more than a third of relevant opportunities. Employers using generic security titles risk making OT-related positions harder for the specialists they want to attract to find.</p><figure class="ch"><figcaption class="ch-t">Does the job title say OT?</figcaption><div class="st"><span class="st-a" style="width:63%">63%</span><span class="st-b" style="width:37%">37%</span></div><div class="st-k"><span><i class="ka"></i>OT-specific term in title</span><span><i class="kb"></i>Generic security title with OT duties</span></div><p class="ch-ann">“OT” appears in titles 4× more than “ICS.”</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+        </section>
+        <section id="pay" class="r-sec">
+          <p class="r-num">04</p>
+          <h2>Salary and pay</h2>
+          <p>About half of the observed postings list a pay range. Pay figures below use the midpoint of each posted range. They show what employers advertise, not what people are actually paid.</p>
+<p>The median posted midpoint is $157K. The middle half of roles fall between $125K and $186K.</p>
+<p>The typical posting spans about $45K from the bottom end of the range to the top.</p><figure class="ch"><figcaption class="ch-t">Posted pay by seniority level</figcaption><div class="rg"><div class="rg-ref" style="--f:0.4071"><span>Overall median $157K</span></div><div class="rg-row"><span class="rg-l">Entry / mid<span class="rg-v">$125K <em>$104–160K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:2.86%;width:40.00%"></span><span class="rg-med" style="left:17.86%"></span></span></div><div class="rg-row"><span class="rg-l">Senior<span class="rg-v">$138K <em>$113–156K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:9.29%;width:30.71%"></span><span class="rg-med" style="left:27.14%"></span></span></div><div class="rg-row"><span class="rg-l">Lead / principal / architect<span class="rg-v">$168K <em>$135–187K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:25.00%;width:37.14%"></span><span class="rg-med" style="left:48.57%"></span></span></div><div class="rg-row"><span class="rg-l">Manager<span class="rg-v">$186K <em>$145–196K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:32.14%;width:36.43%"></span><span class="rg-med" style="left:61.43%"></span></span></div><div class="rg-row"><span class="rg-l">Director+<span class="rg-v">$194K <em>$180–228K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:57.14%;width:34.29%"></span><span class="rg-med" style="left:67.14%"></span></span></div><div class="rg-axis"><span></span><span class="rg-ticks"><i style="left:0.00%">$100K</i><i style="left:28.57%">$140K</i><i style="left:57.14%">$180K</i><i style="left:85.71%">$220K</i></span></div></div><p class="ch-foot">Bar: middle half of posted midpoints. Tick: median.</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+<h3>Pay by role</h3>
+<p>The industry employees choose to work in matters more than their seniority or skills. AI data centers, defense and advanced energy post the highest ranges. Utilities and public employers post the lowest.</p><figure class="ch"><figcaption class="ch-t">Median posted pay by industry</figcaption><div class="hz has-ref"><div class="hz-ref" style="--f:0.6130"><span>Overall median $157K</span></div><div class="hz-row "><span class="hz-l">Data centers, AI &amp; crypto</span><span class="hz-track"><span class="hz-bar" style="width:78.49%"></span><span class="hz-v">$201K</span></span></div><div class="hz-row "><span class="hz-l">Defense, government &amp; research</span><span class="hz-track"><span class="hz-bar" style="width:72.24%"></span><span class="hz-v">$185K</span></span></div><div class="hz-row "><span class="hz-l">Nuclear &amp; advanced energy</span><span class="hz-track"><span class="hz-bar" style="width:71.07%"></span><span class="hz-v">$182K</span></span></div><div class="hz-row "><span class="hz-l">Manufacturing &amp; pharma</span><span class="hz-track"><span class="hz-bar" style="width:64.82%"></span><span class="hz-v">$166K</span></span></div><div class="hz-row mut"><span class="hz-l">Consulting &amp; engineering</span><span class="hz-track"><span class="hz-bar" style="width:53.50%"></span><span class="hz-v">$137K</span></span></div><div class="hz-row mut"><span class="hz-l">Power &amp; utilities</span><span class="hz-track"><span class="hz-bar" style="width:47.25%"></span><span class="hz-v">$121K</span></span></div><div class="hz-row mut"><span class="hz-l">Water &amp; public sector</span><span class="hz-track"><span class="hz-bar" style="width:46.86%"></span><span class="hz-v">$120K</span></span></div></div><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+        </section>
+        <section id="raises" class="r-sec">
+          <p class="r-num">05</p>
+          <h2>What raises pay</h2>
+          <p>A security clearance has the strongest link to higher pay. Specialist skills (GRID certification, scripting, IEC 62443, PLC, penetration testing) also come with higher posted pay.</p><figure class="ch"><figcaption class="ch-t">Pay difference when a posting asks for the skill</figcaption><div class="dv"><div class="dv-row pos"><span class="dv-l">Security clearance</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:72.0%></span><span class=dv-v>+$35K</span></span></span></div><div class="dv-row pos"><span class="dv-l">GRID certification</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:57.6%></span><span class=dv-v>+$28K</span></span></span></div><div class="dv-row pos"><span class="dv-l">Scripting (Python/PowerShell)</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:43.2%></span><span class=dv-v>+$21K</span></span></span></div><div class="dv-row pos"><span class="dv-l">IEC 62443</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:41.1%></span><span class=dv-v>+$20K</span></span></span></div><div class="dv-row pos"><span class="dv-l">PLC</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:35.0%></span><span class=dv-v>+$17K</span></span></span></div><div class="dv-row pos"><span class="dv-l">Penetration testing</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:32.9%></span><span class=dv-v>+$16K</span></span></span></div><div class="dv-row neg"><span class="dv-l">SCADA</span><span class="dv-track"><span class="dv-half dv-left"><span class=dv-bar style=width:30.9%></span><span class=dv-v>−$15K</span></span><span class="dv-half dv-right"></span></span></div><div class="dv-row neg"><span class="dv-l">GICSP</span><span class="dv-track"><span class="dv-half dv-left"><span class=dv-bar style=width:37.0%></span><span class=dv-v>−$18K</span></span><span class="dv-half dv-right"></span></span></div><div class="dv-row neg"><span class="dv-l">CISSP</span><span class="dv-track"><span class="dv-half dv-left"><span class=dv-bar style=width:45.3%></span><span class=dv-v>−$22K</span></span><span class="dv-half dv-right"></span></span></div><div class="dv-row neg"><span class="dv-l">NERC CIP</span><span class="dv-track"><span class="dv-half dv-left"><span class=dv-bar style=width:45.3%></span><span class=dv-v>−$22K</span></span><span class="dv-half dv-right"></span></span></div></div><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+<p>Two of the most-requested credentials come with lower posted pay. Employers that pay less, mainly utilities and compliance-heavy organizations, ask for them most. Certifications work as an entry requirement, not a pay lever.</p><figure class="ch"><figcaption class="ch-t">Median posted pay with and without the skill</figcaption><table class="pt"><thead><tr><th>Skill</th><th>With</th><th>Without</th><th>Difference</th></tr></thead><tbody><tr><th scope="row">CISSP</th><td>$142K</td><td>$164K</td><td class="neg">−$22K</td></tr><tr><th scope="row">GICSP</th><td>$144K</td><td>$162K</td><td class="neg">−$18K</td></tr><tr><th scope="row">NERC CIP</th><td>$140K</td><td>$162K</td><td class="neg">−$22K</td></tr><tr><th scope="row">SCADA</th><td>$147K</td><td>$162K</td><td class="neg">−$15K</td></tr></tbody></table><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+        </section>
+        <section id="conclusion" class="r-sec">
+          <p class="r-num">06</p>
+          <h2>Conclusion</h2>
+          <p>OT security hiring is led by defense, utilities and manufacturers, and it favors experienced people. Entry-level roles are rare, individual contributors are hired for hands-on system knowledge, and leaders are hired for governance.</p>
+<p>More than a third of OT roles don’t say “OT” in the title, so job seekers and employers alike need to look past the label.</p>
+<p>On pay, the industry matters most. A security clearance and specialist skills raise posted pay, while common certifications get candidates in the door but don’t raise it.</p>
+        </section>
+  </article>
+
+  <section id="subscribe" class="sub">
+    <h2 class="sub-t">Get new research by email</h2>
+    <form class="sub-f" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed';">
+      <input type="email" required placeholder="you@company.com" aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="sub-n">One email when new research is published. Unsubscribe anytime.</p>
+  </section>
+
+  <footer>
+    <span>© 2026 Port 502</span>
+    <nav class="f-links"><a href="../../research/">Research</a><a href="../../feed/">News</a><a href="https://www.linkedin.com/in/kschewitz/">LinkedIn</a><button type="button" class="f-contact" id="openContact" aria-haspopup="dialog">Contact</button></nav>
+  </footer>
+</main>
+<dialog id="subModal" aria-labelledby="subTitle">
+  <div class="dl-head"><h3 id="subTitle">Get new research by email</h3><button type="button" class="x" id="closeSub" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <form class="sub-f" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed';">
+    <input type="email" required placeholder="you@company.com" aria-label="Email address">
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="sub-n">One email when new research is published. Unsubscribe anytime.</p>
+</dialog>
+<script>
+(function(){
+  var d=document.getElementById('subModal');
+  document.getElementById('openSub').addEventListener('click',function(e){ if(!d.showModal) return; e.preventDefault(); d.showModal(); setTimeout(function(){ d.querySelector('input').focus(); },30); });
+  document.getElementById('closeSub').onclick=function(){ d.close(); };
+  d.addEventListener('click',function(e){ if(e.target===d) d.close(); });
+})();
+</script>
+<script>
+(function(){
+  var CANONICAL = 'https://port502.com/research/ot-security-skills-2026/';
+  var url = /^https?:/.test(location.protocol) ? location.href.split('#')[0] : CANONICAL;
+  var prompt = 'Summarize the Port 502 report "OT Security Skill Trends 2026" at ' + url +
+    '. Give me a short executive summary, the 5 most important findings, and the key security recommendations for organizations running operational technology. Keep it concise and cite sections from the report where possible.';
+  var q = encodeURIComponent(prompt);
+  var targets = {
+    claude: 'https://claude.ai/new?q=' + q,
+    chatgpt: 'https://chatgpt.com/?q=' + q,
+    copilot: 'https://copilot.microsoft.com/?q=' + q
+  };
+  document.querySelectorAll('.ai-btn[data-ai]').forEach(function(a){
+    var t = targets[a.getAttribute('data-ai')]; if (t) a.href = t;
+  });
+})();
+</script>
+<script>
+(function(){
+  var b=document.getElementById('menuBtn'), m=document.getElementById('mnav'); if(!b||!m) return;
+  b.addEventListener('click',function(){ var o=b.getAttribute('aria-expanded')!=='true'; b.setAttribute('aria-expanded',o); m.classList.toggle('open',o); m.setAttribute('aria-hidden',!o); });
+  m.addEventListener('click',function(e){ if(e.target.closest('a')){ b.setAttribute('aria-expanded','false'); m.classList.remove('open'); } });
+})();
+</script>
+<dialog id="contactModal" aria-labelledby="contactTitle">
+  <div class="dl-head"><h3 id="contactTitle">Contact</h3><button type="button" class="x" id="closeContact" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <p class="dl-sub">Questions, research ideas, or corrections. We read everything.</p>
+  <form class="cf" id="contactForm" action="" method="POST">
+    <label>Name<input type="text" name="name" required autocomplete="name"></label>
+    <label>Email<input type="email" name="email" required autocomplete="email"></label>
+    <label>Message<textarea name="message" rows="5" required></textarea></label>
+    <button type="submit">Send message</button>
+  </form>
+</dialog>
+<script>
+(function(){
+  var d=document.getElementById('contactModal'), o=document.getElementById('openContact'), f=document.getElementById('contactForm');
+  if(!d||!o) return;
+  o.addEventListener('click',function(){ d.showModal(); setTimeout(function(){ f.querySelector('input').focus(); },30); });
+  document.getElementById('closeContact').onclick=function(){ d.close(); };
+  d.addEventListener('click',function(e){ if(e.target===d) d.close(); });
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var url=f.getAttribute('action'); if(!url) return;   // set action="https://formspree.io/f/XXXX" to enable
+    var btn=f.querySelector('button'); btn.disabled=true; btn.textContent='Sending…';
+    fetch(url,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){
+      if(!r.ok) throw 0; f.innerHTML='<p class="cf-done">Thanks. Your message was sent.</p>';
+    }).catch(function(){ btn.disabled=false; btn.textContent='Send message'; });
+  });
+})();
+</script>
+</body>
+</html>
