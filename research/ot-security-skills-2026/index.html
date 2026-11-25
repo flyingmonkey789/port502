@@ -308,112 +308,137 @@ footer{align-items:center}
 @media (max-width:440px){ footer{align-items:flex-start} .cf button{width:100% !important;align-self:stretch} }
 
 /* skills report */
+:root{--c1:#1E3A5F;--c1t:#E8EEF5;--mut:#BFCBDA;--acc:#C2410C;--ink2:#334155}
 .sk-cover{position:relative;display:block;margin-top:32px;aspect-ratio:16/9;overflow:hidden;isolation:isolate;background:#A9DDD0}
 .sk-cover::before{content:"";position:absolute;inset:-25%;z-index:0;filter:blur(36px);transform:rotate(-8deg);background:radial-gradient(55% 60% at 80% 20%, #E9FBF3 0%, rgba(233,251,243,0) 70%), radial-gradient(60% 55% at 15% 85%, #7FC9C0 0%, rgba(127,201,192,0) 70%), linear-gradient(150deg, #CFEFE2 0%, #9ED8CC 55%, #7BB8E0 100%)}
 .sk-cover::after{content:"";position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;opacity:.18;mix-blend-mode:overlay}
 .r-method{margin:40px 0 0 !important;padding:16px 20px;border-left:2px solid var(--text);background:var(--surface);font-size:16px !important}
 .r-sec h3{margin:36px 0 12px;font-family:var(--display);font-size:20px;font-weight:500;color:var(--text)}
-:root{--acc:#2563EB;--pos:#15803D;--neg:#B91C1C;--bar:#262626;--mutbar:#C4C4C4}
-.ch{margin:28px 0 32px;padding:22px 22px 16px;border:1px solid var(--line)}
-.ch-t{margin:0 0 18px;font-family:var(--display);font-size:17px;font-weight:500;line-height:1.3;color:var(--text)}
-.ch-src{margin:16px 0 0 !important;font-size:12px !important;line-height:1.5 !important;color:var(--subtle) !important}
-.ch-foot,.ch-ann{margin:10px 0 0 !important;font-size:13px !important;line-height:1.5 !important;color:var(--muted) !important}
-.ch-ann{color:var(--acc) !important;font-weight:500}
+.ch{margin:28px 0 36px;padding:24px 24px 18px;border:1px solid var(--line);background:#FFFFFF}
+.ch figcaption{display:flex;flex-direction:column;gap:6px;margin:0 0 22px}
+.ch-t{font-family:var(--display);font-size:19px;font-weight:500;line-height:1.3;color:var(--text)}
+.ch-s{font-size:13px;line-height:1.45;color:var(--muted)}
+.ch-src{margin:14px 0 0 !important;padding-top:12px;border-top:1px solid var(--line);font-size:12px !important;line-height:1.5 !important;color:var(--subtle) !important}
+.ch-foot{margin:14px 0 0 !important;font-size:12.5px !important;line-height:1.5 !important;color:var(--muted) !important}
+.ch-ann{margin:14px 0 0 !important;font-size:13.5px !important;line-height:1.5 !important;color:var(--acc) !important;font-weight:600}
 /* horizontal bars */
-.hz{position:relative;display:flex;flex-direction:column;gap:8px}
-.hz-row{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:12px;align-items:center;font-size:14px}
+.hz{position:relative;display:flex;flex-direction:column;gap:9px}
+.hz.has-ref{padding-top:24px}
+.hz-row{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:14px;align-items:center;font-size:14px}
 .hz-l{color:var(--ink);line-height:1.3}
-.hz-track{position:relative;display:flex;align-items:center;gap:8px;height:22px}
-.hz-bar{display:block;height:100%;background:var(--bar);flex:none}
-.hz-v{font-family:var(--mono);font-size:12px;color:var(--ink);white-space:nowrap}
+.hz-track{position:relative;display:flex;align-items:center;gap:4px;height:22px}
+.hz-bar{display:block;height:100%;background:var(--c1);flex:none}
+.hz-v{position:relative;z-index:2;padding:0 4px 0 0;background:#FFFFFF;font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;font-variant-numeric:tabular-nums}
+.hz-row.mut .hz-bar{background:var(--mut)}
+.hz-row.mut .hz-v{color:var(--ink2);font-weight:500}
 .hz-row.acc .hz-bar{background:var(--acc)}
 .hz-row.acc .hz-l,.hz-row.acc .hz-v{color:var(--acc);font-weight:600}
-.hz-row.mut .hz-bar{background:var(--mutbar)}
-.hz-ann{margin:-4px 0 2px calc(min(200px,40%) + 12px);font-size:12px;color:var(--acc);font-weight:500}
-.hz-ref{position:absolute;top:-6px;bottom:-6px;left:calc(min(200px,40%) + 12px + (100% - min(200px,40%) - 12px) * var(--x) / 100%);border-left:1.5px dashed var(--subtle);z-index:1;pointer-events:none}
-.hz-ref{left:calc(min(200px,40%) + 12px + (100% - min(200px,40%) - 12px) * var(--f))}
-.hz.has-ref{padding-top:22px}
-.hz-ref{top:0 !important}
-.hz-ref span{position:absolute;top:0;left:6px;font-size:11px;color:var(--muted);white-space:nowrap}
+.hz-ann{margin:-3px 0 3px 204px;font-size:12.5px;line-height:1.4;color:var(--acc);font-weight:500}
+.hz-ref{position:absolute;top:0;bottom:-4px;left:calc(204px + (100% - 204px) * var(--f));border-left:1.5px dashed var(--ink2);z-index:1;pointer-events:none}
+.hz-ref span{position:absolute;top:0;left:6px;font-size:12px;font-weight:500;color:var(--ink2);white-space:nowrap}
 /* vertical bars */
-.vb-key{display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:10px;font-size:12px;color:var(--subtle)}
-.vb{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:end}
+.vb{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:end;border-bottom:1px solid var(--text)}
 .vb-col{display:flex;flex-direction:column;align-items:stretch;text-align:center}
-.vb-pay{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px}
-.vb-area{position:relative;display:flex;align-items:flex-end;height:180px;border-bottom:1px solid var(--text)}
-.vb-bar{position:relative;display:block;width:100%;background:var(--bar)}
-.vb-v{position:absolute;left:0;right:0;top:-18px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.vb-area{position:relative;display:flex;align-items:flex-end;height:170px;padding-top:24px}
+.vb-bar{position:relative;display:block;width:100%;background:var(--c1)}
+.vb-v{position:absolute;left:0;right:0;top:-22px;font-size:14px;font-weight:600;color:var(--text);font-variant-numeric:tabular-nums}
 .vb-col.acc .vb-bar{background:var(--acc)}
-.vb-col.acc .vb-v{color:var(--acc);font-weight:600}
-.vb-l{margin-top:8px;font-size:12px;line-height:1.3;color:var(--ink)}
-.vb-area{padding-top:20px}
+.vb-col.acc .vb-v{color:var(--acc)}
+.vb ~ .vb-lrow{display:none}
+.vb-l{display:none}
+.vb-labels,.vb-pay{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;text-align:center}
+.vb-labels{margin-top:8px;font-size:12.5px;line-height:1.3;color:var(--ink)}
+.vb-pay{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);align-items:center}
+.vb-pay-h{grid-column:1 / -1;text-align:left;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:2px}
+.vb-pay-c{padding:6px 0;background:var(--c1t);font-size:13px;font-weight:600;color:var(--c1);font-variant-numeric:tabular-nums}
+.vb-pay-c.span2{grid-column:span 2}
 /* heatmap */
 .hm-wrap{overflow-x:auto}
-.hm{width:100%;border-collapse:collapse;font-size:14px}
-.hm thead th{padding:0 6px 10px;font-size:12px;font-weight:500;color:var(--muted);text-align:center;vertical-align:bottom}
-.hm tbody th{padding:8px 12px 8px 0;font-weight:500;color:var(--ink);text-align:left;white-space:nowrap}
-.hm td{width:22%;padding:8px 0;text-align:center;font-family:var(--mono);font-size:13px;border:2px solid #FFFFFF}
-.hm .hm-g th{padding:16px 0 6px;font-size:12px;font-weight:600;color:var(--subtle);text-transform:none}
-.hm tbody .hm-g:first-child th{padding-top:4px}
+.hm{width:100%;border-collapse:separate;border-spacing:3px;font-size:14px}
+.hm thead th{padding:0 4px 8px;font-size:12px;font-weight:500;line-height:1.3;color:var(--muted);text-align:center;vertical-align:bottom}
+.hm tbody th{padding:0 10px 0 0;font-weight:500;color:var(--ink);text-align:left}
+.hm td{width:21%;height:36px;text-align:center;font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums}
+.hm .hm-g th{padding:14px 0 4px;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--subtle)}
+.hm tbody .hm-g:first-child th{padding-top:2px}
 /* stacked */
-.st{display:flex;height:44px}
-.st span{display:flex;align-items:center;padding:0 12px;font-family:var(--mono);font-size:14px;font-weight:600}
-.st-a{background:var(--bar);color:#FFFFFF}
-.st-b{background:var(--mutbar);color:var(--text)}
-.st-k{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink)}
-.st-k i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
-.st-k .ka{background:var(--bar)} .st-k .kb{background:var(--mutbar)}
+.st{display:flex;height:46px}
+.st span{display:flex;align-items:center;padding:0 12px;font-size:16px;font-weight:600;font-variant-numeric:tabular-nums}
+.st-a{background:var(--c1);color:#FFFFFF}
+.st-b{background:var(--acc);color:#FFFFFF}
+.st-lab{display:flex;margin-top:8px;font-size:13px;line-height:1.35;color:var(--ink)}
+.st-lab span{padding-right:12px}
+.st-lab-b{color:var(--acc);font-weight:500;padding-left:0}
 /* range */
-.rg{position:relative;display:flex;flex-direction:column;gap:14px;padding-top:22px}
-.rg-row,.rg-axis{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:12px;align-items:center;font-size:14px}
-.rg-l{color:var(--ink);line-height:1.3}
+.rg-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:6px;font-size:12.5px;color:var(--ink)}
+.rg-key i{display:inline-block;vertical-align:-2px;margin-right:6px}
+.rg-key .kb{width:16px;height:10px;background:var(--mut)}
+.rg-key .km{width:3px;height:14px;background:var(--c1)}
+.rg{position:relative;display:flex;flex-direction:column;gap:12px;padding-top:26px}
+.rg-row,.rg-axis{display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:14px;align-items:center;font-size:14px}
+.rg-l{display:flex;flex-direction:column;gap:2px;color:var(--ink);line-height:1.3}
+.rg-v{font-size:13px;font-weight:600;color:var(--c1);white-space:nowrap;font-variant-numeric:tabular-nums}
+.rg-v em{font-style:normal;font-weight:400;color:var(--muted);margin-left:6px}
 .rg-track{position:relative;height:30px;background:linear-gradient(var(--line),var(--line)) 0 50%/100% 1px no-repeat}
-.rg-bar{position:absolute;top:8px;height:14px;background:var(--mutbar)}
-.rg-med{position:absolute;top:3px;width:3px;height:24px;margin-left:-1.5px;background:var(--text)}
-.rg-l{display:flex;flex-direction:column;gap:2px}
-.rg-v{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text);white-space:nowrap}
-.rg-v em{font-style:normal;font-weight:400;color:var(--subtle);margin-left:6px}
-.rg-ticks{position:relative;height:16px;border-top:1px solid var(--line)}
-.rg-ticks i{position:absolute;top:4px;transform:translateX(-50%);font-style:normal;font-family:var(--mono);font-size:11px;color:var(--subtle)}
+.rg-bar{position:absolute;top:8px;height:14px;background:var(--mut)}
+.rg-med{position:absolute;top:2px;width:4px;height:26px;margin-left:-2px;background:var(--c1)}
+.rg-ticks{position:relative;height:18px;border-top:1px solid var(--line)}
+.rg-ticks i{position:absolute;top:4px;transform:translateX(-50%);font-style:normal;font-size:11.5px;color:var(--muted)}
 .rg-ticks i:first-child{transform:none}
-.rg-ref{position:absolute;top:0;bottom:22px;left:calc(min(170px,40%) + 12px + (100% - min(170px,40%) - 12px) * var(--f));border-left:1.5px dashed var(--subtle);pointer-events:none}
-.rg-ref span{position:absolute;top:0;left:6px;font-size:11px;color:var(--muted);white-space:nowrap}
+.rg-ref{position:absolute;top:0;bottom:22px;left:calc(194px + (100% - 194px) * var(--f));border-left:1.5px dashed var(--ink2);pointer-events:none}
+.rg-ref span{position:absolute;top:0;left:6px;font-size:12px;font-weight:500;color:var(--ink2);white-space:nowrap}
 /* diverging */
-.dv{display:flex;flex-direction:column;gap:8px}
-.dv-row{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:12px;align-items:center;font-size:14px}
-.dv-l{color:var(--ink);line-height:1.3}
-.dv-track{display:grid;grid-template-columns:1fr 1fr;height:22px}
-.dv-half{position:relative;display:flex;align-items:center;gap:6px}
-.dv-left{flex-direction:row-reverse;border-right:1px solid var(--text)}
-.dv-bar{display:block;height:100%;flex:none}
-.dv-v{font-family:var(--mono);font-size:12px;font-weight:600;white-space:nowrap}
-.dv-row.pos .dv-bar{background:var(--pos)} .dv-row.pos .dv-v{color:var(--pos)}
-.dv-row.neg .dv-bar{background:var(--neg)} .dv-row.neg .dv-v{color:var(--neg)}
-/* pay table */
+.dv{display:flex;flex-direction:column;gap:6px}
+.dv-head{display:grid;grid-template-columns:1fr 1fr;margin-bottom:4px;font-size:12px;font-weight:600;color:var(--muted)}
+.dv-head span:first-child{text-align:right;padding-right:10px;color:var(--acc)}
+.dv-head span:last-child{padding-left:10px;color:var(--c1)}
+.dv-row{display:grid;grid-template-columns:1fr 1fr;min-height:28px;font-size:14px}
+.dv-half{display:flex;align-items:center;gap:8px}
+.dv-left{justify-content:flex-end;border-right:1.5px solid var(--text);padding-right:0}
+.dv-row.pos .dv-left{padding-right:10px}
+.dv-row.neg .dv-right{padding-left:10px}
+.dv-l{color:var(--ink);line-height:1.25}
+.dv-row.pos .dv-l{text-align:right}
+.dv-bar{display:block;height:22px;flex:none}
+.dv-v{font-size:13px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.dv-row.pos .dv-bar{background:var(--c1)} .dv-row.pos .dv-v{color:var(--c1)}
+.dv-row.neg .dv-bar{background:var(--acc)} .dv-row.neg .dv-v{color:var(--acc)}
+.dv-row.neg .dv-left{flex-direction:row-reverse;justify-content:flex-start}
+/* table */
 .pt{width:100%;border-collapse:collapse;font-size:15px}
-.pt th,.pt td{padding:12px 8px;border-bottom:1px solid var(--line);text-align:right}
+.pt th,.pt td{padding:12px 8px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
 .pt th:first-child,.pt td:first-child{text-align:left;padding-left:0}
 .pt thead th{font-size:12px;font-weight:500;color:var(--muted);border-bottom:1px solid var(--text)}
 .pt tbody th{font-weight:500;color:var(--ink)}
-.pt td{font-family:var(--mono);font-size:14px;color:var(--ink)}
-.pt td.neg{color:var(--neg);font-weight:600}
+.pt td{font-size:14.5px;color:var(--ink)}
+.pt td.neg{color:var(--acc);font-weight:600}
 @media (max-width:520px){
-  .ch{padding:16px 14px 12px;margin-left:-4px;margin-right:-4px}
-  .hz-row,.dv-row{grid-template-columns:minmax(0,1fr);gap:4px}
-  .hz-l,.dv-l{font-size:13px}
+  .ch{padding:18px 16px 14px}
+  .ch-t{font-size:17px}
+  .hz-row{grid-template-columns:minmax(0,1fr);gap:4px}
+  .hz-l{font-size:13.5px}
   .hz-ann{margin-left:0}
-  .hz-ref{left:calc(100% * var(--f))}
-  .rg-row,.rg-axis{grid-template-columns:minmax(0,1fr);gap:2px}
+  .hz-ref{left:calc(100% * var(--f));bottom:auto;height:20px}
+  .hz.has-ref .hz-v{padding:0 4px;margin-left:-4px;z-index:3}
+  .hz.has-ref .hz-track::before,.rg-track::after{content:"";position:absolute;top:-3px;bottom:-3px;left:calc(100% * var(--f));border-left:1.5px dashed var(--ink2);z-index:1}
+  .rg-row,.rg-axis{grid-template-columns:minmax(0,1fr);gap:4px}
   .rg-axis > span:first-child{display:none}
-  .rg-ref{left:calc(100% * var(--f))}
-  .vb{gap:6px}
-  .vb-l{font-size:11px}
-  .vb-pay{font-size:10px}
-  .vb-area{height:150px}
-  .hm tbody th{white-space:normal;font-size:13px}
+  .rg-ref{left:calc(100% * var(--f));bottom:auto;height:20px}
+  .rg-track{margin-bottom:6px}
+  .vb,.vb-labels,.vb-pay{gap:5px}
+  .vb-labels{font-size:11px}
+  .vb-v{font-size:13px}
+  .vb-pay-c{font-size:11.5px}
+  .vb-area{height:140px}
+  .hm tbody th{font-size:13px;line-height:1.25}
   .hm thead th{font-size:11px}
+  .hm td{font-size:12.5px;height:34px}
+  .st-lab{font-size:12px}
+  .dv-row{font-size:12.5px}
+  .dv-v{font-size:12px}
   .pt th,.pt td{padding:10px 4px}
+  .pt td{font-size:13.5px}
 }
+
 </style>
 </head>
 <body>
@@ -454,36 +479,36 @@ footer{align-items:center}
         <section id="industry" class="r-sec">
           <p class="r-num">01</p>
           <h2>Industry breakdown</h2>
-          <p>Defense contractors, government and research organizations post the most OT security roles, ahead of utilities and manufacturers. AI data centers and crypto miners are a small but new group of employers, and they post the highest pay.</p><figure class="ch"><figcaption class="ch-t">Share of OT security job postings by industry</figcaption><div class="hz"><div class="hz-row "><span class="hz-l">Defense, government &amp; research</span><span class="hz-track"><span class="hz-bar" style="width:82.00%"></span><span class="hz-v">21%</span></span></div><div class="hz-row "><span class="hz-l">Power &amp; utilities</span><span class="hz-track"><span class="hz-bar" style="width:70.29%"></span><span class="hz-v">18%</span></span></div><div class="hz-row "><span class="hz-l">Manufacturing &amp; pharma</span><span class="hz-track"><span class="hz-bar" style="width:66.38%"></span><span class="hz-v">17%</span></span></div><div class="hz-row "><span class="hz-l">Consulting &amp; engineering</span><span class="hz-track"><span class="hz-bar" style="width:46.86%"></span><span class="hz-v">12%</span></span></div><div class="hz-row "><span class="hz-l">Staffing &amp; recruiters</span><span class="hz-track"><span class="hz-bar" style="width:39.05%"></span><span class="hz-v">10%</span></span></div><div class="hz-row "><span class="hz-l">Oil, gas &amp; chemicals</span><span class="hz-track"><span class="hz-bar" style="width:23.43%"></span><span class="hz-v">6%</span></span></div><div class="hz-row "><span class="hz-l">OT/industrial vendors</span><span class="hz-track"><span class="hz-bar" style="width:23.43%"></span><span class="hz-v">6%</span></span></div><div class="hz-row acc"><span class="hz-l">Data centers, AI &amp; crypto</span><span class="hz-track"><span class="hz-bar" style="width:19.52%"></span><span class="hz-v">5%</span></span></div><div class="hz-ann">Highest median pay ($201K)</div><div class="hz-row "><span class="hz-l">Nuclear &amp; advanced energy</span><span class="hz-track"><span class="hz-bar" style="width:19.52%"></span><span class="hz-v">5%</span></span></div><div class="hz-row "><span class="hz-l">Water &amp; public sector</span><span class="hz-track"><span class="hz-bar" style="width:11.71%"></span><span class="hz-v">3%</span></span></div></div><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+          <p>Defense contractors, government and research organizations post the most OT security roles, ahead of utilities and manufacturers. AI data centers and crypto miners are a small but new group of employers, and they post the highest pay.</p><figure class="ch"><figcaption><span class="ch-t">Defense, utilities and manufacturers post more than half of OT security jobs</span><span class="ch-s">Share of 500 job postings, by employer industry</span></figcaption><div class="hz"><div class="hz-row "><span class="hz-l">Defense, government &amp; research</span><span class="hz-track"><span class="hz-bar" style="width:82.00%"></span><span class="hz-v">21%</span></span></div><div class="hz-row "><span class="hz-l">Power &amp; utilities</span><span class="hz-track"><span class="hz-bar" style="width:70.29%"></span><span class="hz-v">18%</span></span></div><div class="hz-row "><span class="hz-l">Manufacturing &amp; pharma</span><span class="hz-track"><span class="hz-bar" style="width:66.38%"></span><span class="hz-v">17%</span></span></div><div class="hz-row mut"><span class="hz-l">Consulting &amp; engineering</span><span class="hz-track"><span class="hz-bar" style="width:46.86%"></span><span class="hz-v">12%</span></span></div><div class="hz-row mut"><span class="hz-l">Staffing &amp; recruiters</span><span class="hz-track"><span class="hz-bar" style="width:39.05%"></span><span class="hz-v">10%</span></span></div><div class="hz-row mut"><span class="hz-l">Oil, gas &amp; chemicals</span><span class="hz-track"><span class="hz-bar" style="width:23.43%"></span><span class="hz-v">6%</span></span></div><div class="hz-row mut"><span class="hz-l">OT/industrial vendors</span><span class="hz-track"><span class="hz-bar" style="width:23.43%"></span><span class="hz-v">6%</span></span></div><div class="hz-row acc"><span class="hz-l">Data centers, AI &amp; crypto</span><span class="hz-track"><span class="hz-bar" style="width:19.52%"></span><span class="hz-v">5%</span></span></div><div class="hz-ann">Small share, but the highest median pay of any industry ($201K)</div><div class="hz-row mut"><span class="hz-l">Nuclear &amp; advanced energy</span><span class="hz-track"><span class="hz-bar" style="width:19.52%"></span><span class="hz-v">5%</span></span></div><div class="hz-row mut"><span class="hz-l">Water &amp; public sector</span><span class="hz-track"><span class="hz-bar" style="width:11.71%"></span><span class="hz-v">3%</span></span></div></div><p class="ch-foot">Shares may not total 100% because of rounding.</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
         </section>
         <section id="seniority" class="r-sec">
           <p class="r-num">02</p>
           <h2>Seniority breakdown</h2>
-          <p>OT security hiring favors experienced people. Just 4% of roles are entry level, and most of those are internships. Two-thirds of postings are at the mid, lead or principal level.</p><figure class="ch"><figcaption class="ch-t">OT security roles by seniority level</figcaption><div class="vb-key"><span>Bar: share of postings</span><span>Label: median posted pay</span></div><div class="vb"><div class="vb-col acc" title="Entry / associate"><span class="vb-pay">$125K*</span><span class="vb-area"><span class="vb-bar" style="height:11.8%"><span class="vb-v">4%</span></span></span><span class="vb-l">Entry</span></div><div class="vb-col " title="Mid"><span class="vb-pay">$125K*</span><span class="vb-area"><span class="vb-bar" style="height:100.0%"><span class="vb-v">34%</span></span></span><span class="vb-l">Mid</span></div><div class="vb-col " title="Senior"><span class="vb-pay">$138K</span><span class="vb-area"><span class="vb-bar" style="height:50.0%"><span class="vb-v">17%</span></span></span><span class="vb-l">Senior</span></div><div class="vb-col " title="Lead / principal / architect"><span class="vb-pay">$168K</span><span class="vb-area"><span class="vb-bar" style="height:91.2%"><span class="vb-v">31%</span></span></span><span class="vb-l">Lead</span></div><div class="vb-col " title="Manager"><span class="vb-pay">$186K</span><span class="vb-area"><span class="vb-bar" style="height:26.5%"><span class="vb-v">9%</span></span></span><span class="vb-l">Manager</span></div><div class="vb-col " title="Director+"><span class="vb-pay">$194K</span><span class="vb-area"><span class="vb-bar" style="height:17.6%"><span class="vb-v">6%</span></span></span><span class="vb-l">Director+</span></div></div><p class="ch-ann">Most entry roles are internships.</p><p class="ch-foot">*Entry and mid-level pay combined because of small sample size.</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+          <p>OT security hiring favors experienced people. Just 4% of roles are entry level, and most of those are internships. Two-thirds of postings are at the mid, lead or principal level.</p><figure class="ch"><figcaption><span class="ch-t">Only 4% of OT security roles are entry level</span><span class="ch-s">Share of 500 job postings by seniority, with median posted pay for each level</span></figcaption><div class="vb"><div class="vb-col acc"><span class="vb-area"><span class="vb-bar" style="height:11.8%"><span class="vb-v">4%</span></span></span><span class="vb-l">Entry</span></div><div class="vb-col "><span class="vb-area"><span class="vb-bar" style="height:100.0%"><span class="vb-v">34%</span></span></span><span class="vb-l">Mid</span></div><div class="vb-col "><span class="vb-area"><span class="vb-bar" style="height:50.0%"><span class="vb-v">17%</span></span></span><span class="vb-l">Senior</span></div><div class="vb-col "><span class="vb-area"><span class="vb-bar" style="height:91.2%"><span class="vb-v">31%</span></span></span><span class="vb-l">Lead / principal</span></div><div class="vb-col "><span class="vb-area"><span class="vb-bar" style="height:26.5%"><span class="vb-v">9%</span></span></span><span class="vb-l">Manager</span></div><div class="vb-col "><span class="vb-area"><span class="vb-bar" style="height:17.6%"><span class="vb-v">6%</span></span></span><span class="vb-l">Director+</span></div></div><div class="vb-labels"><span>Entry</span><span>Mid</span><span>Senior</span><span>Lead / principal</span><span>Manager</span><span>Director+</span></div><div class="vb-pay"><span class="vb-pay-h">Median posted pay</span><span class="vb-pay-c span2">$125K*</span><span class="vb-pay-c">$138K</span><span class="vb-pay-c">$168K</span><span class="vb-pay-c">$186K</span><span class="vb-pay-c">$194K</span></div><p class="ch-ann">Most entry-level postings are internships.</p><p class="ch-foot">*Entry and mid-level pay are combined because of the small entry-level sample. Shares may not total 100% because of rounding.</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
 <p>Individual contributors are expected to know the systems. At the entry through principal levels, roles ask for hands-on control system and protocol knowledge, plus scripting.</p>
-<p>Leaders are expected to know governance. Manager and director postings shift toward policy, compliance and standards, and hands-on skills drop sharply.</p><figure class="ch"><figcaption class="ch-t">How often each skill appears, by seniority</figcaption><div class="hm-wrap"><table class="hm"><thead><tr><th></th><th>Entry / mid</th><th>Senior / lead</th><th>Manager / director+</th></tr></thead><tbody><tr class="hm-g"><th colspan="4">Rises with seniority</th></tr><tr><th scope="row">Leadership / mentoring</th><td style="background:rgba(0,0,0,0.54);color:#FFFFFF">51%</td><td style="background:rgba(0,0,0,0.77);color:#FFFFFF">76%</td><td style="background:rgba(0,0,0,0.87);color:#FFFFFF">87%</td></tr><tr><th scope="row">Compliance / audit</th><td style="background:rgba(0,0,0,0.68);color:#FFFFFF">66%</td><td style="background:rgba(0,0,0,0.63);color:#FFFFFF">61%</td><td style="background:rgba(0,0,0,0.83);color:#FFFFFF">83%</td></tr><tr><th scope="row">CISSP</th><td style="background:rgba(0,0,0,0.46);color:var(--ink)">43%</td><td style="background:rgba(0,0,0,0.47);color:var(--ink)">44%</td><td style="background:rgba(0,0,0,0.62);color:#FFFFFF">60%</td></tr><tr><th scope="row">IEC 62443</th><td style="background:rgba(0,0,0,0.44);color:var(--ink)">41%</td><td style="background:rgba(0,0,0,0.40);color:var(--ink)">36%</td><td style="background:rgba(0,0,0,0.53);color:#FFFFFF">50%</td></tr><tr class="hm-g"><th colspan="4">Drops at leadership level</th></tr><tr><th scope="row">PLC</th><td style="background:rgba(0,0,0,0.32);color:var(--ink)">28%</td><td style="background:rgba(0,0,0,0.39);color:var(--ink)">35%</td><td style="background:rgba(0,0,0,0.18);color:var(--ink)">13%</td></tr><tr><th scope="row">Modbus</th><td style="background:rgba(0,0,0,0.28);color:var(--ink)">24%</td><td style="background:rgba(0,0,0,0.31);color:var(--ink)">27%</td><td style="background:rgba(0,0,0,0.18);color:var(--ink)">13%</td></tr><tr><th scope="row">Scripting</th><td style="background:rgba(0,0,0,0.26);color:var(--ink)">21%</td><td style="background:rgba(0,0,0,0.32);color:var(--ink)">28%</td><td style="background:rgba(0,0,0,0.18);color:var(--ink)">13%</td></tr><tr><th scope="row">Security clearance</th><td style="background:rgba(0,0,0,0.23);color:var(--ink)">18%</td><td style="background:rgba(0,0,0,0.28);color:var(--ink)">24%</td><td style="background:rgba(0,0,0,0.09);color:var(--ink)">3%</td></tr></tbody></table></div><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+<p>Leaders are expected to know governance. Manager and director postings shift toward policy, compliance and standards, and hands-on skills drop sharply.</p><figure class="ch"><figcaption><span class="ch-t">Leaders are hired for governance, individual contributors for hands-on skills</span><span class="ch-s">Share of postings at each level that ask for the skill</span></figcaption><div class="hm-wrap"><table class="hm"><thead><tr><th></th><th>Entry / mid</th><th>Senior / lead</th><th>Manager / director+</th></tr></thead><tbody><tr class="hm-g"><th colspan="4">Rise with seniority</th></tr><tr><th scope="row">Leadership / mentoring</th><td style="background:rgba(30,58,95,0.59);color:#FFFFFF">51%</td><td style="background:rgba(30,58,95,0.84);color:#FFFFFF">76%</td><td style="background:rgba(30,58,95,0.95);color:#FFFFFF">87%</td></tr><tr><th scope="row">Compliance / audit</th><td style="background:rgba(30,58,95,0.74);color:#FFFFFF">66%</td><td style="background:rgba(30,58,95,0.69);color:#FFFFFF">61%</td><td style="background:rgba(30,58,95,0.91);color:#FFFFFF">83%</td></tr><tr><th scope="row">CISSP</th><td style="background:rgba(30,58,95,0.51);color:var(--ink)">43%</td><td style="background:rgba(30,58,95,0.52);color:var(--ink)">44%</td><td style="background:rgba(30,58,95,0.68);color:#FFFFFF">60%</td></tr><tr><th scope="row">IEC 62443</th><td style="background:rgba(30,58,95,0.49);color:var(--ink)">41%</td><td style="background:rgba(30,58,95,0.44);color:var(--ink)">36%</td><td style="background:rgba(30,58,95,0.58);color:#FFFFFF">50%</td></tr><tr class="hm-g"><th colspan="4">Drop at leadership level</th></tr><tr><th scope="row">PLC</th><td style="background:rgba(30,58,95,0.36);color:var(--ink)">28%</td><td style="background:rgba(30,58,95,0.43);color:var(--ink)">35%</td><td style="background:rgba(30,58,95,0.21);color:var(--ink)">13%</td></tr><tr><th scope="row">Modbus</th><td style="background:rgba(30,58,95,0.32);color:var(--ink)">24%</td><td style="background:rgba(30,58,95,0.35);color:var(--ink)">27%</td><td style="background:rgba(30,58,95,0.21);color:var(--ink)">13%</td></tr><tr><th scope="row">Scripting</th><td style="background:rgba(30,58,95,0.29);color:var(--ink)">21%</td><td style="background:rgba(30,58,95,0.36);color:var(--ink)">28%</td><td style="background:rgba(30,58,95,0.21);color:var(--ink)">13%</td></tr><tr><th scope="row">Security clearance</th><td style="background:rgba(30,58,95,0.26);color:var(--ink)">18%</td><td style="background:rgba(30,58,95,0.32);color:var(--ink)">24%</td><td style="background:rgba(30,58,95,0.11);color:var(--ink)">3%</td></tr></tbody></table></div><p class="ch-foot">Darker cells mean the skill appears in more postings.</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
         </section>
         <section id="titles" class="r-sec">
           <p class="r-num">03</p>
           <h2>Job titles and IT/OT breakdown</h2>
           <p>Of the 500 job postings we analyzed in full, 63% explicitly included “OT” in the job title. “OT” was the preferred label, appearing about four times more often than “ICS.”</p>
 <p>The remaining 37% had no “OT” or “ICS” in the title, but still included OT responsibilities. These were hybrid IT/OT security roles, often advertised under generic security titles. Their descriptions included responsibilities such as securing control systems, segmenting plant networks, and supporting IEC 62443 programs.</p>
-<p>Job seekers who search only for “OT security” may miss more than a third of relevant opportunities. Employers using generic security titles risk making OT-related positions harder for the specialists they want to attract to find.</p><figure class="ch"><figcaption class="ch-t">Does the job title say OT?</figcaption><div class="st"><span class="st-a" style="width:63%">63%</span><span class="st-b" style="width:37%">37%</span></div><div class="st-k"><span><i class="ka"></i>OT-specific term in title</span><span><i class="kb"></i>Generic security title with OT duties</span></div><p class="ch-ann">“OT” appears in titles 4× more than “ICS.”</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+<p>Job seekers who search only for “OT security” may miss more than a third of relevant opportunities. Employers using generic security titles risk making OT-related positions harder for the specialists they want to attract to find.</p><figure class="ch"><figcaption><span class="ch-t">More than a third of OT security roles don’t say “OT” in the title</span><span class="ch-s">Share of 500 job postings, by job title</span></figcaption><div class="st"><span class="st-a" style="width:63%">63%</span><span class="st-b" style="width:37%">37%</span></div><div class="st-lab"><span style="width:63%">Title includes “OT” or “ICS”</span><span class="st-lab-b" style="width:37%">Generic security title, OT duties in the description</span></div><p class="ch-ann">“OT” appears in titles about 4× more often than “ICS.”</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
         </section>
         <section id="pay" class="r-sec">
           <p class="r-num">04</p>
           <h2>Salary and pay</h2>
           <p>About half of the observed postings list a pay range. Pay figures below use the midpoint of each posted range. They show what employers advertise, not what people are actually paid.</p>
 <p>The median posted midpoint is $157K. The middle half of roles fall between $125K and $186K.</p>
-<p>The typical posting spans about $45K from the bottom end of the range to the top.</p><figure class="ch"><figcaption class="ch-t">Posted pay by seniority level</figcaption><div class="rg"><div class="rg-ref" style="--f:0.4071"><span>Overall median $157K</span></div><div class="rg-row"><span class="rg-l">Entry / mid<span class="rg-v">$125K <em>$104–160K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:2.86%;width:40.00%"></span><span class="rg-med" style="left:17.86%"></span></span></div><div class="rg-row"><span class="rg-l">Senior<span class="rg-v">$138K <em>$113–156K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:9.29%;width:30.71%"></span><span class="rg-med" style="left:27.14%"></span></span></div><div class="rg-row"><span class="rg-l">Lead / principal / architect<span class="rg-v">$168K <em>$135–187K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:25.00%;width:37.14%"></span><span class="rg-med" style="left:48.57%"></span></span></div><div class="rg-row"><span class="rg-l">Manager<span class="rg-v">$186K <em>$145–196K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:32.14%;width:36.43%"></span><span class="rg-med" style="left:61.43%"></span></span></div><div class="rg-row"><span class="rg-l">Director+<span class="rg-v">$194K <em>$180–228K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:57.14%;width:34.29%"></span><span class="rg-med" style="left:67.14%"></span></span></div><div class="rg-axis"><span></span><span class="rg-ticks"><i style="left:0.00%">$100K</i><i style="left:28.57%">$140K</i><i style="left:57.14%">$180K</i><i style="left:85.71%">$220K</i></span></div></div><p class="ch-foot">Bar: middle half of posted midpoints. Tick: median.</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
-<h3>Pay by role</h3>
-<p>The industry employees choose to work in matters more than their seniority or skills. AI data centers, defense and advanced energy post the highest ranges. Utilities and public employers post the lowest.</p><figure class="ch"><figcaption class="ch-t">Median posted pay by industry</figcaption><div class="hz has-ref"><div class="hz-ref" style="--f:0.6130"><span>Overall median $157K</span></div><div class="hz-row "><span class="hz-l">Data centers, AI &amp; crypto</span><span class="hz-track"><span class="hz-bar" style="width:78.49%"></span><span class="hz-v">$201K</span></span></div><div class="hz-row "><span class="hz-l">Defense, government &amp; research</span><span class="hz-track"><span class="hz-bar" style="width:72.24%"></span><span class="hz-v">$185K</span></span></div><div class="hz-row "><span class="hz-l">Nuclear &amp; advanced energy</span><span class="hz-track"><span class="hz-bar" style="width:71.07%"></span><span class="hz-v">$182K</span></span></div><div class="hz-row "><span class="hz-l">Manufacturing &amp; pharma</span><span class="hz-track"><span class="hz-bar" style="width:64.82%"></span><span class="hz-v">$166K</span></span></div><div class="hz-row mut"><span class="hz-l">Consulting &amp; engineering</span><span class="hz-track"><span class="hz-bar" style="width:53.50%"></span><span class="hz-v">$137K</span></span></div><div class="hz-row mut"><span class="hz-l">Power &amp; utilities</span><span class="hz-track"><span class="hz-bar" style="width:47.25%"></span><span class="hz-v">$121K</span></span></div><div class="hz-row mut"><span class="hz-l">Water &amp; public sector</span><span class="hz-track"><span class="hz-bar" style="width:46.86%"></span><span class="hz-v">$120K</span></span></div></div><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+<p>The typical posting spans about $45K from the bottom end of the range to the top.</p><figure class="ch"><figcaption><span class="ch-t">Posted pay rises steadily with seniority</span><span class="ch-s">Median posted pay and middle half of posted ranges, by level, among postings that list pay</span></figcaption><div class="rg-key"><span><i class="kb"></i>Middle half of postings</span><span><i class="km"></i>Median</span></div><div class="rg" style="--f:0.4071"><div class="rg-ref" style="--f:0.4071"><span>All roles: $157K</span></div><div class="rg-row"><span class="rg-l">Entry / mid*<span class="rg-v">$125K <em>$104–160K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:2.86%;width:40.00%"></span><span class="rg-med" style="left:17.86%"></span></span></div><div class="rg-row"><span class="rg-l">Senior<span class="rg-v">$138K <em>$113–156K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:9.29%;width:30.71%"></span><span class="rg-med" style="left:27.14%"></span></span></div><div class="rg-row"><span class="rg-l">Lead / principal / architect<span class="rg-v">$168K <em>$135–187K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:25.00%;width:37.14%"></span><span class="rg-med" style="left:48.57%"></span></span></div><div class="rg-row"><span class="rg-l">Manager<span class="rg-v">$186K <em>$145–196K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:32.14%;width:36.43%"></span><span class="rg-med" style="left:61.43%"></span></span></div><div class="rg-row"><span class="rg-l">Director+<span class="rg-v">$194K <em>$180–228K</em></span></span><span class="rg-track"><span class="rg-bar" style="left:57.14%;width:34.29%"></span><span class="rg-med" style="left:67.14%"></span></span></div><div class="rg-axis"><span></span><span class="rg-ticks"><i style="left:0.00%">$100K</i><i style="left:28.57%">$140K</i><i style="left:57.14%">$180K</i><i style="left:85.71%">$220K</i></span></div></div><p class="ch-foot">Pay is the midpoint of each posted range. *Entry and mid-level combined because of small sample size.</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+<h3>Pay by industry</h3>
+<p>The industry employees choose to work in matters more than their seniority or skills. AI data centers, defense and advanced energy post the highest ranges. Utilities and public employers post the lowest.</p><figure class="ch"><figcaption><span class="ch-t">AI data centers pay the most; utilities and the public sector pay the least</span><span class="ch-s">Median posted pay by employer industry, among postings that list pay</span></figcaption><div class="hz has-ref" style="--f:0.6130"><div class="hz-ref" style="--f:0.6130"><span>All roles: $157K</span></div><div class="hz-row "><span class="hz-l">Data centers, AI &amp; crypto</span><span class="hz-track"><span class="hz-bar" style="width:78.49%"></span><span class="hz-v">$201K</span></span></div><div class="hz-row "><span class="hz-l">Defense, government &amp; research</span><span class="hz-track"><span class="hz-bar" style="width:72.24%"></span><span class="hz-v">$185K</span></span></div><div class="hz-row "><span class="hz-l">Nuclear &amp; advanced energy</span><span class="hz-track"><span class="hz-bar" style="width:71.07%"></span><span class="hz-v">$182K</span></span></div><div class="hz-row "><span class="hz-l">Manufacturing &amp; pharma</span><span class="hz-track"><span class="hz-bar" style="width:64.82%"></span><span class="hz-v">$166K</span></span></div><div class="hz-row mut"><span class="hz-l">Consulting &amp; engineering</span><span class="hz-track"><span class="hz-bar" style="width:53.50%"></span><span class="hz-v">$137K</span></span></div><div class="hz-row mut"><span class="hz-l">Power &amp; utilities</span><span class="hz-track"><span class="hz-bar" style="width:47.25%"></span><span class="hz-v">$121K</span></span></div><div class="hz-row mut"><span class="hz-l">Water &amp; public sector</span><span class="hz-track"><span class="hz-bar" style="width:46.86%"></span><span class="hz-v">$120K</span></span></div></div><p class="ch-foot">Dark bars are above the overall median; light bars are below it.</p><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
         </section>
         <section id="raises" class="r-sec">
           <p class="r-num">05</p>
           <h2>What raises pay</h2>
-          <p>A security clearance has the strongest link to higher pay. Specialist skills (GRID certification, scripting, IEC 62443, PLC, penetration testing) also come with higher posted pay.</p><figure class="ch"><figcaption class="ch-t">Pay difference when a posting asks for the skill</figcaption><div class="dv"><div class="dv-row pos"><span class="dv-l">Security clearance</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:72.0%></span><span class=dv-v>+$35K</span></span></span></div><div class="dv-row pos"><span class="dv-l">GRID certification</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:57.6%></span><span class=dv-v>+$28K</span></span></span></div><div class="dv-row pos"><span class="dv-l">Scripting (Python/PowerShell)</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:43.2%></span><span class=dv-v>+$21K</span></span></span></div><div class="dv-row pos"><span class="dv-l">IEC 62443</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:41.1%></span><span class=dv-v>+$20K</span></span></span></div><div class="dv-row pos"><span class="dv-l">PLC</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:35.0%></span><span class=dv-v>+$17K</span></span></span></div><div class="dv-row pos"><span class="dv-l">Penetration testing</span><span class="dv-track"><span class="dv-half dv-left"></span><span class="dv-half dv-right"><span class=dv-bar style=width:32.9%></span><span class=dv-v>+$16K</span></span></span></div><div class="dv-row neg"><span class="dv-l">SCADA</span><span class="dv-track"><span class="dv-half dv-left"><span class=dv-bar style=width:30.9%></span><span class=dv-v>−$15K</span></span><span class="dv-half dv-right"></span></span></div><div class="dv-row neg"><span class="dv-l">GICSP</span><span class="dv-track"><span class="dv-half dv-left"><span class=dv-bar style=width:37.0%></span><span class=dv-v>−$18K</span></span><span class="dv-half dv-right"></span></span></div><div class="dv-row neg"><span class="dv-l">CISSP</span><span class="dv-track"><span class="dv-half dv-left"><span class=dv-bar style=width:45.3%></span><span class=dv-v>−$22K</span></span><span class="dv-half dv-right"></span></span></div><div class="dv-row neg"><span class="dv-l">NERC CIP</span><span class="dv-track"><span class="dv-half dv-left"><span class=dv-bar style=width:45.3%></span><span class=dv-v>−$22K</span></span><span class="dv-half dv-right"></span></span></div></div><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
-<p>Two of the most-requested credentials come with lower posted pay. Employers that pay less, mainly utilities and compliance-heavy organizations, ask for them most. Certifications work as an entry requirement, not a pay lever.</p><figure class="ch"><figcaption class="ch-t">Median posted pay with and without the skill</figcaption><table class="pt"><thead><tr><th>Skill</th><th>With</th><th>Without</th><th>Difference</th></tr></thead><tbody><tr><th scope="row">CISSP</th><td>$142K</td><td>$164K</td><td class="neg">−$22K</td></tr><tr><th scope="row">GICSP</th><td>$144K</td><td>$162K</td><td class="neg">−$18K</td></tr><tr><th scope="row">NERC CIP</th><td>$140K</td><td>$162K</td><td class="neg">−$22K</td></tr><tr><th scope="row">SCADA</th><td>$147K</td><td>$162K</td><td class="neg">−$15K</td></tr></tbody></table><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+          <p>A security clearance has the strongest link to higher pay. Specialist skills (GRID certification, scripting, IEC 62443, PLC, penetration testing) also come with higher posted pay.</p><figure class="ch"><figcaption><span class="ch-t">A security clearance adds the most to posted pay; common certifications come with less</span><span class="ch-s">Difference in median posted pay between postings that ask for the skill and postings that don’t</span></figcaption><div class="dv"><div class="dv-head"><span>Lower pay</span><span>Higher pay</span></div><div class="dv-row pos"><span class="dv-half dv-left"><span class="dv-l">Security clearance</span></span><span class="dv-half dv-right"><span class="dv-bar" style="width:calc((100% - 60px) * 1.000)"></span><span class="dv-v">+$35K</span></span></div><div class="dv-row pos"><span class="dv-half dv-left"><span class="dv-l">GRID certification</span></span><span class="dv-half dv-right"><span class="dv-bar" style="width:calc((100% - 60px) * 0.800)"></span><span class="dv-v">+$28K</span></span></div><div class="dv-row pos"><span class="dv-half dv-left"><span class="dv-l">Scripting (Python/PowerShell)</span></span><span class="dv-half dv-right"><span class="dv-bar" style="width:calc((100% - 60px) * 0.600)"></span><span class="dv-v">+$21K</span></span></div><div class="dv-row pos"><span class="dv-half dv-left"><span class="dv-l">IEC 62443</span></span><span class="dv-half dv-right"><span class="dv-bar" style="width:calc((100% - 60px) * 0.571)"></span><span class="dv-v">+$20K</span></span></div><div class="dv-row pos"><span class="dv-half dv-left"><span class="dv-l">PLC</span></span><span class="dv-half dv-right"><span class="dv-bar" style="width:calc((100% - 60px) * 0.486)"></span><span class="dv-v">+$17K</span></span></div><div class="dv-row pos"><span class="dv-half dv-left"><span class="dv-l">Penetration testing</span></span><span class="dv-half dv-right"><span class="dv-bar" style="width:calc((100% - 60px) * 0.457)"></span><span class="dv-v">+$16K</span></span></div><div class="dv-row neg"><span class="dv-half dv-left"><span class="dv-bar" style="width:calc((100% - 60px) * 0.429)"></span><span class="dv-v">−$15K</span></span><span class="dv-half dv-right"><span class="dv-l">SCADA</span></span></div><div class="dv-row neg"><span class="dv-half dv-left"><span class="dv-bar" style="width:calc((100% - 60px) * 0.514)"></span><span class="dv-v">−$18K</span></span><span class="dv-half dv-right"><span class="dv-l">GICSP</span></span></div><div class="dv-row neg"><span class="dv-half dv-left"><span class="dv-bar" style="width:calc((100% - 60px) * 0.629)"></span><span class="dv-v">−$22K</span></span><span class="dv-half dv-right"><span class="dv-l">CISSP</span></span></div><div class="dv-row neg"><span class="dv-half dv-left"><span class="dv-bar" style="width:calc((100% - 60px) * 0.629)"></span><span class="dv-v">−$22K</span></span><span class="dv-half dv-right"><span class="dv-l">NERC CIP</span></span></div></div><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
+<p>Two of the most-requested credentials come with lower posted pay. Employers that pay less, mainly utilities and compliance-heavy organizations, ask for them most. Certifications work as an entry requirement, not a pay lever.</p><figure class="ch"><figcaption><span class="ch-t">Postings that ask for these credentials pay less, not more</span><span class="ch-s">Median posted pay for postings with and without each requirement</span></figcaption><table class="pt"><thead><tr><th>Requirement</th><th>With</th><th>Without</th><th>Difference</th></tr></thead><tbody><tr><th scope="row">CISSP</th><td>$142K</td><td>$164K</td><td class="neg">−$22K</td></tr><tr><th scope="row">GICSP</th><td>$144K</td><td>$162K</td><td class="neg">−$18K</td></tr><tr><th scope="row">NERC CIP</th><td>$140K</td><td>$162K</td><td class="neg">−$22K</td></tr><tr><th scope="row">SCADA</th><td>$147K</td><td>$162K</td><td class="neg">−$15K</td></tr></tbody></table><p class="ch-src">Source: Port 502 Research analysis of US OT security job postings, 2026.</p></figure>
         </section>
         <section id="conclusion" class="r-sec">
           <p class="r-num">06</p>
