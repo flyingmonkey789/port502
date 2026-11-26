@@ -247,6 +247,10 @@ footer{align-items:center}
 .cf button:hover{background:var(--ink)}
 .cf-done{margin:0;font-size:15px;color:var(--ink)}
 @media (max-width:440px){ footer{align-items:flex-start} .cf button{width:100% !important;align-self:stretch} }
+
+.feat-img.cov-skills{background:radial-gradient(55% 60% at 80% 20%, #E9FBF3 0%, rgba(233,251,243,0) 70%), radial-gradient(60% 55% at 15% 85%, #7FC9C0 0%, rgba(127,201,192,0) 70%), linear-gradient(150deg, #CFEFE2 0%, #9ED8CC 55%, #7BB8E0 100%) !important}
+.feat[hidden]{display:none}
+#published .feat + .feat{margin-top:28px}
 </style>
 </head>
 <body>
@@ -270,9 +274,18 @@ footer{align-items:center}
     <button type="button" class="fl-c" data-f="Investment" aria-pressed="false">Investment</button>
   </div>
 
-  <section id="published" class="grp" data-area="Risk">
+  <section id="published" class="grp">
     <h2>Published</h2>
-    <a class="feat" href="../research/open-weight-ai/">
+    <a class="feat" href="../research/ot-security-skills-2026/" data-area="Investment">
+      <span class="feat-img cov-skills" role="img" aria-label="Abstract green and blue gradient cover"></span>
+      <span class="feat-body">
+        <span class="meta">Investment · Report · November 2026</span>
+        <span class="feat-t">OT Security Skill Trends 2026</span>
+        <span class="feat-d">An analysis of 500 U.S. OT and ICS security job postings: who is hiring, which skills employers ask for, and what they pay.</span>
+        <span class="feat-cta">Read the report →</span>
+      </span>
+    </a>
+    <a class="feat" href="../research/open-weight-ai/" data-area="Risk">
       <span class="feat-img" role="img" aria-label="A transmission tower and power lines on a green hillside under a blue sky"></span>
       <span class="feat-body">
         <span class="meta">Risk · Report · November 2026</span>
@@ -290,7 +303,6 @@ footer{align-items:center}
       <li class="rp" data-area="Investment"><span class="rp-art g-cyan"><span class="rp-tag">Investment</span></span><span class="rp-body"><span class="meta">Dataset · In progress</span><span class="rp-t">OT Security Funding Tracker</span><span class="rp-d">Every venture round, acquisition, and exit across OT and critical infrastructure security.</span></span></li>
       <li class="rp" data-area="Response"><span class="rp-art g-lav"><span class="rp-tag">Response</span></span><span class="rp-body"><span class="meta">Survey · In progress</span><span class="rp-t">Remote Access at the Plant</span><span class="rp-d">How operators grant, monitor, and revoke third-party access to their plant networks today.</span></span></li>
       <li class="rp" data-area="Risk"><span class="rp-art g-cobalt"><span class="rp-tag">Risk</span></span><span class="rp-body"><span class="meta">Brief · In progress</span><span class="rp-t">Ransomware at the OT Edge</span><span class="rp-d">Where industrial ransomware is landing, and which systems attackers use to pivot into OT.</span></span></li>
-      <li class="rp" data-area="Investment"><span class="rp-art g-mint"><span class="rp-tag">Investment</span></span><span class="rp-body"><span class="meta">Analysis · In progress</span><span class="rp-t">The State of OT Hiring</span><span class="rp-d">Which sectors are building OT security teams, and the skills they are paying the most for.</span></span></li>
       <li class="rp" data-area="Risk"><span class="rp-art g-dusk"><span class="rp-tag">Risk</span></span><span class="rp-body"><span class="meta">Dataset · In progress</span><span class="rp-t">Exposed OT on the Internet</span><span class="rp-d">How many industrial devices are reachable online, where they sit, and how fast it changes.</span></span></li>
     </ul>
     <p class="empty" hidden>Nothing in progress in this area yet.</p>
@@ -325,7 +337,7 @@ footer{align-items:center}
     var f=c.getAttribute('data-f'), n=0;
     chips.forEach(function(x){ x.setAttribute('aria-pressed', x===c?'true':'false'); });
     cards.forEach(function(el){ var on=f==='All'||el.getAttribute('data-area')===f; el.hidden=!on; if(on) n++; });
-    pub.hidden=!(f==='All'||pub.getAttribute('data-area')===f);
+    var pv=0; [].forEach.call(pub.querySelectorAll('.feat'),function(el){ var on=f==='All'||el.getAttribute('data-area')===f; el.hidden=!on; if(on) pv++; }); pub.hidden=pv===0;
     empty.hidden=n>0;
   }); });
 })();
