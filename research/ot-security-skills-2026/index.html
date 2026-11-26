@@ -312,7 +312,8 @@ footer{align-items:center}
 .sk-cover{position:relative;display:block;margin-top:32px;aspect-ratio:16/9;overflow:hidden;isolation:isolate;background:#A9DDD0}
 .sk-cover::before{content:"";position:absolute;inset:-25%;z-index:0;filter:blur(36px);transform:rotate(-8deg);background:radial-gradient(55% 60% at 80% 20%, #E9FBF3 0%, rgba(233,251,243,0) 70%), radial-gradient(60% 55% at 15% 85%, #7FC9C0 0%, rgba(127,201,192,0) 70%), linear-gradient(150deg, #CFEFE2 0%, #9ED8CC 55%, #7BB8E0 100%)}
 .sk-cover::after{content:"";position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;opacity:.18;mix-blend-mode:overlay}
-.r-method{margin:40px 0 0 !important;padding:16px 20px;border-left:2px solid var(--text);background:var(--surface);font-size:16px !important}
+.r-method{margin:40px 0 0 !important;padding:0;border:0;background:none;font-size:17px !important;line-height:1.75 !important;color:var(--ink)}
+@media (max-width:520px){.r-method{font-size:16px !important}}
 .r-sec h3{margin:36px 0 12px;font-family:var(--display);font-size:20px;font-weight:500;color:var(--text)}
 .ch{margin:28px 0 36px;padding:24px 24px 18px;border:1px solid var(--line);background:#FFFFFF}
 .ch figcaption{display:flex;flex-direction:column;gap:6px;margin:0 0 22px}
