@@ -16,6 +16,7 @@ copy options only, without commentary.
 | `research/index.html` | Research index (H1: "OT Security Reports") |
 | `research/open-weight-ai/index.html` | Report: Open-Weight AI Models in Critical Infrastructure |
 | `research/ot-security-skills-2026/index.html` | Report: OT Security Job Market Analysis Q4 2026 (charts built in HTML/CSS) |
+| `research/ot-security-capital-ma-2026/index.html` | Report: 2026 OT Security Capital & M&A Analysis (built by a script; tables stack on phones) |
 | `assets/` | Images (report covers) |
 | `CNAME` | `port502.com` — do not remove |
 
